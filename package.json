@@ -1,0 +1,57 @@
+{
+  "name": "@tayeh/vue-components",
+  "version": "1.0.1-alpha",
+  "author": "Aref Akbari",
+  "license": "MIT",
+  "description": "Free and Open source Ui components, Ultimatly lightweight.",
+  "main": "dist/index.js",
+  "private": false,
+  "files": [
+    "dist/**/*",
+    "*.md"
+  ],
+  "scripts": {
+    "dev": "./node_modules/poi/bin/cli.js",
+    "build:demo": "./node_modules/poi/bin/cli.js build",
+    "build": "rm -rf ./dist && ./node_modules/bili/dist/cli.js"
+  },
+  "keywords": [
+    "ui",
+    "components",
+    "vuejs",
+    "tayeh"
+  ],
+  "peerDependencies": {
+    "vue": "^2.5.2"
+  },
+  "publishConfig": {
+    "registry": "http://registry.npmjs.org",
+    "access": "public"
+  },
+  "devDependencies": {
+    "babel-eslint": "^8.2.3",
+    "bili": "^3.1.2",
+    "eslint-config-standard": "^11.0.0",
+    "eslint-plugin-import": "^2.12.0",
+    "eslint-plugin-node": "^6.0.1",
+    "eslint-plugin-promise": "^3.8.0",
+    "eslint-plugin-standard": "^3.1.0",
+    "eslint-plugin-vue": "^4.5.0",
+    "node-sass": "^4.9.0",
+    "poi": "^10.2.7",
+    "rollup-plugin-copied": "^0.0.2",
+    "rollup-plugin-eslint": "^4.0.0",
+    "rollup-plugin-vue": "^4.2.0",
+    "sass-loader": "^7.0.3",
+    "vue-template-compiler": "^2.5.16"
+  },
+  "engines": {
+    "node": ">= 6.0.0",
+    "npm": ">= 3.0.0"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 9"
+  ]
+}

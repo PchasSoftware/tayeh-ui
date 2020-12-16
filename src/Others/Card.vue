@@ -1,0 +1,46 @@
+<template>
+  <div class="ty-card">
+	  <div v-if="hasHeaderSlot" class="ty-card__header">
+	  	<slot name="header"/>
+	  </div>
+	  <div class="ty-card__content">
+	  	<slot/>
+	  </div>
+	  <div v-if="hasFooterSlot" class="ty-card__footer">
+	  	<slot name="footer"/>
+	  </div>
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'TyCard',
+
+  // *----------------------- P r o p s ----------------------------------------------------------
+  props: {},
+
+  // *----------------------- D a t a -----------------------------------------------------------
+  data() {
+    return {}
+  },
+
+  // *----------------------- C o m p u t e d ---------------------------------------------------
+  computed: {
+	hasHeaderSlot () {
+    	return !!this.$slots['header']
+    },
+	hasFooterSlot () {
+    	return !!this.$slots['footer']
+	},
+  },
+
+  // *----------------------- L i f e   c i r c l e ---------------------------------------------
+  created() {},
+
+  // *----------------------- M e t h o d s -----------------------------------------------------
+  methods: {},
+
+  // *----------------------- W a t c h ---------------------------------------------------------
+  watch: {}
+}
+</script>

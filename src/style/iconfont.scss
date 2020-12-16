@@ -1,0 +1,67 @@
+@font-face {
+  font-family: 'tayehicon';
+  src: url('./fonts/tayehicons.woff?1633360') format('woff');
+  font-weight: normal;
+  font-style: normal;
+
+  font-style: normal;
+      font-weight: normal;
+      speak: never;
+     
+      display: inline-block;
+      text-decoration: inherit;
+      width: 1em;
+      margin-right: .2em;
+      text-align: center;
+      /* opacity: .8; */
+     
+      /* For safety - reset parent styles, that can break glyph codes*/
+      font-variant: normal;
+      text-transform: none;
+     
+      /* fix buttons height, for twitter bootstrap */
+      line-height: 1em;
+     
+      /* Animation center compensation - margins should be symmetric */
+      /* remove if not needed */
+      margin-left: .2em;
+     
+      /* You can be more comfortable with increased icons size */
+      /* font-size: 120%; */
+     
+      /* Font smoothing. That was taken from TWBS */
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+}
+.ty-icon {
+  font-family: 'tayehicon' !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.ty-icon.ty-icon-small {
+  font-size: 12px;
+  font-weight: lighter;
+}
+
+.ty-icon .ty-icon-large {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.ty-icon-arrow-drop-down:before { content: '\e800'; } /* '' */
+.ty-icon-arrow-right:before { content: '\e801'; } /* '' */
+.ty-icon-cart:before { content: '\e802'; } /* '' */
+.ty-icon-chart:before { content: '\e803'; } /* '' */
+.ty-icon-delete:before { content: '\e804'; } /* '' */
+.ty-icon-edit:before { content: '\e805'; } /* '' */
+.ty-icon-exit:before { content: '\e806'; } /* '' */
+.ty-icon-inventory:before { content: '\e807'; } /* '' */
+.ty-icon-notifications:before { content: '\e808'; } /* '' */
+.ty-icon-package:before { content: '\e809'; } /* '' */
+.ty-icon-search:before { content: '\e80a'; } /* '' */
+.ty-icon-setting:before { content: '\e80b'; } /* '' */
+.ty-icon-smile:before { content: '\e80c'; } /* '' */
+.ty-icon-sort:before { content: '\e80d'; } /* '' */

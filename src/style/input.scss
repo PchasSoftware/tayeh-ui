@@ -1,0 +1,83 @@
+.ty-input, .ty-currency-input, .ty-select__search {
+	display: inline-block;
+	.ty-input-wrapper {
+	  position: relative;
+	  display: inline-block;
+	  border-radius: 3px;
+	  border: solid 1px #e0e0e0;
+	  background-color: rgba(106, 112, 126, 0);
+	  &.--border-clear {
+		border: none;
+	  }
+	  &.--border-bottom {
+		border: none;
+		border-bottom: solid 1px #e0e0e0;
+	  }
+	  &.normal {
+		input {
+		  padding: 2px 15px;
+		}
+	  }
+	  &.small {
+		input {
+		  padding: 1px 8px;
+		}
+	  }
+	  &.large {
+		input {
+		  padding: 4px 18px;
+		}
+	  }
+	  .ty-input-label {
+  
+		&.normal {
+		  height: 64px;
+		}
+	  }
+	}
+	.ty-input-wrapper input {
+		border: none;
+		height: 40px;
+		padding: 2px 15px;
+		display: block;
+		&.--input-with-prefix {
+		  padding-right: 30px;
+		}
+	}
+	.ty-input-wrapper .prefix {
+	  position: absolute;
+	  right: 8px;
+	  top: 50%;
+	  transform: translateY(-50%);
+	  &.prefix--ltr {
+		right: unset;
+		left: 4px;
+	  }
+	}
+	.ty-input-wrapper .suffix {
+	  position: absolute;
+	  left: 16px;
+	  top: 50%;
+	  transform: translateY(-50%);
+	  &.suffix--ltr {
+		left: unset;
+		right: 16px;
+	  }
+	}
+	.ty-input-wrapper:not(.disabled):hover {
+	  outline: $primary auto 1px;
+	}
+	.ty-input-wrapper.ty-input-focus {
+	  outline: $primary auto 1px;
+	}
+  
+	.ty-input-wrapper:focus {
+	  outline: $primary auto 1px;
+	}
+	input:hover {
+	  outline: none;
+	}
+	input:focus {
+	  outline: none;
+	}
+  }

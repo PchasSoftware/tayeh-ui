@@ -1,0 +1,306 @@
+@charset "UTF-8";
+.ty-color-primary {
+  color: #409eff; }
+
+.ty-color-success {
+  color: #20ce66; }
+
+.ty-color-danger {
+  color: #eb5757; }
+
+.ty-color-dark {
+  color: #1c1c28; }
+
+.ty-color-light {
+  color: #f3f6f9; }
+
+.ty-outline-primary {
+  outline: #409eff auto 1px; }
+
+.ty-outline-success {
+  outline: #20ce66 auto 1px; }
+
+.ty-outline-danger {
+  outline: #eb5757 auto 1px; }
+
+.ty-outline-dark {
+  outline: #1c1c28 auto 1px; }
+
+.ty-outline-light {
+  outline: #f3f6f9 auto 1px; }
+
+.ty-bg-primary {
+  background-color: #409eff;
+  color: #f3f6f9; }
+
+.ty-bg-success {
+  background-color: #20ce66;
+  color: #f3f6f9; }
+
+.ty-bg-danger {
+  background-color: #eb5757;
+  color: #f3f6f9; }
+
+.ty-bg-dark {
+  background-color: #1c1c28;
+  color: #f3f6f9; }
+
+@font-face {
+  font-family: 'tayehicon';
+  src: url("./fonts/tayehicons.woff?1633360") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-style: normal;
+  font-weight: normal;
+  speak: never;
+  display: inline-block;
+  text-decoration: inherit;
+  width: 1em;
+  margin-right: .2em;
+  text-align: center;
+  /* opacity: .8; */
+  /* For safety - reset parent styles, that can break glyph codes*/
+  font-variant: normal;
+  text-transform: none;
+  /* fix buttons height, for twitter bootstrap */
+  line-height: 1em;
+  /* Animation center compensation - margins should be symmetric */
+  /* remove if not needed */
+  margin-left: .2em;
+  /* You can be more comfortable with increased icons size */
+  /* font-size: 120%; */
+  /* Font smoothing. That was taken from TWBS */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; }
+
+.ty-icon {
+  font-family: 'tayehicon' !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; }
+
+.ty-icon.ty-icon-small {
+  font-size: 12px;
+  font-weight: lighter; }
+
+.ty-icon .ty-icon-large {
+  font-size: 24px;
+  font-weight: bold; }
+
+.ty-icon-arrow-drop-down:before {
+  content: '\e800'; }
+
+/* '' */
+.ty-icon-arrow-right:before {
+  content: '\e801'; }
+
+/* '' */
+.ty-icon-cart:before {
+  content: '\e802'; }
+
+/* '' */
+.ty-icon-chart:before {
+  content: '\e803'; }
+
+/* '' */
+.ty-icon-delete:before {
+  content: '\e804'; }
+
+/* '' */
+.ty-icon-edit:before {
+  content: '\e805'; }
+
+/* '' */
+.ty-icon-exit:before {
+  content: '\e806'; }
+
+/* '' */
+.ty-icon-inventory:before {
+  content: '\e807'; }
+
+/* '' */
+.ty-icon-notifications:before {
+  content: '\e808'; }
+
+/* '' */
+.ty-icon-package:before {
+  content: '\e809'; }
+
+/* '' */
+.ty-icon-search:before {
+  content: '\e80a'; }
+
+/* '' */
+.ty-icon-setting:before {
+  content: '\e80b'; }
+
+/* '' */
+.ty-icon-smile:before {
+  content: '\e80c'; }
+
+/* '' */
+.ty-icon-sort:before {
+  content: '\e80d'; }
+
+/* '' */
+body.--hide-overflow {
+  overflow: hidden !important; }
+
+.ty-input, .ty-currency-input, .ty-select__search {
+  display: inline-block; }
+  .ty-input .ty-input-wrapper, .ty-currency-input .ty-input-wrapper, .ty-select__search .ty-input-wrapper {
+    position: relative;
+    display: inline-block;
+    border-radius: 3px;
+    border: solid 1px #e0e0e0;
+    background-color: rgba(106, 112, 126, 0); }
+    .ty-input .ty-input-wrapper.--border-clear, .ty-currency-input .ty-input-wrapper.--border-clear, .ty-select__search .ty-input-wrapper.--border-clear {
+      border: none; }
+    .ty-input .ty-input-wrapper.--border-bottom, .ty-currency-input .ty-input-wrapper.--border-bottom, .ty-select__search .ty-input-wrapper.--border-bottom {
+      border: none;
+      border-bottom: solid 1px #e0e0e0; }
+    .ty-input .ty-input-wrapper.normal input, .ty-currency-input .ty-input-wrapper.normal input, .ty-select__search .ty-input-wrapper.normal input {
+      padding: 2px 15px; }
+    .ty-input .ty-input-wrapper.small input, .ty-currency-input .ty-input-wrapper.small input, .ty-select__search .ty-input-wrapper.small input {
+      padding: 1px 8px; }
+    .ty-input .ty-input-wrapper.large input, .ty-currency-input .ty-input-wrapper.large input, .ty-select__search .ty-input-wrapper.large input {
+      padding: 4px 18px; }
+    .ty-input .ty-input-wrapper .ty-input-label.normal, .ty-currency-input .ty-input-wrapper .ty-input-label.normal, .ty-select__search .ty-input-wrapper .ty-input-label.normal {
+      height: 64px; }
+  .ty-input .ty-input-wrapper input, .ty-currency-input .ty-input-wrapper input, .ty-select__search .ty-input-wrapper input {
+    border: none;
+    height: 40px;
+    padding: 2px 15px;
+    display: block; }
+    .ty-input .ty-input-wrapper input.--input-with-prefix, .ty-currency-input .ty-input-wrapper input.--input-with-prefix, .ty-select__search .ty-input-wrapper input.--input-with-prefix {
+      padding-right: 30px; }
+  .ty-input .ty-input-wrapper .prefix, .ty-currency-input .ty-input-wrapper .prefix, .ty-select__search .ty-input-wrapper .prefix {
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%); }
+    .ty-input .ty-input-wrapper .prefix.prefix--ltr, .ty-currency-input .ty-input-wrapper .prefix.prefix--ltr, .ty-select__search .ty-input-wrapper .prefix.prefix--ltr {
+      right: unset;
+      left: 4px; }
+  .ty-input .ty-input-wrapper .suffix, .ty-currency-input .ty-input-wrapper .suffix, .ty-select__search .ty-input-wrapper .suffix {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%); }
+    .ty-input .ty-input-wrapper .suffix.suffix--ltr, .ty-currency-input .ty-input-wrapper .suffix.suffix--ltr, .ty-select__search .ty-input-wrapper .suffix.suffix--ltr {
+      left: unset;
+      right: 16px; }
+  .ty-input .ty-input-wrapper:not(.disabled):hover, .ty-currency-input .ty-input-wrapper:not(.disabled):hover, .ty-select__search .ty-input-wrapper:not(.disabled):hover {
+    outline: #409eff auto 1px; }
+  .ty-input .ty-input-wrapper.ty-input-focus, .ty-currency-input .ty-input-wrapper.ty-input-focus, .ty-select__search .ty-input-wrapper.ty-input-focus {
+    outline: #409eff auto 1px; }
+  .ty-input .ty-input-wrapper:focus, .ty-currency-input .ty-input-wrapper:focus, .ty-select__search .ty-input-wrapper:focus {
+    outline: #409eff auto 1px; }
+  .ty-input input:hover, .ty-currency-input input:hover, .ty-select__search input:hover {
+    outline: none; }
+  .ty-input input:focus, .ty-currency-input input:focus, .ty-select__search input:focus {
+    outline: none; }
+
+.ty-editable-text:focus {
+  outline: 1px solid #eee;
+  padding: 0 4px; }
+
+.ty-editable-number {
+  width: 100%;
+  height: 40px; }
+  .ty-editable-number input {
+    border: 1px #eee solid;
+    height: 32px;
+    direction: ltr;
+    max-width: 100%; }
+
+.ty-select {
+  position: relative;
+  display: inline-block; }
+
+.ty-select__dropdown {
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+  position: absolute;
+  padding: 4px;
+  left: 0;
+  right: 0;
+  min-height: 64px;
+  background-color: #ffffff;
+  box-shadow: 0.5px 3px 10px 0 #77777719; }
+  .ty-select__dropdown .ty-dropdown-item {
+    padding: 8px;
+    cursor: pointer; }
+  .ty-select__dropdown .ty-dropdown-item-hovered {
+    background-color: #f3f6f9; }
+  .ty-select__dropdown .ty-dropdown-item:hover {
+    background-color: #f3f6f9; }
+
+.ty-card {
+  box-shadow: 0.5px 3px 10px 0 #77777719;
+  border-radius: 4px;
+  border: 1px solid #ebeef5;
+  background-color: #fff;
+  overflow: hidden;
+  color: #303133;
+  transition: .3s; }
+  .ty-card .ty-card__header {
+    padding: 18px 20px;
+    display: block;
+    border-bottom: 1px solid #f3f6f9;
+    font-size: 14px;
+    font-weight: bold; }
+  .ty-card .ty-card__content {
+    padding: 20px; }
+  .ty-card .ty-card__footer {
+    display: block;
+    padding: 18px 20px;
+    border-top: 1px solid #f3f6f9;
+    font-size: 12px; }
+  @media (max-width: 800px) {
+    .ty-card .ty-card__header {
+      padding: 9px 10px; }
+    .ty-card .ty-card__content {
+      padding: 10px; }
+    .ty-card .ty-card__footer {
+      display: block;
+      padding: 9px 10px; } }
+
+.ty-button {
+  display: inline-block;
+  padding: 8px 16px;
+  cursor: pointer;
+  transition: background 0.8s; }
+  .ty-button.simple {
+    border: none;
+    border-radius: 3px;
+    outline: none; }
+  .ty-button.outline {
+    border: none;
+    background-color: transparent; }
+  .ty-button:hover {
+    filter: contrast(80%); }
+  .ty-button:active {
+    filter: none; }
+  .ty-button.medium {
+    font-size: 16px; }
+    .ty-button.medium i {
+      font-size: 16px; }
+  .ty-button.small {
+    padding: 4px 8px;
+    font-size: 12px; }
+    .ty-button.small i {
+      font-size: 12px; }
+  .ty-button.large {
+    padding: 10px 18px;
+    font-size: 20px; }
+    .ty-button.large i {
+      font-size: 20px; }
+
+.ty-modal .ty-modal__backdrop {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0; }

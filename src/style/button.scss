@@ -1,0 +1,42 @@
+.ty-button {
+	display: inline-block;
+	padding: 8px 16px;
+	cursor: pointer;
+	transition: background 0.8s;
+	&.simple {
+	  border: none;
+	  border-radius: 3px;
+	  outline: none;
+	}
+	&.outline {
+	  border: none;
+	  background-color: transparent;
+	  // outline: var(var(--background)) auto 1px;
+	}
+	&:hover {
+	  filter: contrast(80%);
+	}
+	&:active {
+	  filter: none;
+	}
+	&.medium {
+	  font-size: 16px;
+	  i {
+		font-size: 16px;
+	  }
+	}
+	&.small {
+	  padding: 4px 8px;
+	  font-size: 12px;
+	  i {
+		font-size: 12px;
+	  }
+	}
+	&.large {
+	  padding: 10px 18px;
+	  font-size: 20px;
+	  i {
+		font-size: 20px;
+	  }
+	}
+  }
