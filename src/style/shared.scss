@@ -1,0 +1,18 @@
+.ty-flex {
+	display: flex;
+	&.ty-flex-col {
+		flex-direction: column;
+	}
+	&.ty-flex-col-reversed {
+		flex-direction: column-reverse;
+	}
+	&.ty-flex-row {
+		flex-direction: row;
+	}
+	&.ty-flex-row-reversed {
+		flex-direction: row-reverse;
+	}
+}
+.ty-flex-wrap {
+	flex-wrap: wrap;
+}

@@ -1,6 +1,6 @@
 {
   "name": "@tayeh/vue-components",
-  "version": "1.0.3-alpha",
+  "version": "1.0.5-alpha",
   "author": "Aref Akbari",
   "license": "MIT",
   "description": "Free and Open source Ui components, Ultimatly lightweight.",
@@ -19,7 +19,8 @@
     "ui",
     "components",
     "vuejs",
-    "tayeh"
+    "tayeh",
+    "rtl"
   ],
   "peerDependencies": {
     "vue": "^2.5.2"

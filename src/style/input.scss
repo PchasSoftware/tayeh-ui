@@ -5,6 +5,7 @@
 	  display: inline-block;
 	  border-radius: 3px;
 	  border: solid 1px #e0e0e0;
+	  flex: auto;
 	  background-color: rgba(106, 112, 126, 0);
 	  &.--border-clear {
 		border: none;
@@ -80,4 +81,10 @@
 	input:focus {
 	  outline: none;
 	}
+	input::placholder {
+		text-overflow: ellipsis;
+	}
+  }
+  .ty-input input {
+	  width: 100%;
   }

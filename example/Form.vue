@@ -13,7 +13,13 @@
           <ty-input type="text" :placeholder="translate('placeholder')" icon="ty-icon-search" :border-bottom="true"/>
           <ty-input type="text" :placeholder="translate('placeholder')" icon="ty-icon-search" :clear="true"/>
           <ty-input :disabled="true" type="text" :placeholder="translate('placeholder')" icon="ty-icon-search" :clear="true"/>
-
+          <ty-card>
+            <form>
+              <ty-input width="100%">
+                <ty-button slot="button">test</ty-button>
+              </ty-input>
+            </form>
+          </ty-card>
       </div>
 
       <div class="component">

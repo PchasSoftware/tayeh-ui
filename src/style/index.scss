@@ -1,5 +1,8 @@
 @import './var';
 @import './iconfont';
+@import './shared.scss';
+@import './mixnis/mixins';
+@import './utilities/utilities';
 
 @import './input.scss';
 @import './editable.scss';
@@ -14,6 +17,7 @@
 @import './row.scss';
 @import './col.scss';
 @import './modal.scss';
+@import './border.scss';
 
 body.--hide-overflow {
   overflow: hidden !important;

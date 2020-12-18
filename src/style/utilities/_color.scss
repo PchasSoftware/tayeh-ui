@@ -1,0 +1,68 @@
+.ty-color-primary {
+	color: $primary;
+}
+
+.ty-color-success {
+	color: $success;
+}
+
+.ty-color-danger {
+	color: $danger;
+}
+
+.ty-color-dark {
+	color: $dark;
+}
+
+.ty-color-light {
+	color: $light;
+}
+
+.ty-color-border {
+	color: $border;
+}
+
+
+
+.ty-outline-primary {
+	outline: $primary auto 1px;
+}
+
+.ty-outline-success {
+	outline: $success auto 1px;
+}
+
+.ty-outline-danger {
+	outline: $danger auto 1px;
+}
+
+.ty-outline-dark {
+	outline: $dark auto 1px;
+}
+
+.ty-outline-light {
+	outline: $light auto 1px;
+}
+// .ty-color-pale-grey {
+// 	color: $light;
+// }
+
+.ty-bg-primary {
+	background-color: $primary;
+	color: $light;
+}
+
+.ty-bg-success {
+	background-color: $success;
+	color: $light;
+}
+
+.ty-bg-danger {
+	background-color: $danger;
+	color: $light;
+}
+
+.ty-bg-dark {
+	background-color: $dark;
+	color: $light;
+}

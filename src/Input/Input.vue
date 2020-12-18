@@ -1,18 +1,22 @@
 <template>
-  <div :class="['ty-input', inputSize ? 'el-input--' + inputSize : '']">
+  <div :class="['ty-input', inputSize ? 'el-input--' + inputSize : '']" :style="{width}">
     <p v-if="label" :class="`ty-input-label ${size}`">{{label}}</p>
-    <div ref="input-wrapper" class="ty-input-wrapper" :class="[clear?'--border-clear':'', !clear&&borderBottom?'--border-bottom':'', outline?'ty-input-focus':'', disabled?'disabled':'']">
-      <div v-if="icon" class="prefix">
-        <i :class="['ty-icon', icon]"/>
+    <div class="ty-flex ty-flex-wrap">
+      <div ref="input-wrapper" class="ty-input-wrapper m-1" :class="[clear?'--border-clear':'', !clear&&borderBottom?'--border-bottom':'', outline?'ty-input-focus':'', disabled?'disabled':'']">
+        <div v-if="icon" class="prefix">
+          <i :class="['ty-icon', icon]"/>
+        </div>
+        <input
+          :disabled="disabled"
+          @focus="handleFocus"
+          @blur="handleBlur"
+         @input="handleInput" @change="handleChange" v-model="content" :type="type" :placeholder="placeholder" :class="[size, icon?'--input-with-prefix':'']"/>
+        <div :class="['suffix', dir==='ltr'?'suffix--ltr':'']">
+          <slot name="suffix"/>
+        </div>
       </div>
-      <input
-        :disabled="disabled"
-        @focus="handleFocus"
-        @blur="handleBlur"
-       @input="handleInput" @change="handleChange" v-model="content" :type="type" :placeholder="placeholder" :class="[size, icon?'--input-with-prefix':'']"/>
-      <div :class="['suffix', dir==='ltr'?'suffix--ltr':'']">
-        <slot name="suffix">
-        </slot>
+      <div v-if="hasButton"  class="m-1">
+        <slot name="button"/>
       </div>
     </div>
   </div>
@@ -69,6 +73,10 @@ export default {
     disabled: {
       type: Boolean,
       default: false
+    },
+    width: {
+      type: String,
+      default: 'auto'
     }
   },
 
@@ -84,7 +92,10 @@ export default {
   computed: {
     inputSize() {
         return this.size;
-      },
+    },
+    hasButton () {
+      return this.$slots.button;
+    }
   },
 
   // *----------------------- L i f e   c i r c l e ---------------------------------------------

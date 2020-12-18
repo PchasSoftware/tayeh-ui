@@ -1,3 +1,40 @@
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px
+) !default;
+
+$spacer: 1rem !default;
+$spacers: () !default;
+// stylelint-disable-next-line scss/dollar-variable-default
+$spacers: map-merge(
+  (
+    0: 0,
+    1: ($spacer * .25),
+    2: ($spacer * .5),
+    3: $spacer,
+    4: ($spacer * 1.5),
+    5: ($spacer * 3)
+  ),
+  $spacers
+);
+
+// This variable affects the `.h-*` and `.w-*` classes.
+$sizes: () !default;
+// stylelint-disable-next-line scss/dollar-variable-default
+$sizes: map-merge(
+  (
+    25: 25%,
+    50: 50%,
+    75: 75%,
+    100: 100%,
+    auto: auto
+  ),
+  $sizes
+);
+
 $primary: #409eff;
 $success: #20ce66;
 $dark: #1c1c28;
@@ -6,73 +43,4 @@ $faded-orange: #f2994a;
 $background: #ffffff;
 $light: #f3f6f9;
 $shadow: #77777719;
-
-
-.ty-color-primary {
-	color: $primary;
-}
-
-.ty-color-success {
-	color: $success;
-}
-
-.ty-color-danger {
-	color: $danger;
-}
-
-.ty-color-dark {
-	color: $dark;
-}
-
-.ty-color-light {
-	color: $light;
-}
-
-
-
-.ty-outline-primary {
-	outline: $primary auto 1px;
-}
-
-.ty-outline-success {
-	outline: $success auto 1px;
-}
-
-.ty-outline-danger {
-	outline: $danger auto 1px;
-}
-
-.ty-outline-dark {
-	outline: $dark auto 1px;
-}
-
-.ty-outline-light {
-	outline: $light auto 1px;
-}
-// .ty-color-pale-grey {
-// 	color: $light;
-// }
-
-.ty-bg-primary {
-	background-color: $primary;
-	color: $light;
-}
-
-.ty-bg-success {
-	background-color: $success;
-	color: $light;
-}
-
-.ty-bg-danger {
-	background-color: $danger;
-	color: $light;
-}
-
-.ty-bg-dark {
-	background-color: $dark;
-	color: $light;
-}
-
-@mixin ty-boxshadow {
-	box-shadow: 0.5px 3px 10px 0 #77777719
-}
+$border: #e0e0e0;

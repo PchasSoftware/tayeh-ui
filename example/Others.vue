@@ -12,6 +12,19 @@
         </ty-card>
       </div>
     </section>
+
+    <section id="icons">
+      <h4>{{translate('border')}}</h4>
+      <div class="component">
+        <code class="example">{{examples['border']}}</code>
+        <ty-border icon="ty-icon-sort">
+          <div slot="label">
+            تعداد کاربران امروز
+          </div>
+          0 نفر
+        </ty-border>
+      </div>
+    </section>
 </div>
 </template>
 
@@ -31,6 +44,7 @@ export default {
         cssAlign: {fa: 'right', en: 'left'},
         others: {fa: 'غیره', en: 'Others'},
         card: {fa: 'کارت', en: 'Card'},
+        border: {fa: 'بردر', en: 'Border'},
         baseInput: {fa: 'ورودی ساده', en: 'Base Input'},
         currencyInput: {fa: 'ورودی پول', en: 'Currency Input'},
         editableText: {fa: 'متن قابل ویرایش', en: 'Editable Text'},
@@ -52,7 +66,8 @@ export default {
         'ty-icon-smile'
       ],
       examples: {
-        card: '<ty-card> Simple Card </ty-card>'
+        card: '<ty-card> Simple Card </ty-card>',
+        border: '<ty-border> 0 نفر </ty-border>',
       }
     }
   },

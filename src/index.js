@@ -4,6 +4,7 @@ import EditableText from './Input/EditableText.vue'
 import EditableNumber from './Input/EditableNumber.vue'
 import Select from './Select/Select.vue'
 import Card from './Others/Card.vue'
+import Border from './Others/Border.vue'
 import Button from './Button/Button.vue'
 import Table from './Data/Table.vue'
 import Container from './Layouts/Container.vue'
@@ -22,6 +23,7 @@ const components = [
 	EditableNumber,
 	Select,
 	Card,
+	Border,
 	Button,
 	Table,
 	Container,
@@ -52,7 +54,14 @@ export default {
 	EditableNumber,
 	Select,
 	Card,
+	Border,
 	Button,
 	Table,
-
+	Container,
+	Main,
+	Aside,
+	Header,
+	Footer,
+	Row,
+	Col,
 }
