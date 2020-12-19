@@ -13,13 +13,45 @@
       </div>
     </section>
 
-    <section id="icons">
+    <section id="border">
       <h4>{{translate('border')}}</h4>
       <div class="component">
         <code class="example">{{examples['border']}}</code>
         <ty-border icon="ty-icon-sort">
           <div slot="label">
             تعداد کاربران امروز
+          </div>
+          0 نفر
+        </ty-border>
+        <ty-row :gutter="10">
+          <ty-col :md="6">
+            <ty-border width="100%" icon="ty-icon-sort">
+              <div slot="label">
+                تعداد کاربران امروز 
+              </div>
+              0 نفر
+            </ty-border>
+          </ty-col>
+          <ty-col :md="6">
+            <ty-border width="100%" icon="ty-icon-sort">
+              <div slot="label">
+                تعداد کاربران امروز 
+              </div>
+              0 نفر
+            </ty-border>
+          </ty-col>
+          <ty-col :md="6">
+            <ty-border width="100%" icon="ty-icon-sort">
+              <div slot="label">
+                تعداد کاربران امروز 
+              </div>
+              0 نفر
+            </ty-border>
+          </ty-col>
+        </ty-row>
+        <ty-border width="100%" icon="ty-icon-sort">
+          <div slot="label">
+            تعداد کاربران امروز 
           </div>
           0 نفر
         </ty-border>

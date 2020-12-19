@@ -1,5 +1,5 @@
 <template>
-  <button class="ty-button" :class="[...typeCss, type, size]" @click.stop="handleClick">
+  <button class="ty-button ty-hoverable" :class="[...typeCss, type, size]" @click.stop="handleClick">
 	  <i v-if="icon" class="ty-button__icon ty-icon" :class="icon"/>
 	  <slot></slot>
   </button>

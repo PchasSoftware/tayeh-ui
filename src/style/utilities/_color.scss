@@ -10,6 +10,11 @@
 	color: $danger;
 }
 
+.ty-color-warning {
+	color: $warning;
+}
+
+
 .ty-color-dark {
 	color: $dark;
 }
@@ -36,12 +41,48 @@
 	outline: $danger auto 1px;
 }
 
+.ty-outline-warning {
+	outline: $warning auto 1px;
+}
+
 .ty-outline-dark {
 	outline: $dark auto 1px;
 }
 
 .ty-outline-light {
 	outline: $light auto 1px;
+}
+
+
+
+.ty-outline-primary.ty-hoverable:hover {
+	background-color: $primary;
+	color: $light;
+}
+
+.ty-outline-success.ty-hoverable:hover {
+	background-color: $success;
+	color: $light;
+}
+
+.ty-outline-danger.ty-hoverable:hover {
+	background-color: $danger;
+	color: $light;
+}
+
+.ty-outline-warning.ty-hoverable:hover {
+	background-color: $warning;
+	color: $light;
+}
+
+.ty-outline-dark.ty-hoverable:hover {
+	background-color: $dark;
+	color: $light;
+}
+
+.ty-outline-light.ty-hoverable:hover {
+	background-color: $light;
+	color: $dark;
 }
 // .ty-color-pale-grey {
 // 	color: $light;
@@ -59,6 +100,11 @@
 
 .ty-bg-danger {
 	background-color: $danger;
+	color: $light;
+}
+
+.ty-bg-warning {
+	background-color: $warning;
 	color: $light;
 }
 
