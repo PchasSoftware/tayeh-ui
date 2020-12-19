@@ -57,6 +57,21 @@
         </ty-border>
       </div>
     </section>
+
+    <section id="acardion">
+      <h4>{{translate('acardion')}}</h4>
+      <div class="component">
+        <code class="example">{{examples['acardion']}}</code>
+        <ty-acardion icon="ty-icon-sort" open="1">
+          <ty-acardion-item index="1" label="انبار شماره ۱">
+            موجودی انبار
+          </ty-acardion-item>
+          <ty-acardion-item index="2" label="انبار شماره ۲">
+            موجودی انبار ۲
+          </ty-acardion-item>
+        </ty-acardion>
+      </div>
+    </section>
 </div>
 </template>
 
@@ -77,6 +92,7 @@ export default {
         others: {fa: 'غیره', en: 'Others'},
         card: {fa: 'کارت', en: 'Card'},
         border: {fa: 'بردر', en: 'Border'},
+        acardion: {fa: 'آکاردیون', en: 'Acardion'},
         baseInput: {fa: 'ورودی ساده', en: 'Base Input'},
         currencyInput: {fa: 'ورودی پول', en: 'Currency Input'},
         editableText: {fa: 'متن قابل ویرایش', en: 'Editable Text'},
@@ -100,6 +116,7 @@ export default {
       examples: {
         card: '<ty-card> Simple Card </ty-card>',
         border: '<ty-border> 0 نفر </ty-border>',
+        acardion: '<ty-acardion> <ty-acardion label="عنوان اول">متن اولین آکاردیون</ty-acardion> </ty-acardion>',
       }
     }
   },

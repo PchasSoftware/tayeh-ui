@@ -44,7 +44,7 @@
 
 ```bash
 # installing package
-npm install --save @tayeh/panel-components
+npm install --save @tayeh/vue-components
 ```
 
 #### in your Vue main.js file
