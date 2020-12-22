@@ -1,36 +1,38 @@
 <template>
-  <div>
-    <td/>
-  </div>
+<tr :class="['ty-table-header', cssClass]">
+	<slot/>
+</tr>
 </template>
 
 <script>
 export default {
-  name: 'TyTableCol',
+  name: 'TyTableHeader',
 
   // *----------------------- P r o p s ----------------------------------------------------------
   props: {
-	  data: {
-		  type: Array,
-		  default: () => []
-	  }
+    cssClass: {
+      type: String,
+      default: 'ty-bg-light'
+    }
   },
 
   // *----------------------- D a t a -----------------------------------------------------------
   data() {
-    return {}
+    return {
+      header: true
+    }
   },
 
   // *----------------------- C o m p u t e d ---------------------------------------------------
   computed: {},
 
   // *----------------------- L i f e   c i r c l e ---------------------------------------------
-  created() {},
 
   // *----------------------- M e t h o d s -----------------------------------------------------
   methods: {},
 
   // *----------------------- W a t c h ---------------------------------------------------------
-  watch: {}
+  watch: {},
 }
+
 </script>

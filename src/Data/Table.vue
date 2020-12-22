@@ -1,14 +1,7 @@
 <template>
   <div>
-    <table>
-		<tr>
-			<th v-for="item in columnLabels" :key="item">
-				{{item}}
-			</th>
-		</tr>
-		<tr v-for="(item, i) in data" :key="i">
-			<th/>
-		</tr>
+    <table :class="['ty-table',striped?'ty-table-striped':'', divided?'ty-table-divided':'']">
+      <slot/>
     </table>
   </div>
 </template>
@@ -16,22 +9,30 @@
 <script>
 export default {
   name: 'TyTable',
-
   // *----------------------- P r o p s ----------------------------------------------------------
   props: {
 	  data: {
 		  type: Array,
 		  default: () => []
-	  },
-	  coloumns: {
-		  type: Array,
-		  default: () => []
-	  }
+    },
+    headerCss: {
+      type: String,
+      required: false
+    },
+    striped: {
+      type: Boolean,
+      default: false
+    },
+    divided: {
+      type: Boolean,
+      default: false
+    },
   },
 
   // *----------------------- D a t a -----------------------------------------------------------
   data() {
     return {
+      columns: [],
 		columnLabels: []
 	}
   },
@@ -40,15 +41,21 @@ export default {
   computed: {},
 
   // *----------------------- L i f e   c i r c l e ---------------------------------------------
-  created() {},
+  created() {
+    this.$on('addColumn', this.addColumn)
+  },
   mounted() {
-	  if (this.coloumns.length===0) {
-		  this.columnLabels=this.data.length>0?Object.keys(this.data[0]):[]
-	  }
+	  // if (this.coloumns.length===0) {
+		//   this.columnLabels=this.data.length>0?Object.keys(this.data[0]):[]
+    // }
   },
 
   // *----------------------- M e t h o d s -----------------------------------------------------
-  methods: {},
+  methods: {
+    addColumn(col) {
+      this.columns.push(col)
+    }
+  },
 
   // *----------------------- W a t c h ---------------------------------------------------------
   watch: {}

@@ -3,9 +3,26 @@
     <h2 id="table">{{translate('buttons')}}</h2>
     <section id="baseTable">
       <h4>{{translate('baseTable')}}</h4>
-      <div class="component" dir="ltr">
+      <div class="component">
         <code class="example">{{examples['baseTable']}}</code>
-        <ty-table :data="sampleDatas"></ty-table>
+        <ty-table :data="sampleDatas">
+          <ty-table-header>
+            <ty-table-column label="نام"/>
+            <ty-table-column label="سن"/>
+            <ty-table-column label="شغل"/>
+            <ty-table-column/>
+          </ty-table-header>
+          <ty-table-row v-for="(item, i) in sampleDatas" :key="i" :data="item">
+            <ty-table-column label="نام" value="name"/>
+            <ty-table-column label="سن" value="age"/>
+            <ty-table-column label="شغل" value="job"/>
+            <ty-table-column>
+              <template>
+                <ty-button>افزودن</ty-button>
+              </template>
+            </ty-table-column>
+          </ty-table-row>
+        </ty-table>
 
       </div>
     </section>
@@ -52,7 +69,8 @@ export default {
         'ty-icon-smile'
 	  ],
 	  sampleDatas: [
-		  {name: 'Aref Akbari', age: '24', job: 'Developer'}
+		  {name: 'Aref Akbari', age: '24', job: 'Developer'},
+		  {name: 'SDF sdfsdf', age: '25', job: 'Developer'},
 	  ],
       examples: {
         baseTable: '<ty-table></ty-table>'

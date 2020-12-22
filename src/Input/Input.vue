@@ -7,10 +7,11 @@
           <i :class="['ty-icon', icon]"/>
         </div>
         <input
+        ref="input"
           :disabled="disabled"
           @focus="handleFocus"
           @blur="handleBlur"
-         @input="handleInput" @change="handleChange" v-model="content" :type="type" :placeholder="placeholder" :class="[size, icon?'--input-with-prefix':'']"/>
+         @input="handleInput" @change="handleChange" :type="type" :placeholder="placeholder" :class="[size, icon?'--input-with-prefix':'']"/>
         <div :class="['suffix', dir==='ltr'?'suffix--ltr':'']">
           <slot name="suffix"/>
         </div>
@@ -30,10 +31,7 @@ export default {
   mixins: [emitter],
   // *----------------------- P r o p s ----------------------------------------------------------
   props: {
-    value: {
-      type: String,
-      default: '',
-    },
+    value: [String, Number],
 	  type: {
 		  type: String,
 		  default: 'text',
@@ -99,7 +97,9 @@ export default {
   },
 
   // *----------------------- L i f e   c i r c l e ---------------------------------------------
-  created() {},
+  mounted() {
+    this.setNativeInputValue();
+  },
 
   // *----------------------- M e t h o d s -----------------------------------------------------
   methods: {
@@ -118,6 +118,9 @@ export default {
       this.outline = false;
       this.$emit('blur', event);
     },
+    setNativeInputValue() {
+      this.$refs.input.value = this.value;
+    }
     
   },
 

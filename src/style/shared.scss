@@ -28,3 +28,15 @@
 .ty-space-evenly {
 	justify-content: space-evenly;
 }
+.ty-border-right {
+	border-right: 1px solid $border;
+}
+.ty-border-left {
+	border-left: 1px solid $border;
+}
+.ty-border-top {
+	border-top: 1px solid $border;
+}
+.ty-border-bottom {
+	border-bottom: 1px solid $border;
+}

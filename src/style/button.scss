@@ -15,10 +15,99 @@
 	  // outline: var(var(--background)) auto 1px;
 	}
 	&:hover {
-	  filter: contrast(80%);
+		&.ty-bg-primary {
+			background-color: lighten($primary, 5%);
+		}
+		&.ty-bg-success {
+			background-color: lighten($success, 5%);
+		}
+		&.ty-bg-dark {
+			background-color: lighten($dark, 5%);
+		}
+		&.ty-bg-danger {
+			background-color: lighten($danger, 5%);
+		}
+		&.ty-bg-warning {
+			background-color: lighten($warning, 5%);
+		}
+		&.ty-bg-background {
+			background-color: lighten($background, 5%);
+		}
+		&.ty-bg-light {
+			background-color: lighten($light, 5%);
+		}
+		&.ty-bg-shadow {
+			background-color: lighten($shadow, 5%);
+		}
+		&.ty-bg-border {
+			background-color: lighten($border, 5%);
+		}
 	}
 	&:active {
-	  filter: none;
+		&.ty-bg-primary {
+			background-color: lighten($primary, 10%);
+		}
+		&.ty-bg-success {
+			background-color: lighten($success, 10%);
+		}
+		&.ty-bg-dark {
+			background-color: lighten($dark, 10%);
+		}
+		&.ty-bg-danger {
+			background-color: lighten($danger, 10%);
+		}
+		&.ty-bg-warning {
+			background-color: lighten($warning, 10%);
+		}
+		&.ty-bg-background {
+			background-color: lighten($background, 10%);
+		}
+		&.ty-bg-light {
+			background-color: lighten($light, 10%);
+		}
+		&.ty-bg-shadow {
+			background-color: lighten($shadow, 10%);
+		}
+		&.ty-bg-border {
+			background-color: lighten($border, 10%);
+		}
+
+		&.outline.ty-color-primary {
+			outline-color: lighten($color: $primary, $amount: 5%);
+			background-color: lighten($primary, 5%);
+		}
+		&.outline.ty-color-success {
+			outline-color: lighten($color: $success, $amount: 5%);
+			background-color: lighten($success, 5%);
+		}
+		&.outline.ty-color-dark {
+			outline-color: lighten($color: $dark, $amount: 5%);
+			background-color: lighten($dark, 5%);
+		}
+		&.outline.ty-color-danger {
+			outline-color: lighten($color: $danger, $amount: 5%);
+			background-color: lighten($danger, 5%);
+		}
+		&.outline.ty-color-warning {
+			outline-color: lighten($color: $warning, $amount: 5%);
+			background-color: lighten($warning, 5%);
+		}
+		&.outline.ty-color-background {
+			outline-color: lighten($color: $background, $amount: 5%);
+			background-color: lighten($background, 5%);
+		}
+		&.outline.ty-color-light {
+			outline-color: lighten($color: $light, $amount: 5%);
+			background-color: lighten($light, 5%);
+		}
+		&.outline.ty-color-shadow {
+			outline-color: lighten($color: $shadow, $amount: 5%);
+			background-color: lighten($shadow, 5%);
+		}
+		&.outline.ty-color-border {
+			outline-color: lighten($color: $border, $amount: 5%);
+			background-color: lighten($border, 5%);
+		}
 	}
 	&.medium {
 	  font-size: 16px;
