@@ -1,8 +1,8 @@
 <template>
   <div :class="['ty-input', inputSize ? 'el-input--' + inputSize : '']" :style="{width}">
-    <p v-if="label" :class="`ty-input-label ${size}`">{{label}}</p>
+    <p v-if="label" :class="['ty-input-label', size||'', error?'ty-color-danger': '']">{{label}} <span class="ty-color-danger">{{required?'*':''}}</span></p>
     <div class="ty-flex ty-flex-wrap">
-      <div ref="input-wrapper" class="ty-input-wrapper m-1" :class="[clear?'--border-clear':'', !clear&&borderBottom?'--border-bottom':'', outline?'ty-input-focus':'', disabled?'disabled':'']">
+      <div ref="input-wrapper" :class="['ty-input-wrapper', 'm-1', clear?'--border-clear':'', !clear&&borderBottom?'--border-bottom':'', outline?'ty-input-focus':'', disabled?'disabled':'', error?'ty-color-danger': '']">
         <div v-if="icon" class="prefix">
           <i :class="['ty-icon', icon]"/>
         </div>
@@ -14,6 +14,7 @@
          @input="handleInput" @change="handleChange" :type="type" :placeholder="placeholder" :class="[size, icon?'--input-with-prefix':'']"/>
         <div :class="['suffix', dir==='ltr'?'suffix--ltr':'']">
           <slot name="suffix"/>
+          <i v-if="error" class="ty-icon ty-icon-warning"/>
         </div>
       </div>
       <div v-if="hasButton"  class="m-1">
@@ -75,7 +76,11 @@ export default {
     width: {
       type: String,
       default: 'auto'
-    }
+    },
+    required: {
+      type: Boolean,
+      default: false
+    },
   },
 
   // *----------------------- D a t a -----------------------------------------------------------
@@ -83,6 +88,7 @@ export default {
     return {
       content: null,
       outline: false,
+      error: false
     }
   },
 
@@ -109,6 +115,7 @@ export default {
     },
     handleChange() {
       this.$emit('change', event.target.value);
+      this.error = this.required && !event.target.value
     },
     handleFocus (event) {
       this.outline = true;
@@ -119,7 +126,7 @@ export default {
       this.$emit('blur', event);
     },
     setNativeInputValue() {
-      this.$refs.input.value = this.value;
+      this.$refs.input.value = this.value || null;
     }
     
   },

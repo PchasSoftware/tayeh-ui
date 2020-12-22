@@ -7,21 +7,26 @@
         <code class="example">{{examples['baseTable']}}</code>
         <ty-table :data="sampleDatas">
           <ty-table-header>
-            <ty-table-column label="نام"/>
-            <ty-table-column label="سن"/>
+            <ty-table-column @click="handleClick" min-width="150px" label="نام"/>
+            <ty-table-column @dblclick="handleClick" label="سن"/>
             <ty-table-column label="شغل"/>
-            <ty-table-column/>
+            <ty-table-column width="100%" max-width="100px"/>
           </ty-table-header>
-          <ty-table-row v-for="(item, i) in sampleDatas" :key="i" :data="item">
-            <ty-table-column label="نام" value="name"/>
-            <ty-table-column label="سن" value="age"/>
-            <ty-table-column label="شغل" value="job"/>
-            <ty-table-column>
-              <template>
-                <ty-button>افزودن</ty-button>
-              </template>
-            </ty-table-column>
-          </ty-table-row>
+          <ty-table-body>
+            <ty-table-row v-for="(item, i) in sampleDatas" :key="i" :data="item">
+              <ty-table-column label="نام" :value="item.name"/>
+              <ty-table-column label="سن" :value="item.age"/>
+              <ty-table-column label="شغل" :value="item.job"/>
+              <ty-table-column class="text-left">
+                <ty-button>افزودن {{item.name}}</ty-button>
+              </ty-table-column>
+            </ty-table-row>
+          </ty-table-body>
+          <ty-table-footer>
+            <ty-table-column min-width="150px" value="نام"/>
+            <ty-table-column value="سن"/>
+            <ty-table-column label="شغل"/>
+          </ty-table-footer>
         </ty-table>
 
       </div>
@@ -81,6 +86,9 @@ export default {
     translate(text) {
       return this.words[''+text][this.lang];
     },
+    handleClick(e) {
+      console.log('click', e);
+    }
   }
 }
 </script>

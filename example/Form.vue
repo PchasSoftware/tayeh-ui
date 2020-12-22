@@ -10,7 +10,7 @@
         <ty-input type="text" label="لیبل نمونه" :placeholder="translate('placeholder')">
           <div slot="suffix">تومان</div>
           </ty-input>
-          <ty-input type="text" :placeholder="translate('placeholder')" icon="ty-icon-search" :border-bottom="true"/>
+          <ty-input label="اجباری" :required="true" v-model="variable" type="text" :placeholder="translate('placeholder')" icon="ty-icon-search" :border-bottom="true"/>
           <ty-input type="text" :placeholder="translate('placeholder')" icon="ty-icon-search" :clear="true"/>
           <ty-input :disabled="true" type="text" :placeholder="translate('placeholder')" icon="ty-icon-search" :clear="true"/>
           <ty-card>
@@ -44,7 +44,7 @@
 
       <div class="component">
         <h6>{{translate('basicSelect')}}</h6>
-        <ty-select :options="[{label: 'test', value: 'test'}, {label: 'cool', value: 'cool'}]"/>
+        <ty-select label="لیبل" :required="true" :options="[{label: 'test', value: 'test'}, {label: 'cool', value: 'cool'}]"/>
         <ty-select :disabled="true" :options="[{label: 'test', value: 'test'}, {label: 'cool', value: 'cool'}]"/>
       </div>
     </section>
@@ -62,6 +62,7 @@ export default {
   },
   data () {
     return {
+      variable: 'default value',
       words: {
         cssDirection: {fa: 'rtl', en: 'ltr'},
         cssAlign: {fa: 'right', en: 'left'},

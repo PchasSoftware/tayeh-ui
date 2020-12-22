@@ -1,5 +1,6 @@
 <template>
   <div :class="['ty-select', size]">
+	  <p v-if="label" :class="['ty-input-label', size||'', error?'ty-color-danger': '']">{{label}} <span class="ty-color-danger">{{required?'*':''}}</span></p>
 	  <div class="ty-select__search">
 		  	<div class="ty-input-wrapper" :class="{disabled}">
     		  <input
@@ -70,6 +71,14 @@ export default {
 		  type: String,
 		  default: 'value'
 	  },
+	  label: {
+		  type: String,
+		  required: false
+	  },
+	  required: {
+		  type: Boolean,
+		  default: false
+	  },
   },
 
   // *----------------------- D a t a -----------------------------------------------------------
@@ -106,7 +115,8 @@ export default {
 	  handleOptionClick (item) {
 		  this.content = item[this.valueFeild];
 		  this.search_content = item[this.labelFeild];
-		  this.$emit('input', item[this.valueFeild])
+		  this.$emit('input', item[this.valueFeild]);
+		  this.error = this.required && !this.content;
 	  },
 	  async handleChange (event) {
 		  this.hovered_option = 0;
@@ -134,11 +144,14 @@ export default {
 		  setTimeout(() => {
 			  this.visible = false;
 		  }, 100);
+		  this.error = this.required && !this.content;
+		  if (this.content) this.resetSearch();
         // this.$refs.reference.blur();
 	  },
 	  handleClose() {
 		this.resetSearch();
-        this.visible = false;
+		this.visible = false;
+		this.error = this.required && !this.content;
 	  },
 	  selectByKeboard () {
 		  if (this.search_results.length>=this.hovered_option) this.handleOptionClick(this.search_results[this.hovered_option])

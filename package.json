@@ -1,6 +1,6 @@
 {
   "name": "@tayeh/vue-components",
-  "version": "1.0.83-alpha",
+  "version": "1.0.84-alpha",
   "author": "Aref Akbari",
   "license": "MIT",
   "description": "Free and Open source Ui components, Ultimatly lightweight.",
@@ -31,6 +31,8 @@
   },
   "devDependencies": {
     "babel-eslint": "^8.2.3",
+    "babel-plugin-transform-vue-jsx": "^3.7.0",
+    "babel-preset-vue-app": "^2.0.0",
     "bili": "^3.1.2",
     "eslint-config-standard": "^11.0.0",
     "eslint-plugin-import": "^2.12.0",

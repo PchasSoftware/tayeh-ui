@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <table :class="['ty-table',striped?'ty-table-striped':'', divided?'ty-table-divided':'']">
+  <div style="overflow: auto">
+    <table :class="['ty-table',striped?'ty-table-striped':'ty-table-simple', divided?'ty-table-divided':'']">
       <slot/>
     </table>
   </div>
@@ -11,10 +11,6 @@ export default {
   name: 'TyTable',
   // *----------------------- P r o p s ----------------------------------------------------------
   props: {
-	  data: {
-		  type: Array,
-		  default: () => []
-    },
     headerCss: {
       type: String,
       required: false
@@ -28,36 +24,5 @@ export default {
       default: false
     },
   },
-
-  // *----------------------- D a t a -----------------------------------------------------------
-  data() {
-    return {
-      columns: [],
-		columnLabels: []
-	}
-  },
-
-  // *----------------------- C o m p u t e d ---------------------------------------------------
-  computed: {},
-
-  // *----------------------- L i f e   c i r c l e ---------------------------------------------
-  created() {
-    this.$on('addColumn', this.addColumn)
-  },
-  mounted() {
-	  // if (this.coloumns.length===0) {
-		//   this.columnLabels=this.data.length>0?Object.keys(this.data[0]):[]
-    // }
-  },
-
-  // *----------------------- M e t h o d s -----------------------------------------------------
-  methods: {
-    addColumn(col) {
-      this.columns.push(col)
-    }
-  },
-
-  // *----------------------- W a t c h ---------------------------------------------------------
-  watch: {}
 }
 </script>

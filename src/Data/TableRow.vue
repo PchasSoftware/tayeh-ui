@@ -1,5 +1,5 @@
 <template>
-<tr>
+<tr @click="handleClick">
 	<slot/>
 </tr>
 </template>
@@ -7,13 +7,14 @@
 <script>
 export default {
   name: 'TyTableRow',
-  props: {
-	  data: {
-		  type: Object,
-		  required: true
-	  }
+  methods: {
+	  handleClick(e) {
+		  this.$emit('click', e)
+	  },
+	  handleDblClick(e) {
+		  this.$emit('dblClick', e)
+	  },
   }
-  // *----------------------- P r o p s ----------------------------------------------------------
 }
 
 </script>

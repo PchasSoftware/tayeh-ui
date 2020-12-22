@@ -14,6 +14,10 @@
 	  background-color: transparent;
 	  // outline: var(var(--background)) auto 1px;
 	}
+	&.clear {
+		border-radius: 4px;
+		border: none;
+	}
 	&:hover {
 		&.ty-bg-primary {
 			background-color: lighten($primary, 5%);

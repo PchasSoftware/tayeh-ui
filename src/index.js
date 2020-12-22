@@ -12,6 +12,8 @@ import Table from './Data/Table.vue'
 import TableColumn from './Data/TableColumn.vue'
 import TableHeader from './Data/TableHeader.vue'
 import TableRow from './Data/TableRow.vue'
+import TableFooter from './Data/TableFooter.vue'
+import TableBody from './Data/TableBody.vue'
 import Container from './Layouts/Container.vue'
 import Main from './Layouts/Main.vue'
 import Aside from './Layouts/Aside.vue'
@@ -35,6 +37,8 @@ const components = [
 	TableColumn,
 	TableHeader,
 	TableRow,
+	TableFooter,
+	TableBody,
 	Container,
 	Main,
 	Aside,
@@ -70,6 +74,10 @@ export default {
 	Button,
 	Table,
 	TableColumn,
+	TableHeader,
+	TableRow,
+	TableFooter,
+	TableBody,
 	Container,
 	Main,
 	Aside,
@@ -79,5 +87,5 @@ export default {
 	Col,
 	Acardion,
 	AcardionItem,
-	Iframe
+	Iframe,
 }
