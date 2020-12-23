@@ -22,6 +22,7 @@ import Footer from './Layouts/Footer.vue'
 import Row from './Layouts/Row'
 import Col from './Layouts/Col'
 import Iframe from './Others/Iframe.vue'
+import Modal from './Others/Modal.vue'
 import './style/index.scss'
 
 const components = [
@@ -49,6 +50,7 @@ const components = [
 	Acardion,
 	AcardionItem,
 	Iframe,
+	Modal,
 ]
 
 const install = function(Vue, opts = {}) {
@@ -88,4 +90,5 @@ export default {
 	Acardion,
 	AcardionItem,
 	Iframe,
+	Modal
 }

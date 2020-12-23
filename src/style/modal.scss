@@ -1,9 +1,38 @@
-.ty-modal {
-	.ty-modal__backdrop {
-	  position: fixed;
-	  left: 0;
-	  right: 0;
-	  top: 0;
-	  bottom: 0;
+.ty-modal-mask {
+	position: fixed;
+	z-index: 9998;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.5);
+	display: table;
+	transition: opacity 0.3s ease;
+  }
+  .ty-modal-wrapper {
+	display: table-cell;
+	vertical-align: middle;
+  }
+  
+  .ty-modal-container {
+	margin: 0px auto;
+	padding: 10px 16px;
+	background-color: $light;
+	border-radius: 2px;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.33);
+	overflow: auto;
+	max-height: 100%;
+
+	&.fullscreen {
+		width: 100% !important;
+		height: 100% !important;
 	}
+  }
+  
+  .ty-modal-body {
+	margin: 20px 0;
+  }
+
+  .ty-modal-footer {
+	  margin-top: 16px;
   }

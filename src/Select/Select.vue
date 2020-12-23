@@ -89,6 +89,7 @@ export default {
 		search_results: [],
 		visible: false,
 		hovered_option: 0,
+		error: false,
 	}
   },
 

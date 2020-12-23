@@ -87,6 +87,40 @@
         </ty-acardion>
       </div>
     </section>
+
+    <section id="modal">
+      <h4>{{translate('modal')}}</h4>
+      <div class="component">
+        <code class="example">{{examples['acardion']}}</code>
+        <ty-button @click="dialogVisible = true">click to open the Dialog</ty-button>
+
+        <ty-modal
+          title="Tips"
+          :visible.sync="dialogVisible"
+          :before-close="handleClose">
+          <span>This is a messaasdfa sdfasdf
+            sadf
+            asd<br>
+            fas
+            df
+            asdf<br>
+            as
+            df<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+            asdf
+            asd
+            fa
+            sdf
+            asdf
+            asd
+            fas <br>
+            df
+            sadfge</span>
+          <span slot="footer" class="dialog-footer">
+            <ty-button @click="dialogVisible = false">Cancel</ty-button>
+          </span>
+        </ty-modal>
+      </div>
+    </section>
 </div>
 </template>
 
@@ -101,6 +135,7 @@ export default {
   },
   data () {
     return {
+      dialogVisible: false,
       words: {
         cssDirection: {fa: 'rtl', en: 'ltr'},
         cssAlign: {fa: 'right', en: 'left'},
@@ -141,6 +176,13 @@ export default {
     translate(text) {
       return this.words[''+text]?this.words[''+text][this.lang]:text;
     },
+    handleClose(done) {
+        // this.$confirm('Are you sure to close this dialog?')
+        //   .then(_ => {
+        //     done();
+        //   })
+        //   .catch(_ => {});
+      }
   }
 }
 </script>
