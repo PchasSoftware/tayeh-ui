@@ -1,48 +1,16 @@
-.fs-xxs {
-	font-size: 10px;
-}
-.fs-xs {
-	font-size: 12px;
-}
-.fs-sm {
-	font-size: 14px;
-}
-.fs-md {
-	font-size: 16px;
-}
-.fs-lg {
-	font-size: 18px;
-}
-.fs-xl {
-	font-size: 20px;
-}
-.fs-xxl {
-	font-size: 22px;
-}
-.fs-h {
-	font-size: 32px;
-}
-.fs-xh {
-	font-size: 48px;
-}
-.fs-xxh {
-	font-size: 72px;
+@for $size from 2 to 150 {
+	.fs-#{$size} {
+		font-size: #{$size}px;
+	}
 }
 
+@for $weight from 1 to 10 {
+	.fw-#{$weight*100} {
+		font-weight: #{$weight*100};
+	}
+}
 .fw-lighter {
 	font-weight: lighter;
-}
-.fw-light {
-	font-weight: 200;
-}
-.fw-normal {
-	font-weight: normal;
-}
-.fw-semi-bold {
-	font-weight: 500;
-}
-.fw-bold {
-	font-weight: 700;
 }
 .fw-bolder {
 	font-weight: bolder;
@@ -69,7 +37,6 @@
 .ofy-scroll {
 	overflow-y: scroll;
 }
-
 .of-auto {
 	overflow: auto;
 }
@@ -79,7 +46,6 @@
 .ofy-auto {
 	overflow-y: auto;
 }
-
 .of-text-clip {
 	overflow: hidden;
 	text-overflow: clip;

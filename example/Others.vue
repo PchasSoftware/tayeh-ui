@@ -63,7 +63,7 @@
       <div class="component">
         <code class="example">{{examples['acardion']}}</code>
         <ty-acardion icon="ty-icon-sort" open="1">
-          <ty-acardion-item index="1" label="انبار شماره ۱">
+          <ty-acardion-item index="1" label="انبار شماره ۱" class="fw-lighter">
             موجودی انبار
           </ty-acardion-item>
           <ty-acardion-item index="2" label="انبار شماره ۲">
@@ -96,23 +96,9 @@
 
         <ty-modal
           title="Tips"
-          :visible.sync="dialogVisible"
-          :before-close="handleClose">
+          :visible.sync="dialogVisible">
           <span>This is a messaasdfa sdfasdf
-            sadf
-            asd<br>
-            fas
-            df
-            asdf<br>
-            as
-            df<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-            asdf
-            asd
-            fa
-            sdf
-            asdf
-            asd
-            fas <br>
+           
             df
             sadfge</span>
           <span slot="footer" class="dialog-footer">
@@ -176,13 +162,6 @@ export default {
     translate(text) {
       return this.words[''+text]?this.words[''+text][this.lang]:text;
     },
-    handleClose(done) {
-        // this.$confirm('Are you sure to close this dialog?')
-        //   .then(_ => {
-        //     done();
-        //   })
-        //   .catch(_ => {});
-      }
   }
 }
 </script>

@@ -1,133 +1,62 @@
-.ty-color-primary {
-	color: $primary;
-}
+$colors: (
+	"primary" $primary $light $light,
+	"success" $success $light $light,
+	"dark" $dark $light $light,
+	"danger" $danger $light $light,
+	"warning" $warning $light $light,
+	"background" $background $dark $light,
+	"light" $light $light $dark,
+	"shadow" $shadow $dark $dark,
+	"border" $border $dark $dark,
+	"table-header" $table-header $dark $light,
+	"gray" $gray $dark $light,
+);
 
-.ty-color-success {
-	color: $success;
-}
-
-.ty-color-danger {
-	color: $danger;
-}
-
-.ty-color-warning {
-	color: $warning;
-}
-
-
-.ty-color-dark {
-	color: $dark;
-}
-
-.ty-color-light {
-	color: $light;
-}
-
-.ty-color-border {
-	color: $border;
-}
-
-
-
-.ty-outline-primary {
-	outline: $primary auto 1px;
-}
-
-.ty-outline-success {
-	outline: $success auto 1px;
-}
-
-.ty-outline-danger {
-	outline: $danger auto 1px;
-}
-
-.ty-outline-warning {
-	outline: $warning auto 1px;
-}
-
-.ty-outline-dark {
-	outline: $dark auto 1px;
-}
-
-.ty-outline-light {
-	outline: $light auto 1px;
-}
-
-.ty-outline-border {
-	outline: $border auto 1px;
-}
-
-
-
-.ty-outline-primary.ty-hoverable:hover {
-	background-color: $primary;
-	color: $light;
-}
-
-.ty-outline-success.ty-hoverable:hover {
-	background-color: $success;
-	color: $light;
-}
-
-.ty-outline-danger.ty-hoverable:hover {
-	background-color: $danger;
-	color: $light;
-}
-
-.ty-outline-warning.ty-hoverable:hover {
-	background-color: $warning;
-	color: $light;
-}
-
-.ty-outline-dark.ty-hoverable:hover {
-	background-color: $dark;
-	color: $light;
-}
-
-.ty-outline-light.ty-hoverable:hover {
-	background-color: $light;
-	color: $dark;
-}
-
-.ty-outline-border.ty-hoverable:hover {
-	background-color: $border;
-	color: $dark;
-}
-// .ty-color-pale-grey {
-// 	color: $light;
-// }
-
-.ty-bg-primary {
-	background-color: $primary;
-	color: $light;
-}
-
-.ty-bg-success {
-	background-color: $success;
-	color: $light;
-}
-
-.ty-bg-danger {
-	background-color: $danger;
-	color: $light;
-}
-
-.ty-bg-warning {
-	background-color: $warning;
-	color: $light;
-}
-
-.ty-bg-dark {
-	background-color: $dark;
-	color: $light;
-}
-
-.ty-bg-light {
-	background-color: $light;
-	color: $dark;
+@each $name, $color, $oposite, $text-color in $colors {
+	.ty-color-#{$name} {
+		color: $color;
+	}
+	.ty-outline-#{$name} {
+		outline: $color auto 1px;
+	}
+	.ty-outline-#{$name}.ty-hoverable:hover {
+		background-color: $color;
+		color: $oposite;
+	}
+	.ty-bg-#{$name} {
+		background-color: $color;
+		color: $text-color;
+	}
 }
 
 .ty-bg-unset {
 	background-color: unset;
 	color: $dark;
+}
+
+//button colors
+.ty-button {
+	&:hover {
+		@each $name, $color, $oposite, $text-color in $colors {
+			&.ty-bg-#{$name} {
+				background-color: lighten($color, 5%);
+			}
+		}
+	}
+	&:active {
+		@each $name, $color, $oposite, $text-color in $colors {
+			&.ty-bg-#{$name} {
+				background-color: lighten($color, 10%);
+			}
+		}
+		@each $name, $color, $oposite, $text-color in $colors {
+			&.ty-bg-#{$name} {
+				background-color: lighten($color, 10%);
+			}
+			&.outline.ty-color-#{$name} {
+				outline-color: lighten($color, 5%);
+				background-color: lighten($color, 5%);
+			}
+		}
+	}
 }

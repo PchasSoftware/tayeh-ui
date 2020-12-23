@@ -1,11 +1,11 @@
 <template>
   <div class="ty-modal-mask" v-if="visible" @click="handleMaskClick">
-    <div class="ty-modal-wrapper">
-      <div :class="['ty-modal-container', fullscreen?'fullscreen':'']" :style="{width}" @click.stop>
+    <!-- <div class="ty-modal-wrapper"> -->
+      <div :class="['ty-modal-container','my-auto', fullscreen?'fullscreen':'']" :style="{width, minWidth, maxWidth}" @click.stop>
         <div class="ty-flex ty-space-between">
   	    	  <slot name="header"/>
             <span class="fw-semi-bold fs-lg" v-if="title">{{title}}</span>
-            <ty-button class="mr-auto" color="dark" icon="ty-icon-sort" size="small" type="clear" @click="handleClose"/>
+            <ty-button class="mr-auto" color="dark" icon="ty-icon-close" size="small" type="clear" @click="handleClose"/>
         </div>
         <div class="ty-modal-body">
           <slot/>
@@ -14,7 +14,7 @@
   	    	<slot name="footer"/>
           </div>
         </div>
-      </div>
+      <!-- </div> -->
   </div>
 </template>
 
@@ -38,11 +38,11 @@ export default {
     },
 	  width: {
 		  type: String,
-		  default: '50%'
+		  default: '1000px'
 	  },
 	  minWidth: {
 		  type: String,
-		  default: '300px'
+		  default: '200px'
 	  },
 	  maxWidth: {
 		  type: String,
@@ -55,7 +55,11 @@ export default {
     fullscreen: {
       type: Boolean,
       default: false
-    }
+    },
+    beforeClose: {
+      type: Function,
+      required: false
+    },
   },
 
   // *----------------------- D a t a -----------------------------------------------------------
@@ -87,7 +91,15 @@ export default {
       if (this.canExit && this.closeOnBackdropClick) this.$emit('update:visible', false);
     },
     handleClose () {
-      if (this.canExit) this.$emit('update:visible', false);
+      if (!this.canExit) return;
+      if (typeof this.beforeClose === 'function') {
+        this.beforeClose(this.hide)
+      } else {
+        this.hide();
+      }
+    },
+    hide() {
+      this.$emit('update:visible', false)
     }
   },
 
