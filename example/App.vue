@@ -129,7 +129,7 @@ h2 {
   padding: 32px 16px 16px 16px;
   direction: ltr;
   background-color: #eee;
-  border-radius: 3px;
+  border-radius: 4px;
   margin-bottom: 16px;
 }
 .example::before{
