@@ -14,7 +14,7 @@
         <ty-button size="small" icon="ty-icon-sort"/>
         <ty-button type="outline">Outline type</ty-button>
         <ty-button type="outline" color="success">Outline type</ty-button>
-        <ty-button type="outline" color="border"><i class="ty-icon ty-icon-arrow-right ty-color-dark"/></ty-button>
+        <ty-button type="outline" color="border" size="semi-small"><i class="ty-icon ty-icon-arrow-right ty-color-dark"/></ty-button>
       </div>
     </section>
 </div>

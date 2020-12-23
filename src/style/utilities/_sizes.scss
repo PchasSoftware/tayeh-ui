@@ -47,3 +47,57 @@
 .fw-bolder {
 	font-weight: bolder;
 }
+
+.of-hidden {
+	overflow: hidden;
+}
+
+.ofx-hidden {
+	overflow-x: hidden;
+}
+
+.ofy-hidden {
+	overflow-y: hidden;
+}
+.of-scroll {
+	overflow: scroll;
+}
+.ofx-scroll {
+	overflow-x: scroll;
+}
+
+.ofy-scroll {
+	overflow-y: scroll;
+}
+
+.of-auto {
+	overflow: auto;
+}
+.ofx-auto {
+	overflow-x: auto;
+}
+.ofy-auto {
+	overflow-y: auto;
+}
+
+.of-text-clip {
+	overflow: hidden;
+	text-overflow: clip;
+}
+.of-text-ellipsis {
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+.break-word {
+	white-space: nowrap;
+	word-wrap: break-word;
+}
+.normal-word {
+	word-wrap: normal;
+}
+.white-space-nowrap {
+	white-space: nowrap;
+}
+.white-space-pre-wrap {
+	white-space: pre-wrap;
+}

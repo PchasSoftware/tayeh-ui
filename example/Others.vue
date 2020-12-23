@@ -72,6 +72,18 @@
         </ty-acardion>
       </div>
     </section>
+
+    <section id="text">
+      <h4>{{translate('text')}}</h4>
+      <div class="component">
+        <code class="example">{{examples['acardion']}}</code>
+        <ty-acardion icon="ty-icon-sort" open="1">
+          <p class="of-text-ellipsis break-word" style="max-width: 32px">
+            موجودی انبار
+          </p>
+        </ty-acardion>
+      </div>
+    </section>
 </div>
 </template>
 
@@ -96,6 +108,7 @@ export default {
         baseInput: {fa: 'ورودی ساده', en: 'Base Input'},
         currencyInput: {fa: 'ورودی پول', en: 'Currency Input'},
         editableText: {fa: 'متن قابل ویرایش', en: 'Editable Text'},
+        text: {fa: 'متن', en: 'Text'},
       },
       icons: [
         'ty-icon-arrow-drop-down',
@@ -117,12 +130,13 @@ export default {
         card: '<ty-card> Simple Card </ty-card>',
         border: '<ty-border> 0 نفر </ty-border>',
         acardion: '<ty-acardion> <ty-acardion label="عنوان اول">متن اولین آکاردیون</ty-acardion> </ty-acardion>',
+        acardion: '<p class="of-text-ellipsis">یک متن طولانی</p>',
       }
     }
   },
   methods: {
     translate(text) {
-      return this.words[''+text][this.lang];
+      return this.words[''+text]?this.words[''+text][this.lang]:text;
     },
   }
 }
