@@ -81,6 +81,9 @@
           <p class="of-text-ellipsis break-word" style="max-width: 32px">
             موجودی انبار
           </p>
+          <p class="ty-opacity-50">
+            موجودی انبار
+          </p>
         </ty-acardion>
       </div>
     </section>

@@ -40,3 +40,30 @@
 .ty-border-bottom {
 	border-bottom: 1px solid $border;
 }
+.ty-inline {
+	display: inline;
+}
+.ty-destroy {
+	display: none;
+}
+.ty-hide {
+	opacity: 0;
+}
+.ty-opacity-10 {
+	opacity: 10%;
+}
+.ty-opacity-25 {
+	opacity: 25%;
+}
+.ty-opacity-50 {
+	opacity: 50%;
+}
+.ty-opacity-80 {
+	opacity: 80%;
+}
+.ty-opacity-90 {
+	opacity: 90%;
+}
+.ty-relative {
+	position: relative;
+}
