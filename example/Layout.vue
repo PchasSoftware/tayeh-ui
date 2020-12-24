@@ -48,11 +48,21 @@
 		<div class="component">
 		<h4>{{translate('tabs')}}</h4>
         	<code class="example"><pre>{{examples['tabs']}}</pre></code>
-		<ty-tabs>
-      <ty-tab-content name="tab-1">
-        Tab 1
-      </ty-tab-content>
-		</ty-tabs>
+		 <ty-tabs :options="{ useUrlFragment: false }">
+        <ty-tab id="1" name="First ty-tab">
+            This is the content of the first ty-tab
+        </ty-tab>
+        <ty-tab id="2" name="Second ty-tab">
+            This is the content of the second ty-tab
+        </ty-tab>
+        <ty-tab id="3" name="Disabled ty-tab" :is-disabled="true">
+            This content will be unavailable while :is-disabled prop set to true
+        </ty-tab>
+        <ty-tab id="4" name="Custom fragment">
+            The fragment that is appended to the url can be customized
+        </ty-tab>
+    </ty-tabs>
+
 		</div>
     </section>
 </div>
@@ -68,6 +78,7 @@ export default {
   },
   data () {
     return {
+      activeName: null,
       words: {
         cssDirection: {fa: 'rtl', en: 'ltr'},
         cssAlign: {fa: 'right', en: 'left'},
@@ -107,7 +118,7 @@ export default {
 	<ty-footer>footer</ty-footer>
 </ty-container>
     `,
-    tabs: '<ty-tabs></tab-content name="tab-1">Tab 1 Content</tab-content></ty-tabs>'
+    tabs: '<ty-tabs></ty-tab id="tab-1">Tab 1 Content</ty-tab></ty-tabs>'
       }
     }
   },
@@ -115,6 +126,9 @@ export default {
     translate(text) {
       return this.words[''+text][this.lang];
     },
+    handleClick(tab, event) {
+        console.log(tab, event);
+      }
   }
 }
 </script>

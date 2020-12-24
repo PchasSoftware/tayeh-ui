@@ -42,6 +42,8 @@
     "eslint-plugin-vue": "^4.5.0",
     "node-sass": "^4.9.0",
     "poi": "^10.2.7",
+    "react": "^17.0.1",
+    "resize-observer-polyfill": "^1.5.1",
     "rollup-plugin-copied": "^0.0.2",
     "rollup-plugin-eslint": "^4.0.0",
     "rollup-plugin-vue": "^4.2.0",

@@ -26,6 +26,8 @@ import Iframe from './Components/Others/Iframe.vue'
 import Modal from './Components/Others/Modal.vue'
 import './style/index.scss'
 
+import Tabs from './Components/Tabs/Tabs.vue'
+import Tab from './Components/Tabs/Tab.vue'
 const components = [
 	Input,
 	InputNumber,
@@ -54,7 +56,7 @@ const components = [
 	Iframe,
 	Modal,
 	Tabs,
-	TabContent
+	Tab
 ]
 
 const install = function(Vue, opts = {}) {
@@ -97,5 +99,5 @@ export default {
 	Iframe,
 	Modal,
 	Tabs,
-	TabContent
+	Tab
 }
