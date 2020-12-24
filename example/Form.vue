@@ -10,8 +10,8 @@
         <ty-input type="text" label="لیبل نمونه" :placeholder="translate('placeholder')">
           <div slot="suffix">تومان</div>
           </ty-input>
-          <ty-input label="اجباری" :required="true" v-model="variable" type="text" :placeholder="translate('placeholder')" icon="ty-icon-search" :border-bottom="true"/>
-          <ty-input type="text" :placeholder="translate('placeholder')" icon="ty-icon-search" :clear="true"/>
+          <ty-input size="small" label="اجباری" :required="true" v-model="variable" type="text" :placeholder="translate('placeholder')" icon="ty-icon-search" :border-bottom="true"/>
+          <ty-input  size="large"  type="text" :placeholder="translate('placeholder')" icon="ty-icon-search" :clear="true"/>
           <ty-input :disabled="true" type="text" :placeholder="translate('placeholder')" icon="ty-icon-search" :clear="true"/>
           <ty-card>
             <form>
@@ -20,6 +20,9 @@
               </ty-input>
             </form>
           </ty-card>
+          <ty-input type="textarea" placeholder="متن توضیحات" icon="ty-icon-sort" v-model="variable" width="100%">
+          </ty-input>
+          <ty-input-number v-model="numberVariable" :step="0.5" :max="10" :min="-1"/>
       </div>
 
       <div class="component">
@@ -63,6 +66,7 @@ export default {
   data () {
     return {
       variable: 'default value',
+      numberVariable: 0,
       words: {
         cssDirection: {fa: 'rtl', en: 'ltr'},
         cssAlign: {fa: 'right', en: 'left'},

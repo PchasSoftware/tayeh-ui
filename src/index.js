@@ -1,4 +1,5 @@
 import Input from './Input/Input.vue'
+import InputNumber from './Input/InputNumber.vue'
 import CurrencyInput from './Input/CurrencyInput.vue'
 import EditableText from './Input/EditableText.vue'
 import EditableNumber from './Input/EditableNumber.vue'
@@ -27,6 +28,7 @@ import './style/index.scss'
 
 const components = [
 	Input,
+	InputNumber,
 	CurrencyInput,
 	EditableText,
 	EditableNumber,
@@ -67,6 +69,7 @@ export default {
 	version: '1.0.0',
 	install,
 	Input,
+	InputNumber,
 	CurrencyInput,
 	EditableText,
 	EditableNumber,

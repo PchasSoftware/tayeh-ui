@@ -10,6 +10,7 @@ $colors: (
 	"border" $border $dark $dark,
 	"table-header" $table-header $dark $light,
 	"gray" $gray $dark $light,
+	"white" $white $light $light,
 );
 
 @each $name, $color, $oposite, $text-color in $colors {

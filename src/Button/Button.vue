@@ -1,7 +1,9 @@
 <template>
-  <button class="ty-button ty-hoverable" :class="[...typeCss, type, size]" @click.stop="handleClick">
-	  <i v-if="icon" class="ty-button__icon ty-icon" :class="icon"/>
+  <button class="ty-flex ty-button ty-hoverable" :class="[...typeCss, type, size]" :style="{width, height}" @click.stop="handleClick">
+    <div class="ty-flex ty-gap-5 ty-justify-center">
+	  <i v-if="icon" :class="['my-auto', 'ty-icon', icon]"/>
 	  <slot></slot>
+    </div>
   </button>
 </template>
 
@@ -27,8 +29,14 @@ export default {
       type: String,
       default: null
     },
-    disabled: Boolean,
-    default: false
+    width: {
+      type: [Number, String],
+      required: false
+    },
+    height: {
+      type: [Number, String],
+      required: false
+    }
   },
 
   // *----------------------- D a t a -----------------------------------------------------------

@@ -71,10 +71,21 @@
 	  }
 	}
   }
+@for $var from 1 to 50 {
+	.ty-gap-#{$var} {
+		gap: #{$var}px;
+	}
+}
 
 .text-right {
 	text-align: right;
 }
 .text-left {
 	text-align: left;
+}
+
+.vertical-center {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
 }
