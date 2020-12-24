@@ -1,15 +1,15 @@
 <template>
-  <div :class="['ty-input', inputSize ? 'el-input--' + inputSize : '']" :style="{width}">
+  <div :class="['ty-input', 'ty-input-number', inputSize ? 'el-input--' + inputSize : '']" :style="{width}">
     <p v-if="label" :class="['ty-input-label', 'mb-1', size||'', error?'ty-color-danger': '']">{{label}} <span class="ty-color-danger">{{required?'*':''}}</span></p>
-    <div class="ty-flex ty-flex-wrap">
-      <div ref="input-wrapper" :class="['ty-input-wrapper', size, clear?'--border-clear':'', !clear&&borderBottom?'--border-bottom':'', outline?'ty-input-focus':'', disabled?'disabled':'', error?'ty-color-danger': '']">
+    <div class="ty-flex ty-flex-nowrap">
+		<ty-button @click="handlePlusClick" :icon="plusIcon" :type="buttonType" :color="plusColor" :size="size"/>
+    <div ref="input-wrapper" :class="['ty-input-wrapper', size, clear?'--border-clear':'', !clear&&borderBottom?'--border-bottom':'', outline?'ty-input-focus':'', disabled?'disabled':'', error?'ty-color-danger': '']">
         <slot name="prefix">
-        <div v-if="icon" :class="['prefix', type==='textarea'?'prefix__textarea':'']">
-          <i :class="['ty-icon', icon]"/>
-        </div>
-        </slot>
+            <div v-if="icon" class="prefix">
+              <i :class="['ty-icon', icon]"/>
+            </div>
+		    </slot>
         <input
-		v-if="type!=='textarea'"
         ref="input"
           :disabled="disabled"
           @focus="handleFocus"
@@ -19,18 +19,7 @@
           :min="min"
           :max="max"
           :step="step"
-         @input="handleInput" @change="handleChange" :type="type" :placeholder="placeholder" :class="[icon?'--input-with-prefix':'']"/>
-		 <textarea
-		    v-else
-		    ref="input"
-		    :rows="rows"
-		    :cols="cols"
-        :minlength="minLength"
-        :maxlength="maxLength"
-        :disabled="disabled"
-        @focus="handleFocus"
-        @blur="handleBlur"
-        @input="handleInput" @change="handleChange" :placeholder="placeholder" :class="[size, icon?'--input-with-prefix':'']"/>
+         @input="handleInput" @change="handleChange" type="number" :placeholder="placeholder" :class="[icon?'--input-with-prefix':'']"/>
         <div :class="['suffix', dir==='ltr'?'suffix--ltr':'']">
           <slot name="suffix"/>
           <i v-if="error" class="ty-icon ty-icon-warning"/>
@@ -39,23 +28,22 @@
       <div v-if="hasButton"  class="m-1">
         <slot name="button"/>
       </div>
+	  <ty-button @click="handleMinusClick" :icon="minusIcon" :type="buttonType" :color="minusColor" :size="size"/>
     </div>
   </div>
 </template>
 
 <script>
-  import emitter from '../mixins/emitter';
+  import emitter from '../../mixins/emitter';
 // 
 export default {
-  name: 'TyInput',
+  name: 'TyInputNumber',
   mixins: [emitter],
   // *----------------------- P r o p s ----------------------------------------------------------
   props: {
-    value: [String, Number],
-	  type: {
-		  type: String,
-		  default: 'text',
-		  required: false
+    value: {
+      type: Number,
+      default: 0
     },
     size: {
       type: String,
@@ -92,6 +80,10 @@ export default {
       type: Boolean,
       default: false
     },
+    width: {
+      type: String,
+      default: 'auto'
+    },
     minLength: {
       type: Number,
       required: false
@@ -110,11 +102,7 @@ export default {
     },
     step: {
       type: Number,
-      required: false
-    },
-    width: {
-      type: String,
-      default: 'auto'
+      default: 1
     },
     required: {
       type: Boolean,
@@ -122,12 +110,32 @@ export default {
 	},
 	rows: {
 		type: [Number, String],
-		default: 4
+		default: 10
 	},
 	cols: {
 		type: [Number, String],
-		required: false
+		default: 10
 	},
+	plusIcon: {
+		type: String,
+		default: 'ty-icon-add'
+	},
+	minusIcon: {
+		type: String,
+		default: 'ty-icon-minus'
+	},
+	plusColor: {
+		type: String,
+		default: 'border'
+	},
+	minusColor: {
+		type: String,
+		default: 'border'
+	},
+	buttonType: {
+		type: String,
+		default: 'outline'
+	}
   },
 
   // *----------------------- D a t a -----------------------------------------------------------
@@ -157,11 +165,11 @@ export default {
   // *----------------------- M e t h o d s -----------------------------------------------------
   methods: {
     handleInput(event) {
-      this.$emit('input', event.target.value);
+      this.$emit('input', Number(event.target.value));
       this.$nextTick(this.setNativeInputValue);
     },
-    handleChange() {
-      this.$emit('change', event.target.value);
+    handleChange(event) {
+      this.$emit('change', Number(event.target.value));
       this.error = this.required && !event.target.value
     },
     handleFocus (event) {
@@ -174,7 +182,21 @@ export default {
     },
     setNativeInputValue() {
       this.$refs.input.value = this.value || null;
-    }
+    },
+    handlePlusClick () {
+      let temp = this.value + this.step;
+      if (typeof this.max === 'number' && temp > this.max) temp = Number(this.max);
+      this.$refs.input.value = Number(temp);
+      this.$emit('input', Number(this.$refs.input.value));
+      // this.handleInput()
+    },
+    handleMinusClick () {
+      let temp = this.value - this.step;
+      if (typeof this.min === 'number' && temp < this.min) temp = this.min;
+      this.$refs.input.value = Number(temp);
+      this.$emit('input', Number(this.$refs.input.value));
+      // this.handleInput()
+    },
     
   },
 

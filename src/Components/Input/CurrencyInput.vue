@@ -1,5 +1,5 @@
 <template>
-  <section class="ty-currency-input">
+  <section class="ty-input ty-currency-input">
 		<p v-if="label" :class="`ty-input-label ${size}`">{{label}}</p>
     	<div class="ty-input-wrapper" :class="{disabled}">
     	  <input :disabled="disabled" @input="handleInput" @change="handleChange" v-model="number"
