@@ -44,6 +44,17 @@
 		</ty-row>
 		</div>
     </section>
+    <section id="tabs">
+		<div class="component">
+		<h4>{{translate('tabs')}}</h4>
+        	<code class="example"><pre>{{examples['tabs']}}</pre></code>
+		<ty-tabs>
+      <ty-tab-content name="tab-1">
+        Tab 1
+      </ty-tab-content>
+		</ty-tabs>
+		</div>
+    </section>
 </div>
 </template>
 <script>
@@ -67,6 +78,7 @@ export default {
         baseInput: {fa: 'ورودی ساده', en: 'Base Input'},
         currencyInput: {fa: 'ورودی پول', en: 'Currency Input'},
         editableText: {fa: 'متن قابل ویرایش', en: 'Editable Text'},
+        tabs: {fa: 'Tabs', en: 'Tabs'},
       },
       icons: [
         'ty-icon-arrow-drop-down',
@@ -94,7 +106,8 @@ export default {
 	</ty-container>
 	<ty-footer>footer</ty-footer>
 </ty-container>
-		`,
+    `,
+    tabs: '<ty-tabs></tab-content name="tab-1">Tab 1 Content</tab-content></ty-tabs>'
       }
     }
   },

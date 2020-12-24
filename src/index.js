@@ -53,6 +53,8 @@ const components = [
 	AcardionItem,
 	Iframe,
 	Modal,
+	Tabs,
+	TabContent
 ]
 
 const install = function(Vue, opts = {}) {
@@ -93,5 +95,7 @@ export default {
 	Acardion,
 	AcardionItem,
 	Iframe,
-	Modal
+	Modal,
+	Tabs,
+	TabContent
 }
