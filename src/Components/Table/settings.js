@@ -3,10 +3,10 @@ const settings = {
     theadClass: '',
     tbodyClass: '',
     headerClass: '',
-    cellClass: '',
+    cellClass: 'cell',
     filterInputClass: '',
-    filterPlaceholder: 'Filter table…',
-    filterNoResults: 'There are no matching rows',
+    filterPlaceholder: 'جستجو در لیست ...',
+    filterNoResults: 'هیچ داده ای یافت نشد',
 };
 
 export function mergeSettings(newSettings) {

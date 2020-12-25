@@ -107,6 +107,13 @@
         </ty-modal>
       </div>
     </section>
+    <section id="loading">
+      <h4>{{translate('loading')}}</h4>
+      <div class="component">
+        <code class="example">{{examples['loading']}}</code>
+        <ty-button v-loading="true" @click="dialogVisible = true">click to open the Dialog</ty-button>  
+      </div>
+    </section>
 </div>
 </template>
 

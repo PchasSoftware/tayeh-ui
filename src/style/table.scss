@@ -1,7 +1,24 @@
 @media (max-width: 480px){
-    .el-table {
+    .ty-table {
         margin-top: 0 !important;
     }
+}
+.ty-table-wrapper {
+  position: relative;
+  overflow: hidden;
+  box-sizing: border-box;
+  flex: 1;
+  max-width: 100%;
+}
+.ty-table .cell {
+  box-sizing: border-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal;
+  word-break: break-all;
+  line-height: 23px;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 .ty-table {
     table-layout: auto;

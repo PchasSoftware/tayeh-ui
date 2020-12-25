@@ -1,9 +1,9 @@
 <template>
   <div class="ty-border" :style="{width}">
     <div class="ty-flex ty-flex-row py-2 px-4">
-	    <i v-if="icon" class="fs-xh my-auto ty-icon ml-2" :class="[icon, 'ty-color-'+color]"/>
+	    <i v-if="icon" class="my-auto ty-icon ml-2" :class="[icon, 'ty-color-'+color, iconSize]"/>
 	    <div class="ty-flex ty-flex-col">
-        <div class="fw-bold fs-sm" :class="['ty-color-'+color]">
+        <div class="fw-bolder" :class="['ty-color-'+color, labelSize]">
 	    	  <slot name="label"/>
         </div>
         <slot/>
@@ -21,6 +21,14 @@ export default {
 	  icon: {
 		  type: String,
 		  default: null
+    },
+    iconSize: {
+      type: [String, Number],
+      default: 'fs-48'
+    },
+    labelSize: {
+      type: [String, Number],
+      default: 'fs-14'
     },
     color: {
       type: String,

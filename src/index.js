@@ -21,10 +21,11 @@ import Row from './Components/Layouts/Row'
 import Col from './Components/Layouts/Col'
 import Iframe from './Components/Others/Iframe.vue'
 import Modal from './Components/Others/Modal.vue'
-import './style/index.scss'
-
 import Tabs from './Components/Tabs/Tabs.vue'
 import Tab from './Components/Tabs/Tab.vue'
+import Loading from './Components/Loading/Loading'
+import './style/index.scss'
+
 const components = [
 	Input,
 	InputNumber,
@@ -50,13 +51,14 @@ const components = [
 	Iframe,
 	Modal,
 	Tabs,
-	Tab
+	Tab,
 ]
 
 const install = function(Vue, opts = {}) {
 	components.forEach(component => {
 		Vue.component(component.name, component);
-	})
+	});
+	Vue.use(Loading);
 }
 
 if (typeof window !== 'undefined' && window.Vue) {
@@ -90,5 +92,6 @@ export default {
 	Iframe,
 	Modal,
 	Tabs,
-	Tab
+	Tab,
+	Loading
 }

@@ -12,7 +12,7 @@
           <ty-table-column min-width="200px"> 
             <template>
               <div>
-              <ty-button></ty-button>
+              <ty-button icon="sort"/>
               </div>
             </template>
           </ty-table-column>

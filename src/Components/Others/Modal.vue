@@ -4,7 +4,7 @@
       <div :class="['ty-modal-container','my-auto', fullscreen?'fullscreen':'']" :style="{width, minWidth, maxWidth}" @click.stop>
         <div class="ty-flex ty-space-between">
   	    	  <slot name="header"/>
-            <span class="fw-semi-bold fs-lg" v-if="title">{{title}}</span>
+            <span class="fw-semi-bold fs-18" v-if="title">{{title}}</span>
             <ty-button class="mr-auto" color="dark" icon="ty-icon-close" size="small" type="clear" @click="handleClose"/>
         </div>
         <div class="ty-modal-body">

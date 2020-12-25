@@ -14,7 +14,7 @@
             >×</a>
         </div>
 
-        <div class="table-component__table-wrapper">
+        <div class="ty-table-wrapper">
             <table :class="fullTableClass">
                 <caption v-if="showCaption" class="ty-table-caption" role="alert" aria-live="polite">
                     {{ ariaCaption }}
