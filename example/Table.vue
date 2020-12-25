@@ -6,8 +6,16 @@
       <div class="component">
         <code class="example">{{examples['baseTable']}}</code>
         <ty-table :data="sampleDatas">
-          <ty-table-column min-width="200px" label="نام" prop="name"></ty-table-column>
-          <ty-table-column width="100%" label="سن" prop="age"></ty-table-column>
+          <ty-table-column  label="نام" prop="name"/>
+          <ty-table-column  label="سن" prop="age">
+          </ty-table-column>
+          <ty-table-column min-width="200px"> 
+            <template>
+              <div>
+              <ty-button></ty-button>
+              </div>
+            </template>
+          </ty-table-column>
         </ty-table>
 
       </div>

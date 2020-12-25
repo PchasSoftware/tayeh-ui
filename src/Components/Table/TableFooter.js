@@ -1,5 +1,6 @@
 export default {
   render() {
+    const { cssClass } = this;
     return (
       <tfoot>
       	<tr class={['ty-table-footer', cssClass]}>
@@ -13,7 +14,7 @@ export default {
     cssClass: {
       type: String,
       default: 'ty-bg-unset'
-    }
+    },
   },
 
   // *----------------------- D a t a -----------------------------------------------------------

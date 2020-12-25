@@ -12,9 +12,8 @@ export default {
   render: function (h) {
 	  const {
 		  columns,
-		  rows
+		  rows,
 		} = this;
-		console.log('body',columns);
     return (
         <tbody>
 			{
@@ -23,7 +22,12 @@ export default {
 						{
 							columns.map((col, i) => (
 								<td>
-									{row[col.prop]}
+									{
+										col.$slots.default
+									}
+									<slot {...this.row} >
+										{row[col.prop]}
+									</slot>
 								</td>
 							))
 						}
