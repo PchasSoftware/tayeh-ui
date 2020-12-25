@@ -37,7 +37,7 @@
                 type: Object,
                 required: false,
                 default: () => ({
-                    useUrlFragment: true,
+                    useUrlFragment: false,
                     defaultTabHash: null,
                 }),
             },
