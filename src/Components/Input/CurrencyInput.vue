@@ -101,12 +101,10 @@ export default {
 			this.$emit('input', parseInt(this.content));
 		},
 		format(valString) {
-			console.log('format', valString);
 			if (!valString) {
 				return '';
 			}
 			let val = valString.toString();
-			console.log(val.replace(/\B(?=(?:\d{3})+(?!\d))/g, ','));
 			return val.replace(/\B(?=(?:\d{3})+(?!\d))/g, ',')
 		},
 		toEnNumber(val) {

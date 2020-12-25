@@ -11,11 +11,7 @@ import Acardion from './Components/Others/Acardion.vue'
 import AcardionItem from './Components/Others/AcardionItem.vue'
 import Button from './Components/Button/Button.vue'
 import Table from './Components/Data/Table.vue'
-import TableColumn from './Components/Data/TableColumn.vue'
-import TableHeader from './Components/Data/TableHeader.vue'
-import TableRow from './Components/Data/TableRow.vue'
-import TableFooter from './Components/Data/TableFooter.vue'
-import TableBody from './Components/Data/TableBody.vue'
+import TableColumn from './Components/Data/TableColumn.js'
 import Container from './Components/Layouts/Container.vue'
 import Main from './Components/Layouts/Main.vue'
 import Aside from './Components/Layouts/Aside.vue'
@@ -42,10 +38,6 @@ const components = [
 	Button,
 	Table,
 	TableColumn,
-	TableHeader,
-	TableRow,
-	TableFooter,
-	TableBody,
 	Container,
 	Main,
 	Aside,
@@ -86,10 +78,6 @@ export default {
 	Button,
 	Table,
 	TableColumn,
-	TableHeader,
-	TableRow,
-	TableFooter,
-	TableBody,
 	Container,
 	Main,
 	Aside,

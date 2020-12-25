@@ -1,6 +1,9 @@
 const copy = require('rollup-plugin-copied')
 
 module.exports = {
+  babel: {
+    configFile: true
+  },
   plugins: [
     'vue',
 

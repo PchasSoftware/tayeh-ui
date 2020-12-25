@@ -24,7 +24,7 @@
 			  {{item.label||item.name}}
 		  </div>
 	  </div>
-	  <div style="display: none">
+	  <div class="ty-destroy">
 		  <slot/>
 	  </div>
   </div>
@@ -90,7 +90,6 @@ export default {
   // *----------------------- L i f e   c i r c l e ---------------------------------------------
   created() {
 	  this.options = this.$children;
-	  console.log(this.options);
   },
   mounted() {
 	this.content = this.value;

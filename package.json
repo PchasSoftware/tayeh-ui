@@ -1,6 +1,6 @@
 {
   "name": "@tayeh/vue-components",
-  "version": "1.0.95-alpha",
+  "version": "1.0.96-alpha",
   "author": "Aref Akbari",
   "license": "MIT",
   "description": "Free and Open source Ui components, Ultimatly lightweight.",
@@ -30,6 +30,8 @@
     "access": "public"
   },
   "devDependencies": {
+    "@vue/babel-helper-vue-jsx-merge-props": "^1.2.1",
+    "@vue/babel-preset-jsx": "^1.2.4",
     "babel-eslint": "^8.2.3",
     "babel-plugin-transform-vue-jsx": "^3.7.0",
     "babel-preset-vue-app": "^2.0.0",

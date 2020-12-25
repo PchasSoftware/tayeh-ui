@@ -1,29 +1,25 @@
-<template>
-<thead>
-<tr :class="['ty-table-header', cssClass]">
-	<slot/>
-</tr>
-</thead>
-</template>
-
-<script>
 export default {
-  name: 'TyTableHeader',
-
+  render() {
+    return (
+      <tfoot>
+      	<tr class={['ty-table-footer', cssClass]}>
+      		<slot/>
+      	</tr>
+      </tfoot>
+    )
+},
   // *----------------------- P r o p s ----------------------------------------------------------
   props: {
     cssClass: {
       type: String,
-      default: 'ty-bg-light'
+      default: 'ty-bg-unset'
     }
   },
 
   // *----------------------- D a t a -----------------------------------------------------------
   data() {
     return {
-      header: true
+      footer: true
     }
   },
 }
-
-</script>

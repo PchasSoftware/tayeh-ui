@@ -53,7 +53,6 @@ export default {
 	  openItem () {
 		//   this.indexValue = this.index;
 		//   this.$emit('TyAcardionItemOpen', this.index);
-		console.log(this.open, this.index);
 		this.$parent.$emit('TyAcardionItemOpen', this.open()==this.index?'close':this.index)
 	  }
   },

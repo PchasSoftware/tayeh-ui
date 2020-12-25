@@ -54,7 +54,6 @@ export default {
   },
   methods: {
     translate(text) {
-      console.log(text, this.words[''+text][this.lang]);
       return this.words[''+text][this.lang];
     },
   }
