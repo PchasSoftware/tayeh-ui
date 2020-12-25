@@ -47,7 +47,10 @@
 
       <div class="component">
         <h6>{{translate('basicSelect')}}</h6>
-        <ty-select label="لیبل" :required="true" :options="[{label: 'test', value: 'test'}, {label: 'cool', value: 'cool'}]"/>
+        <ty-select v-model="variable" label="لیبل" :required="true" :options="[{label: 'test', value: 'test'}, {label: 'cool', value: 'cool'}]">
+          <ty-option label="تست" value="Test"/>
+        </ty-select>
+        {{variable}}
         <ty-select :disabled="true" :options="[{label: 'test', value: 'test'}, {label: 'cool', value: 'cool'}]"/>
       </div>
     </section>

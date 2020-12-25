@@ -21,8 +21,11 @@
 	  </div>
 	  <div v-show="visible" class="ty-select__dropdown">
 		  <div @click="handleOptionClick(item)" v-for="(item, i) in search_results" :key="i" class="ty-dropdown-item" :class="{'ty-dropdown-item-hovered': hovered_option==i}">
-			  {{item[labelFeild]||item[valueFeild]}}
+			  {{item.label||item.name}}
 		  </div>
+	  </div>
+	  <div style="display: none">
+		  <slot/>
 	  </div>
   </div>
 </template>
@@ -39,11 +42,6 @@ export default {
 	  placeholder: {
 		  type: String,
 		  default: 'لطفا انتخاب کنید',
-		  required: false
-	  },
-	  options: {
-		  type: Array,
-		  default: () => ([]),
 		  required: false
 	  },
 	  lazyload: {
@@ -63,14 +61,6 @@ export default {
 		  type: Boolean,
 		  default: false
 	  },
-	  labelFeild: {
-		  type: String,
-		  default: 'label'
-	  },
-	  valueFeild: {
-		  type: String,
-		  default: 'value'
-	  },
 	  label: {
 		  type: String,
 		  required: false
@@ -84,6 +74,7 @@ export default {
   // *----------------------- D a t a -----------------------------------------------------------
   data() {
     return {
+		options: [],
 		content: null,
 		search_content: '',
 		search_results: [],
@@ -97,7 +88,10 @@ export default {
   computed: {},
 
   // *----------------------- L i f e   c i r c l e ---------------------------------------------
-
+  created() {
+	  this.options = this.$children;
+	  console.log(this.options);
+  },
   mounted() {
 	this.content = this.value;
 	this.defaultSearchFunction();
@@ -107,16 +101,16 @@ export default {
   // *----------------------- M e t h o d s -----------------------------------------------------
   methods: {
 	  resetSearch() {
-		const i = this.options.map(e => {return e[this.valueFeild]}).indexOf(this.content);
-	  	if (i!==-1) this.search_content = this.options[i][this.labelFeild]||this.options[i][this.valueFeild];
+		const i = this.options.map(e => {return e.value}).indexOf(this.content);
+	  	if (i!==-1) this.search_content = this.options[i].label||this.options[i].value
 	  },
 	  handleButtonClick () {
 		  this.visible?this.$refs.input.blur():this.$refs.input.focus();
 	  },
 	  handleOptionClick (item) {
-		  this.content = item[this.valueFeild];
-		  this.search_content = item[this.labelFeild];
-		  this.$emit('input', item[this.valueFeild]);
+		  this.content = item.value
+		  this.search_content = item.label;
+		  this.$emit('input', item.value);
 		  this.error = this.required && !this.content;
 	  },
 	  async handleChange (event) {
@@ -133,8 +127,8 @@ export default {
 		  this.search_results = this.options.filter(this.searchFilter)
 	  },
 	  searchFilter (item) {
-		  const value_contains = item[this.valueFeild].includes(this.search_content);
-		  const label_contains = item[this.labelFeild].includes(this.search_content);
+		  const value_contains = item.value.includes(this.search_content);
+		  const label_contains = item.label.includes(this.search_content);
 		  return (value_contains||label_contains)
 	  },
 	  handleFocus () {

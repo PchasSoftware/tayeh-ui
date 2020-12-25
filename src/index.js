@@ -4,6 +4,7 @@ import CurrencyInput from './Components/Input/CurrencyInput.vue'
 import EditableText from './Components/Input/EditableText.vue'
 import EditableNumber from './Components/Input/EditableNumber.vue'
 import Select from './Components/Select/Select.vue'
+import Option from './Components/Select/Option.vue'
 import Card from './Components/Others/Card.vue'
 import Border from './Components/Others/Border.vue'
 import Acardion from './Components/Others/Acardion.vue'
@@ -35,6 +36,7 @@ const components = [
 	EditableText,
 	EditableNumber,
 	Select,
+	Option,
 	Card,
 	Border,
 	Button,
@@ -78,6 +80,7 @@ export default {
 	EditableText,
 	EditableNumber,
 	Select,
+	Option,
 	Card,
 	Border,
 	Button,
