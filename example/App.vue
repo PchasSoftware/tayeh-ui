@@ -122,6 +122,7 @@ h2 {
   box-shadow: 0.5px 3px 10px 0 rgba(119, 119, 119, 0.1);
 }
 .example {
+  overflow: auto;
   white-space: pre-line;
   position: relative;
   display: block;

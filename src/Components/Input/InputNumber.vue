@@ -25,10 +25,15 @@
           <i v-if="error" class="ty-icon ty-icon-warning"/>
         </div>
       </div>
-      <div v-if="hasButton"  class="m-1">
+	  <ty-button @click="handleMinusClick" :icon="minusIcon" :type="buttonType" :color="minusColor" :size="size"/>
+    <div v-if="hasButton"  class="m-1">
         <slot name="button"/>
       </div>
-	  <ty-button @click="handleMinusClick" :icon="minusIcon" :type="buttonType" :color="minusColor" :size="size"/>
+      <div class="my-auto mr-2">
+        <slot name="suffix-outside">
+        
+		    </slot>
+      </div>
     </div>
   </div>
 </template>

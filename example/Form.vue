@@ -23,6 +23,11 @@
           <ty-input type="textarea" placeholder="متن توضیحات" icon="ty-icon-sort" v-model="variable" width="100%">
           </ty-input>
           <ty-input-number v-model="numberVariable" :step="0.5" :max="10" :min="-1"/>
+          <ty-input-number v-model="numberVariable" :step="0.5" :max="10" :min="-1">
+            <div slot="suffix-outside">
+              درصد
+            </div>
+          </ty-input-number>
       </div>
 
       <div class="component">

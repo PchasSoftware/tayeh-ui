@@ -42,14 +42,14 @@
 
             headerClass() {
                 if (! this.column.isSortable()) {
-                    return classList('table-component__th', this.column.headerClass);
+                    return classList('ty-table__th', this.column.headerClass);
                 }
 
                 if (this.column.prop !== this.sort.fieldName) {
-                    return classList('table-component__th table-component__th--sort', this.column.headerClass);
+                    return classList('ty-table__th ty-table__th--sort', this.column.headerClass);
                 }
 
-                return classList(`table-component__th table-component__th--sort-${this.sort.order}`, this.column.headerClass);
+                return classList(`ty-table__th ty-table__th--sort-${this.sort.order}`, this.column.headerClass);
             },
 
             isVisible() {

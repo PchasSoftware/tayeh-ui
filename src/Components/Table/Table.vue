@@ -1,6 +1,6 @@
 <template>
-    <div class="table-component">
-        <div v-if="showFilter && filterableColumnExists" class="table-component__filter">
+    <div class="ty-table">
+        <div v-if="showFilter && filterableColumnExists" class="ty-table__filter">
             <input
                     :class="fullFilterInputClass"
                     type="text"
@@ -10,7 +10,7 @@
             <a
                     v-if="filter"
                     @click="filter = ''"
-                    class="table-component__filter__clear"
+                    class="ty-table__filter__clear"
             >×</a>
         </div>
 
@@ -45,8 +45,10 @@
             </table>
         </div>
 
-        <div v-if="displayedRows.length === 0" class="table-component__message">
-            {{ filterNoResults }}
+        <div v-if="displayedRows.length === 0" class="ty-flex">
+            <div class="m-auto p-5">
+                {{ filterNoResults }}
+            </div>
         </div>
 
 
@@ -164,11 +166,11 @@
             },
 
             fullTableBodyClass() {
-                return classList('table-component__table__body', this.tbodyClass);
+                return classList('ty-table__table__body', this.tbodyClass);
             },
 
             fullFilterInputClass() {
-                return classList('table-component__filter__field', this.filterInputClass);
+                return classList('ty-table__filter__field', this.filterInputClass);
             },
 
             ariaCaption() {
@@ -228,8 +230,8 @@
 
             storageKey() {
                 return this.cacheKey
-                    ? `vue-table-component.${this.cacheKey}`
-                    : `vue-table-component.${window.location.host}${window.location.pathname}${this.cacheKey}`;
+                    ? `vue-ty-table.${this.cacheKey}`
+                    : `vue-ty-table.${window.location.host}${window.location.pathname}${this.cacheKey}`;
             },
         },
 
