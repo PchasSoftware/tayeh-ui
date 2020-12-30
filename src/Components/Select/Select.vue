@@ -47,7 +47,6 @@
 </template>
 
 <script>
-import Option from './Option.vue'
 export default {
   name: 'TySelect',
 
@@ -183,8 +182,6 @@ export default {
 
 	async mounted() {
 		  this.options = this.$children.filter(option => option.isOption);
-		// this.options = new Option(optionComponents)
-		// console.log(this.$slots.default);
 		this.content = this.value;
 		if (this.lazyload)  {
 			  this.search_results = await this.lazyload(this.searchFilter)
