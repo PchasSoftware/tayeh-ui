@@ -14,6 +14,9 @@
           :disabled="disabled"
           @focus="handleFocus"
           @blur="handleBlur"
+				  @keydown="keydown"
+          @keypress="keypress"
+          @keyup="keyup"
           :minlength="minLength"
           :maxlength="maxLength"
           :min="min"
@@ -171,6 +174,15 @@ export default {
     handleBlur (event) {
       this.outline = false;
       this.$emit('blur', event);
+    },
+    keydown (event) {
+      this.$emit('keydown', event);
+    },
+    keyup (event) {
+      this.$emit('keyup', event);
+    },
+    keypress (event) {
+      this.$emit('keypress', event);
     },
     setNativeInputValue() {
       this.$refs.input.value = this.value || null;

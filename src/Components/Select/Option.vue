@@ -19,6 +19,7 @@
         data: () => ({
             isActive: false,
             isVisible: true,
+            isOption: true,
         }),
         computed: {
             OptionLabel() {

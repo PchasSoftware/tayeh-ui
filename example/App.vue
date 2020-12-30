@@ -3,7 +3,9 @@
     <title>Tayeh Ui Components</title>
     <img class="logo" height="100" src="../src/assets/logo.png">
     <h1>Tayeh Ui Components</h1>
-    <ty-select v-model="lang" :options="languages"/>
+    <ty-select v-model="lang">
+      <ty-option v-for="l in languages" :label="l.label" :value="l.value" :key="l.value"/>
+    </ty-select>
     <!-- <your-component/> -->
     <form-components :lang="lang" class="components"/>
     <font-components :lang="lang" class="components"/>
