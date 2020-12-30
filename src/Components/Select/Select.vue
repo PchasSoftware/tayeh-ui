@@ -116,7 +116,7 @@ export default {
 		  this.hovered_option = 0;
 		  this.search_results = [];
 		  if (this.lazyload)  {
-			  this.search_results = await this.lazyload(event.target.value)
+			  this.search_results = await this.lazyload(this.searchFilter)
 		  } else {
 			  this.defaultSearchFunction()
 		  }

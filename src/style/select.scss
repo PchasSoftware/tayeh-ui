@@ -11,6 +11,7 @@
 	right: 0;
 	min-height: 64px;
 	background-color: $background;
+	z-index: 1000;
 	@include ty-boxshadow;
 	.ty-dropdown-item {
 	  padding: 8px;
