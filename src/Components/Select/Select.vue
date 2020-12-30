@@ -93,9 +93,6 @@
 			}
 		},
 
-		// *----------------------- C o m p u t e d ---------------------------------------------------
-		computed: {},
-
 		// *----------------------- L i f e   c i r c l e ---------------------------------------------
 
 
@@ -125,7 +122,7 @@
 				this.hovered_option = 0;
 				this.search_results = [];
 				if (this.lazyload) {
-					this.search_results = await this.lazyload(this.searchFilter)
+					this.search_results = await this.lazyload(this.search_content)
 				} else {
 					this.defaultSearchFunction()
 				}
@@ -180,7 +177,7 @@
 			this.options = this.$children.filter(option => option.isOption);
 			this.content = this.value;
 			if (this.lazyload) {
-				this.search_results = await this.lazyload(this.searchFilter)
+				this.search_results = await this.lazyload(this.search_content)
 			} else {
 				this.defaultSearchFunction()
 			}
