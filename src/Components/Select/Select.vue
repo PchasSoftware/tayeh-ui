@@ -47,7 +47,7 @@
 </template>
 
 <script>
-import Option from './Option'
+import Option from './Option.vue'
 export default {
   name: 'TySelect',
 
