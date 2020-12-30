@@ -33,7 +33,8 @@
       <div class="component">
         <h6>{{translate('currencyInput')}}</h6>
         <code class="example">{{examples['currencyInput']}}</code>
-        <ty-currency-input type="text" label="لیبل نمونه" :placeholder="translate('placeholder')"><div slot="suffix">تومان</div></ty-currency-input>
+        <ty-currency-input v-model="currencyModel" type="text" label="لیبل نمونه" :placeholder="translate('placeholder')"><div slot="suffix">تومان</div></ty-currency-input>
+        {{currencyModel}}
       </div>
 
       <div class="component">
@@ -76,6 +77,7 @@ export default {
     return {
       variable: 'default value',
       numberVariable: 0,
+      currencyModel: 0,
       words: {
         cssDirection: {fa: 'rtl', en: 'ltr'},
         cssAlign: {fa: 'right', en: 'left'},

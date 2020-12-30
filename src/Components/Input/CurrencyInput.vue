@@ -1,15 +1,12 @@
 <template>
-  <section class="ty-input ty-currency-input">
-		<p v-if="label" :class="`ty-input-label ${size}`">{{label}}</p>
-    	<div class="ty-input-wrapper" :class="{disabled}">
-    	  <input :disabled="disabled" @input="handleInput" @change="handleChange" v-model="number"
-		   :type="type" :placeholder="placeholder" :class="`${size}`"/>
-    	  <div :class="['suffix', dir==='ltr'?'suffix--ltr':'']">
-    	    <slot name="suffix">
-    	    </slot>
-    	  </div>
-    	</div>
-  </section>
+  <ty-input :disabled="disabled" @input="handleInput" @change="handleChange" :max="max" :min="min" :size="size" v-model="number" type="text" :placeholder="placeholder" :dir="dir" :class="`${size}`">
+	  <div slot="suffix">
+	  <slot name="suffix"/>
+	  </div>
+	  <div slot="prefix">
+	  <slot name="prefix"/>
+	  </div>
+  </ty-input>
 </template>
 
 <script>
@@ -28,11 +25,6 @@ export default {
     max: {
       type: Number
 	},
-	type: {
-		type: String,
-		default: 'text',
-		required: false
-    },
     size: {
       type: String,
       default: 'normal',
