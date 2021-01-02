@@ -1,6 +1,6 @@
 <template>
   <div ref="wrapper"
-    :class="`ty-container ${img ? 'ty--has-target' : ''} ${passive ? 'ty--passive' : ''} ${disabled ? 'ty--disabled' : ''} ${disableClickToChoose ? 'ty--disabled-cc' : ''} ${disableDragToMove && disableScrollToZoom ? 'ty--disabled-mz' : ''} ${fileDraggedOver ? 'ty--dropzone' : ''}`"
+    :class="`ty-upload-container ${img ? 'ty--has-target' : ''} ${passive ? 'ty--passive' : ''} ${disabled ? 'ty--disabled' : ''} ${disableClickToChoose ? 'ty--disabled-cc' : ''} ${disableDragToMove && disableScrollToZoom ? 'ty--disabled-mz' : ''} ${fileDraggedOver ? 'ty--dropzone' : ''}`"
     @dragenter.stop.prevent="_handleDragEnter"
     @dragleave.stop.prevent="_handleDragLeave"
     @dragover.stop.prevent="_handleDragOver"

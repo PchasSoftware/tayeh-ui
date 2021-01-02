@@ -1,4 +1,4 @@
-.ty-container {
+.ty-upload-container {
 	display: inline-block;
 	cursor: pointer;
 	transition: all 0.3s;
@@ -7,46 +7,46 @@
 	align-self: flex-start;
 	background-color: #e6e6e6;
   }
-  .ty-container canvas {
+  .ty-upload-container canvas {
 	transition: all 0.3s;
   }
-  .ty-container:hover {
+  .ty-upload-container:hover {
 	opacity: 0.7;
   }
-  .ty-container.ty--dropzone {
+  .ty-upload-container.ty--dropzone {
 	box-shadow: inset 0 0 10px #333;
   }
-  .ty-container.ty--dropzone canvas {
+  .ty-upload-container.ty--dropzone canvas {
 	opacity: 0.5;
   }
-  .ty-container.ty--disabled-cc {
+  .ty-upload-container.ty--disabled-cc {
 	cursor: default;
   }
-  .ty-container.ty--disabled-cc:hover {
+  .ty-upload-container.ty--disabled-cc:hover {
 	opacity: 1;
   }
-  .ty-container.ty--has-target {
+  .ty-upload-container.ty--has-target {
 	cursor: move;
   }
-  .ty-container.ty--has-target:hover {
+  .ty-upload-container.ty--has-target:hover {
 	opacity: 1;
   }
-  .ty-container.ty--has-target.ty--disabled-mz {
+  .ty-upload-container.ty--has-target.ty--disabled-mz {
 	cursor: default;
   }
-  .ty-container.ty--disabled {
+  .ty-upload-container.ty--disabled {
 	cursor: not-allowed;
   }
-  .ty-container.ty--disabled:hover {
+  .ty-upload-container.ty--disabled:hover {
 	opacity: 1;
   }
-  .ty-container.ty--passive {
+  .ty-upload-container.ty--passive {
 	cursor: default;
   }
-  .ty-container.ty--passive:hover {
+  .ty-upload-container.ty--passive:hover {
 	opacity: 1;
   }
-  .ty-container svg.icon-remove {
+  .ty-upload-container svg.icon-remove {
 	position: absolute;
 	background: #fff;
 	border-radius: 50%;

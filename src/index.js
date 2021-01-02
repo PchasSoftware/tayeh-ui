@@ -95,5 +95,6 @@ export default {
 	Modal,
 	Tabs,
 	Tab,
-	Loading
+	Loading,
+	Upload
 }
