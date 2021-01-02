@@ -1,6 +1,6 @@
 {
   "name": "@tayeh/vue-components",
-  "version": "1.1.02-alpha",
+  "version": "1.1.04-alpha",
   "author": "Aref Akbari",
   "license": "MIT",
   "description": "Free and Open source Ui components, Ultimatly lightweight.",
@@ -60,5 +60,8 @@
     "> 1%",
     "last 2 versions",
     "not ie <= 9"
-  ]
+  ],
+  "dependencies": {
+    "canvas-exif-orientation": "^0.4.0"
+  }
 }

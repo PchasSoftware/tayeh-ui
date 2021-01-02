@@ -13,6 +13,7 @@
     <others-components :lang="lang" class="components"/>
     <table-components :lang="lang" class="components"/>
     <layout-components :lang="lang" class="components"/>
+    <upload-components :lang="lang" class="components"/>
 
   </section>
 </template>
@@ -24,6 +25,7 @@ import Others from './Others.vue'
 import Button from './Button.vue'
 import Table from './Table.vue'
 import Layout from './Layout.vue'
+import Upload from './Upload.vue'
 export default {
   name: 'Example',
   components: {
@@ -33,6 +35,7 @@ export default {
     'others-components': Others,
     'table-components': Table,
     'layout-components': Layout,
+    'upload-components': Upload,
   },
   data () {
     return {

@@ -24,6 +24,7 @@ import Modal from './Components/Others/Modal.vue'
 import Tabs from './Components/Tabs/Tabs.vue'
 import Tab from './Components/Tabs/Tab.vue'
 import Loading from './Components/Loading/Loading'
+import Upload from './Components/Upload/ImageUploader.vue'
 import './style/index.scss'
 
 const components = [
@@ -52,6 +53,7 @@ const components = [
 	Modal,
 	Tabs,
 	Tab,
+	Upload
 ]
 
 const install = function(Vue, opts = {}) {
