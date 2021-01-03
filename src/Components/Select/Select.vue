@@ -132,8 +132,8 @@
 				this.search_results = this.options.filter(this.searchFilter)
 			},
 			searchFilter(item) {
-				const value_contains = item.value.includes(this.search_content);
-				const label_contains = item.label.includes(this.search_content);
+				const value_contains = (item.value+'').includes(this.search_content);
+				const label_contains = (item.label+'').includes(this.search_content);
 				return (value_contains || label_contains)
 			},
 			handleFocus() {
