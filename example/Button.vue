@@ -7,6 +7,7 @@
         <code class="example">{{examples['simpleButton']}}</code>
         <ty-button>رنگ اصلی</ty-button>
         <ty-button icon="ty-icon-search" color="success">Success color</ty-button>
+        <ty-button disabled icon="ty-icon-search" color="success">غیر فعال</ty-button>
         <ty-button color="dark">Success color</ty-button>
         <ty-button size="small" color="light">سایز small</ty-button>
         <ty-button color="light">Success color</ty-button>

@@ -21,7 +21,7 @@ $colors: (
 	.ty-outline-#{$name} {
 		outline: $color auto 1px;
 	}
-	.ty-outline-#{$name}.ty-hoverable:hover {
+	.ty-outline-#{$name}.ty-hoverable:not(.disable):hover {
 		background-color: $color;
 		color: $oposite;
 	}
@@ -40,7 +40,7 @@ $colors: (
 }
 
 //button colors
-.ty-button {
+.ty-button:not(.disabled) {
 	&:hover {
 		@each $name, $color, $oposite, $text-color in $colors {
 			&.ty-bg-#{$name} {
@@ -62,6 +62,33 @@ $colors: (
 				outline-color: lighten($color, 5%);
 				background-color: lighten($color, 5%);
 			}
+		}
+	}
+}
+
+.disabled {
+	@each $name, $color, $oposite, $text-color in $colors {
+		&.ty-color-#{$name} {
+			color: $color;
+			opacity: 0.5;
+		}
+		&.ty-outline-#{$name} {
+			outline: $color auto 1px;
+			opacity: 0.5;
+		}
+		&.ty-outline-#{$name}.ty-hoverable:not(.disable):hover {
+			background-color: $color;
+			color: $oposite;
+			opacity: 0.5;
+		}
+		&.ty-bg-#{$name} {
+			background-color: $color;
+			color: $text-color;
+			opacity: 0.5;
+		}
+		&.ty-border-color-#{$name} {
+			border-color: $color;
+			opacity: 0.5;
 		}
 	}
 }
