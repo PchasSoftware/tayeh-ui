@@ -111,6 +111,9 @@
   .ty-input input, .ty-input textarea {
 	  width: 100%;
   }
+  .ty-input input {
+	  text-overflow: ellipsis;
+  }
 
   .ty-input.ty-input-number {
 	/* Chrome, Safari, Edge, Opera */
