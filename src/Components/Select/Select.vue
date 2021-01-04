@@ -1,6 +1,6 @@
 <template>
 	<div :class="['ty-select', size]">
-		<div class="ty-select__search">
+		<div class="ty-select__search" ref="select">
 			<ty-input :disabled="disabled" v-model="search_content" :label="label" :required="required" ref="input"
 				:dir="dir" :size="size" :placeholder="placeholder" @focus="handleFocus" @blur="blur"
 				@keydown.down.stop="nextOption" @keydown.up.stop="prevOption" @keydown.enter="selectByKeboard"
@@ -27,7 +27,7 @@
     		  </div>
     		</div> -->
 		</div>
-		<div v-show="visible" class="ty-select__dropdown">
+		<div v-show="visible" class="ty-select__dropdown" :style="dropdown_position">
 			<div @click="handleOptionClick(item)" v-for="(item, i) in search_results" :key="i" class="ty-dropdown-item"
 				:class="{'ty-dropdown-item-hovered': hovered_option==i}">
 				{{item.label||item.name}}
@@ -77,7 +77,7 @@
 			required: {
 				type: Boolean,
 				default: false
-			},
+			}
 		},
 
 		// *----------------------- D a t a -----------------------------------------------------------
@@ -90,11 +90,13 @@
 				visible: false,
 				hovered_option: 0,
 				error: false,
+				dropdown_position: {
+					top: '0',
+					left: '0',
+					right: '0'
+				}
 			}
 		},
-
-		// *----------------------- L i f e   c i r c l e ---------------------------------------------
-
 
 
 		// *----------------------- M e t h o d s -----------------------------------------------------
@@ -109,6 +111,7 @@
 				}
 			},
 			handleButtonClick() {
+				this.setDropdownPostion();
 				this.visible ? this.$refs.input.blur() : this.$refs.input.focus();
 			},
 			handleOptionClick(item) {
@@ -126,6 +129,7 @@
 				} else {
 					this.defaultSearchFunction()
 				}
+				this.setDropdownPostion()
 				this.visible = true;
 			},
 			defaultSearchFunction() {
@@ -137,6 +141,7 @@
 				return (value_contains || label_contains)
 			},
 			handleFocus() {
+				this.setDropdownPostion()
 				this.visible = true;
 				this.$emit('focus', event);
 			},
@@ -170,6 +175,16 @@
 			},
 			setNativeInputValue() {
 				this.$refs.input.$refs.input.value = this.search_content || null;
+			},
+			setDropdownPostion () {
+				const select = this.$refs.select;
+				const top = select.getBoundingClientRect().bottom;
+				const right = select.getBoundingClientRect().right;
+				const left = select.getBoundingClientRect().left;
+				this.dropdown_position  = {top: top+4+'px', right: right+'px', left: left+'px'}
+			},
+			handlePageScroll() {
+				this.setDropdownPostion()
 			}
 		},
 
@@ -182,6 +197,7 @@
 				this.defaultSearchFunction()
 			}
 			this.resetSearch();
+			window.addEventListener('scroll', this.handlePageScroll);
 		},
 	}
 </script>

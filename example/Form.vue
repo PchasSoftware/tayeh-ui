@@ -56,24 +56,6 @@
         <ty-select v-model="variable" label="لیبل" :required="true" :options="[{label: 'test', value: 'test'}, {label: 'cool', value: 'cool'}]">
           <ty-option label="تست" value="Test"/>
           <ty-option label="دومی" value="two"/>
-          <ty-option label="دومی" value="two"/>
-          <ty-option label="دومی" value="two"/>
-          <ty-option label="دومی" value="two"/>
-          <ty-option label="دومی" value="two"/>
-          <ty-option label="دومی" value="two"/>
-          <ty-option label="دومی" value="two"/>
-          <ty-option label="دومی" value="two"/>
-          <ty-option label="دومی" value="two"/>
-          <ty-option label="دومی" value="two"/>
-          <ty-option label="دومی" value="two"/>
-          <ty-option label="دومی" value="two"/>
-          <ty-option label="دومی" value="two"/>
-          <ty-option label="دومی" value="two"/>
-          <ty-option label="دومی" value="two"/>
-          <ty-option label="دومی" value="two"/>
-          <ty-option label="دومی" value="two"/>
-          <ty-option label="دومی" value="two"/>
-          <ty-option label="دومی" value="two"/>
         </ty-select>
         {{variable}}
         <ty-select :disabled="true" :options="[{label: 'test', value: 'test'}, {label: 'cool', value: 'cool'}]"/>
