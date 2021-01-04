@@ -1,7 +1,7 @@
 <template>
 	<div :class="['ty-select', size]">
 		<div class="ty-select__search" ref="select">
-			<ty-input :disabled="disabled" v-model="search_content" :label="label" :required="required" ref="input"
+			<ty-input ref="input" :disabled="disabled" v-model="search_content" :label="label" :required="required"
 				:dir="dir" :size="size" :placeholder="placeholder" @focus="handleFocus" @blur="blur"
 				@keydown.down.stop="nextOption" @keydown.up.stop="prevOption" @keydown.enter="selectByKeboard"
 				@keydown.esc.stop.prevent="handleClose" @keydown.tab="visible = false" @input="handleChange">
@@ -27,7 +27,7 @@
     		  </div>
     		</div> -->
 		</div>
-		<div v-show="visible" class="ty-select__dropdown" :style="dropdown_position">
+		<div v-show="visible" class="ty-select__dropdown" :style="dropdown_position" ref="dropdown">
 			<div @click="handleOptionClick(item)" v-for="(item, i) in search_results" :key="i" class="ty-dropdown-item"
 				:class="{'ty-dropdown-item-hovered': hovered_option==i}">
 				{{item.label||item.name}}
@@ -91,9 +91,10 @@
 				hovered_option: 0,
 				error: false,
 				dropdown_position: {
-					top: '0',
-					left: '0',
-					right: '0'
+					top: 'auto',
+					left: 'auto',
+					right: 'auto',
+					bottom: 'auto'
 				}
 			}
 		},
@@ -177,11 +178,21 @@
 				this.$refs.input.$refs.input.value = this.search_content || null;
 			},
 			setDropdownPostion () {
-				const select = this.$refs.select;
-				const top = select.getBoundingClientRect().bottom;
-				const right = select.getBoundingClientRect().right;
-				const left = select.getBoundingClientRect().left;
-				this.dropdown_position  = {top: top+4+'px', right: right+'px', left: left+'px'}
+				const bounding = this.$refs.select;
+				const dropdown_bounding = this.$refs.dropdown;
+				if (typeof bounding == 'undefined' || typeof dropdown_bounding == 'undefined') return;
+				const dropdown_height = dropdown_bounding.clientHeight;
+				const height = window.innerHeight || document.documentElement.clientHeight;
+				let top = bounding.getBoundingClientRect().top;
+				const bottom = bounding.getBoundingClientRect().bottom;
+				let right = bounding.getBoundingClientRect().right;
+				let left = bounding.getBoundingClientRect().left;
+				if (top>0.7*height) top = top-dropdown_height;
+				else top = bottom+4;
+				top<0?top=0:top>height?top=height-dropdown_height:top;
+				left<0?left=0:left='auto';
+				right<0?right=0:right='auto';
+				this.dropdown_position  = {top: top+'px', right: right+'px', left: left+'px'}
 			},
 			handlePageScroll() {
 				this.setDropdownPostion()

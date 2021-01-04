@@ -788,7 +788,6 @@ export default {
               this._onVideoLoad(video)
             } else {
               video.addEventListener('canplay', () => {
-                console.log('can play event')
                 this._onVideoLoad(video)
               }, false);
             }

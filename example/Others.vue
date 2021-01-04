@@ -98,7 +98,10 @@
           title="Tips"
           :visible.sync="dialogVisible">
           <span>This is a messaasdfa sdfasdf
-           
+           <ty-select v-model="variable" label="لیبل" :required="true" :options="[{label: 'test', value: 'test'}, {label: 'cool', value: 'cool'}]">
+          <ty-option label="تست" value="Test"/>
+          <ty-option label="دومی" value="two"/>
+        </ty-select>
             df
             sadfge</span>
           <span slot="footer" class="dialog-footer">
@@ -129,6 +132,7 @@ export default {
   data () {
     return {
       dialogVisible: false,
+      variable: null,
       words: {
         cssDirection: {fa: 'rtl', en: 'ltr'},
         cssAlign: {fa: 'right', en: 'left'},
