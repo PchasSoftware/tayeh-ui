@@ -123,6 +123,12 @@
         {{'asdfqwersd'|currency}}
       </div>
     </section>
+
+    <section id="color-picker">
+      <div class="component">
+        <color-picker v-model="color"/>
+      </div>
+    </section>
 </div>
 </template>
 
@@ -139,6 +145,7 @@ export default {
     return {
       dialogVisible: false,
       variable: null,
+      color: null,
       words: {
         cssDirection: {fa: 'rtl', en: 'ltr'},
         cssAlign: {fa: 'right', en: 'left'},

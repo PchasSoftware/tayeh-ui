@@ -25,6 +25,7 @@ import Tabs from './Components/Tabs/Tabs.vue'
 import Tab from './Components/Tabs/Tab.vue'
 import Loading from './Components/Loading/Loading'
 import Upload from './Components/Upload/ImageUploader.vue'
+import ColorPicker from './Components/Color/ColorPicker.vue'
 import './style/index.scss'
 import currency from './Filters/CurrencyFilter'
 
@@ -54,7 +55,8 @@ const components = [
 	Modal,
 	Tabs,
 	Tab,
-	Upload
+	Upload,
+	ColorPicker
 ]
 
 const filters = [
@@ -106,6 +108,7 @@ export default {
 	Tab,
 	Loading,
 	Upload,
+	ColorPicker,
 	//filters
 	currency
 }
