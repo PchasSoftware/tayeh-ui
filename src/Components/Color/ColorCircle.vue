@@ -1,6 +1,6 @@
 <template>
   <div class="ty-color-circle" @keydown.enter="editing=false">
-	  <div @click="handleClick" ref="colorCircle" :style="{width: size, height: size, background: color}" class="brdr-radius-50-pc"/>
+	  <div @click="handleClick" ref="colorCircle" :style="{width: size, height: size, background: color}" class="brdr-radius-50-pc cricle"/>
 	  <div v-if="show_picker" :style="color_picker_position" class="ty-color-picker-fixed">
 		  <ty-color-picker ref="pickerBounding" v-model="color" @change="handleChange"/>
 	  </div>
@@ -9,7 +9,7 @@
 
 <script>
 export default {
-	name: 'color-circle',
+	name: 'ty-color-circle',
 	props: {
 		value: {
 			type: String,

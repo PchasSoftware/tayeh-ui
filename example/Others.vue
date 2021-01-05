@@ -133,7 +133,7 @@
 
     <section id="color-circle">
       <div class="component">
-        <color-circle v-model="color" :editable="true"/>
+        <ty-color-circle v-model="color" :editable="true"/>
         {{color}}
       </div>
     </section>
