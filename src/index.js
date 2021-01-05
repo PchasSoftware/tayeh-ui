@@ -26,6 +26,7 @@ import Tab from './Components/Tabs/Tab.vue'
 import Loading from './Components/Loading/Loading'
 import Upload from './Components/Upload/ImageUploader.vue'
 import './style/index.scss'
+import currency from './Filters/CurrencyFilter'
 
 const components = [
 	Input,
@@ -56,10 +57,17 @@ const components = [
 	Upload
 ]
 
+const filters = [
+	currency
+]
+
 const install = function(Vue, opts = {}) {
 	components.forEach(component => {
 		Vue.component(component.name, component);
 	});
+	filters.forEach(filter => {
+		Vue.filter(filter.name, filter)
+	})
 	Vue.use(Loading);
 }
 
@@ -70,6 +78,7 @@ if (typeof window !== 'undefined' && window.Vue) {
 export default {
 	version: '1.0.0',
 	install,
+	//components
 	Input,
 	InputNumber,
 	CurrencyInput,
@@ -96,5 +105,7 @@ export default {
 	Tabs,
 	Tab,
 	Loading,
-	Upload
+	Upload,
+	//filters
+	currency
 }

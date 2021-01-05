@@ -97,7 +97,7 @@
         <ty-modal
           title="Tips"
           :visible.sync="dialogVisible">
-          <span>This is a messaasdfa sdfasdf
+          <span> This is a messaasdfa sdfasdf
            <ty-select v-model="variable" label="لیبل" :required="true" :options="[{label: 'test', value: 'test'}, {label: 'cool', value: 'cool'}]">
           <ty-option label="تست" value="Test"/>
           <ty-option label="دومی" value="two"/>
@@ -115,6 +115,12 @@
       <div class="component">
         <code class="example">{{examples['loading']}}</code>
         <ty-button v-loading="true" @click="dialogVisible = true">click to open the Dialog</ty-button>  
+      </div>
+    </section>
+    <section id="currency-filter">
+      <div class="component">
+        {{123456|currency}}
+        {{'asdfqwersd'|currency}}
       </div>
     </section>
 </div>
