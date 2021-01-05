@@ -127,6 +127,7 @@
     <section id="color-picker">
       <div class="component">
         <color-picker v-model="color"/>
+        {{color}}
       </div>
     </section>
 </div>
