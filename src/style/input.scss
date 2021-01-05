@@ -20,12 +20,28 @@
 		font-size: 16px;
 		font-size: 1rem;
 	  }
+	  &.semi-small {
+		padding: 2px 2px;
+		font-size: 16px;
+		font-size: 1rem;
+		input {
+			height: 26px;
+		}
+	  }
 	  &.small {
 		padding: 1px 1px;
 		font-size: 14px;
 		font-size: 0.85rem;
 		input {
 			height: 24px;
+		}
+	  }
+	  &.semi-large {
+		padding: 2px 8px;
+		font-size: 18px;
+		font-size: 1.2rem;
+		input {
+			height: 48px;
 		}
 	  }
 	  &.large {
@@ -126,5 +142,45 @@
 	/* Firefox */
 	input[type=number] {
 	  -moz-appearance: textfield;
+	}
+  }
+
+  .ty-input.ty-input-number {
+	.__input-number-button {
+		height: 46px;
+		width: 46px;
+		max-height: 100%;
+	}
+
+	&.semi-small {
+		.__input-number-button {
+			height: 30px;
+			width: 30px;
+			max-height: 100%;
+		}	
+	}
+
+	&.small {
+		.__input-number-button {
+			height: 26px;
+			width: 26px;
+			max-height: 100%;
+		}	
+	}
+
+	&.semi-large {
+		.__input-number-button {
+			height: 54px;
+			width: 54px;
+			max-height: 100%;
+		}	
+	}
+
+	&.large {
+		.__input-number-button {
+			height: 64px;
+			width: 64px;
+			max-height: 100%;
+		}	
 	}
   }

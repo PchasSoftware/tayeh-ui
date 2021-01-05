@@ -1,9 +1,9 @@
 <template>
-  <div :class="['ty-input', 'ty-input-number', inputSize ? 'el-input--' + inputSize : '']" :style="{width}">
+  <div :class="['ty-input', 'ty-input-number', size, inputSize ? 'el-input--' + inputSize : '']" :style="{width}">
     <p v-if="label" :class="['ty-input-label', 'mb-1', size||'', error?'ty-color-danger': '']">{{label}} <span class="ty-color-danger">{{required?'*':''}}</span></p>
     <div class="ty-flex ty-flex-nowrap">
-		<ty-button @click="handlePlusClick" :icon="plusIcon" :type="buttonType" :color="plusColor" :size="size"/>
-    <div ref="input-wrapper" :class="['ty-input-wrapper', size, clear?'--border-clear':'', !clear&&borderBottom?'--border-bottom':'', outline?'ty-input-focus':'', disabled?'disabled':'', error?'ty-color-danger': '']">
+		<ty-button class="__input-number-button my-auto" @click="handlePlusClick" :icon="plusIcon" :type="buttonType" :color="plusColor" :size="size"/>
+    <div ref="input-wrapper" :class="['my-auto','ty-input-wrapper', size, clear?'--border-clear':'', !clear&&borderBottom?'--border-bottom':'', outline?'ty-input-focus':'', disabled?'disabled':'', error?'ty-color-danger': '']">
         <slot name="prefix">
             <div v-if="icon" class="prefix">
               <i :class="['ty-icon', icon]"/>
@@ -25,8 +25,8 @@
           <i v-if="error" class="ty-icon ty-icon-warning"/>
         </div>
       </div>
-	  <ty-button @click="handleMinusClick" :icon="minusIcon" :type="buttonType" :color="minusColor" :size="size"/>
-    <div v-if="hasButton"  class="m-1">
+	  <ty-button class="__input-number-button my-auto" @click="handleMinusClick" :icon="minusIcon" :type="buttonType" :color="minusColor" :size="size"/>
+    <div v-if="hasButton"  class="my-auto">
         <slot name="button"/>
       </div>
       <div class="my-auto mr-2">

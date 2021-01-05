@@ -23,11 +23,23 @@
           <ty-input type="textarea" placeholder="متن توضیحات" icon="ty-icon-sort" v-model="variable" width="100%">
           </ty-input>
           <ty-input-number v-model="numberVariable" :step="0.5" :max="10" :min="-1"/>
-          <ty-input-number v-model="numberVariable" :step="0.5" :max="10" :min="-1">
+          <ty-input-number size="semi-small" v-model="numberVariable" :step="0.5" :max="10" :min="-1">
             <div slot="suffix-outside">
               درصد
             </div>
           </ty-input-number>
+
+          <ty-row :gutter="10">
+						<ty-col :xs="24" :sm="12" :md="12" :lg="12" :xl="12">
+						</ty-col>
+						<ty-col :xs="24" :sm="12" :md="12" :lg="12" :xl="12">
+							<div class="ty-flex">
+								<ty-input-number label="سود پیشفرض" v-model="numberVariable">
+									<div slot="suffix-outside" class="ty-color-primary mr-3">درصد</div>
+								</ty-input-number>
+							</div>
+						</ty-col>
+					</ty-row>
       </div>
 
       <div class="component">
