@@ -1,5 +1,5 @@
 <template>
-  <ty-input :disabled="disabled" @input="handleInput" @change="handleChange" :max="max" :min="min" :size="size" v-model="number" type="text" :placeholder="placeholder" :dir="dir" :class="`${size}`">
+  <ty-input :disabled="disabled" :label="label" @input="handleInput" @change="handleChange" :max="max" :min="min" :size="size" v-model="number" type="text" :placeholder="placeholder" :dir="dir" :class="`${size}`">
 	  <div slot="suffix">
 	  <slot name="suffix"/>
 	  </div>
