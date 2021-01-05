@@ -1,5 +1,5 @@
 <template>
-  <ty-input :disabled="disabled" :label="label" @input="handleInput" @change="handleChange" :max="max" :min="min" :size="size" v-model="number" type="text" :placeholder="placeholder" :dir="dir" :class="`${size}`">
+  <ty-input :disabled="disabled" :label="label" @input="handleInput" @change="handleChange" :max="max" :min="min" :size="size" v-model="number" :placeholder="placeholder" :dir="dir" :class="`${size}`">
 	  <div slot="suffix">
 	  <slot name="suffix"/>
 	  </div>
@@ -75,10 +75,11 @@ export default {
 	},
 
   // *----------------------- L i f e   c i r c l e ---------------------------------------------
-  created() {},
+//   created() {},
 
-  mounted() {
-		this.number = this.format(this.value);
+  created() {
+		// this.number = this.format(this.value);
+		this.content = this.value
 	},
 
   // *----------------------- M e t h o d s -----------------------------------------------------

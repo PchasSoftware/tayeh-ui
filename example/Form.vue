@@ -77,7 +77,7 @@ export default {
     return {
       variable: 'default value',
       numberVariable: 0,
-      currencyModel: 0,
+      currencyModel: 1000,
       words: {
         cssDirection: {fa: 'rtl', en: 'ltr'},
         cssAlign: {fa: 'right', en: 'left'},
