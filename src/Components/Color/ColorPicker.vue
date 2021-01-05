@@ -69,7 +69,7 @@
     hex: ['hex']
   })
   export default {
-    name: 'color-picker',
+    name: 'ty-color-picker',
     props: {
       color: {
         type: String,
@@ -241,6 +241,7 @@
           alpha === 1 ? hex.slice(0, 7) : hex
         )
         this.$emit('input', hexVal)
+        this.$emit('change', hexVal)
         // this ensures that every component in
         // our model is up to date
         const [r, g, b] = rgba

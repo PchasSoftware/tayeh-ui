@@ -126,7 +126,14 @@
 
     <section id="color-picker">
       <div class="component">
-        <color-picker v-model="color"/>
+        <ty-color-picker v-model="color"/>
+        {{color}}
+      </div>
+    </section>
+
+    <section id="color-circle">
+      <div class="component">
+        <color-circle v-model="color" :editable="true"/>
         {{color}}
       </div>
     </section>
@@ -146,7 +153,7 @@ export default {
     return {
       dialogVisible: false,
       variable: null,
-      color: null,
+      color: '#129',
       words: {
         cssDirection: {fa: 'rtl', en: 'ltr'},
         cssAlign: {fa: 'right', en: 'left'},

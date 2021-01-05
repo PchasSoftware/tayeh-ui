@@ -26,6 +26,7 @@ import Tab from './Components/Tabs/Tab.vue'
 import Loading from './Components/Loading/Loading'
 import Upload from './Components/Upload/ImageUploader.vue'
 import ColorPicker from './Components/Color/ColorPicker.vue'
+import ColorCircle from './Components/Color/ColorCircle.vue'
 import './style/index.scss'
 import currency from './Filters/CurrencyFilter'
 
@@ -56,7 +57,8 @@ const components = [
 	Tabs,
 	Tab,
 	Upload,
-	ColorPicker
+	ColorPicker,
+	ColorCircle
 ]
 
 const filters = [
@@ -109,6 +111,7 @@ export default {
 	Loading,
 	Upload,
 	ColorPicker,
+	ColorCircle,
 	//filters
 	currency
 }

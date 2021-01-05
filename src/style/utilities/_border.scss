@@ -1,0 +1,9 @@
+$percent: '%';
+@for $radius from 1 to 51 {
+	.brdr-radius-#{$radius}-pc {
+		border-radius: #{$radius}#{$percent};
+	}
+	.brdr-radius-#{$radius}-px {
+		border-radius: #{$radius}px;
+	}
+}

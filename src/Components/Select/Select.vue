@@ -210,5 +210,8 @@
 			this.resetSearch();
 			window.addEventListener('scroll', this.handlePageScroll);
 		},
+		beforeDestroy() {
+			window.removeEventListener('scroll', this.handlePageScroll)
+		}
 	}
 </script>
