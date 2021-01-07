@@ -1,7 +1,7 @@
 <template>
 	<div :class="['ty-select', size]">
 		<div class="ty-select__search" ref="select">
-			<ty-input v-if="select&&!editing"  ref="input" :disabled="disabled" v-model="search_content" :label="label" :required="required"
+			<ty-input v-if="searchable&&!editing"  ref="input" :disabled="disabled" v-model="search_content" :label="label" :required="required"
 				:dir="dir" :size="size" :placeholder="placeholder" @focus="handleFocus" @blur="blur"
 				@keydown.down.stop="nextOption" @keydown.up.stop="prevOption" @keydown.enter="selectByKeboard"
 				@keydown.esc.stop.prevent="handleClose" @keydown.tab="visible = false" @input="handleChange">
@@ -257,7 +257,7 @@
 				this.setDropdownPostion()
 			},
 			handleDelete (item, index) {
-				this.$emit('delete', {item, index})
+				this.$emit('delete', item.value)
 				this.options.splice(index, 1);
 				this.handleChange()
 			},
