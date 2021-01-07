@@ -1,7 +1,7 @@
 <template>
 	<div :class="['ty-select', size]">
 		<div class="ty-select__search" ref="select">
-			<ty-input v-if="searchable" ref="input" :disabled="disabled" v-model="search_content" :label="label" :required="required"
+			<ty-input v-if="select&&!editing"  ref="input" :disabled="disabled" v-model="search_content" :label="label" :required="required"
 				:dir="dir" :size="size" :placeholder="placeholder" @focus="handleFocus" @blur="blur"
 				@keydown.down.stop="nextOption" @keydown.up.stop="prevOption" @keydown.enter="selectByKeboard"
 				@keydown.esc.stop.prevent="handleClose" @keydown.tab="visible = false" @input="handleChange">
@@ -10,7 +10,15 @@
 						:class="[visible?'ty-icon-arrow-drop-up':'ty-icon-arrow-drop-down']" />
 				</div>
 			</ty-input>
-			<ty-input class="nocaret" v-else ref="input" :value="search_content" :disabled="disabled" :label="label" :required="required"
+			<div v-else-if="editing">
+				<ty-input placeholder="ویرایش" v-model="edited"
+				@keydown.enter="handleEdit"
+				@keydown.esc.stop.prevent="editing=false">
+					<ty-button @click="editing=false" size="small" color="info" slot="suffix">لغو</ty-button>
+					<ty-button @click="handleEdit" size="small" slot="suffix">ذخیره</ty-button>
+				</ty-input>
+			</div>
+			<ty-input v-else class="nocaret" ref="input" :disabled="disabled" :value="search_content" :label="label" :required="required"
 				:dir="dir" :size="size" :placeholder="placeholder" @focus="handleFocus" @blur="blur"
 				@keydown.down.stop="nextOption" @keydown.up.stop="prevOption" @keydown.enter="selectByKeboard"
 				@keydown.esc.stop.prevent="handleClose" @keydown.tab="visible = false" @input="handleChange">
@@ -19,6 +27,7 @@
 						:class="[visible?'ty-icon-arrow-drop-up':'ty-icon-arrow-drop-down']" />
 				</div>
 			</ty-input>
+
 			<!-- <div class="ty-input-wrapper" :class="{disabled}">
     		  <input
 			  	:disabled="disabled"
@@ -42,7 +51,11 @@
 			</div>
 			<div @click="handleOptionClick(item)" v-for="(item, i) in search_results" :key="i" class="ty-dropdown-item ty-flex ty-space-between"
 				:class="{'ty-dropdown-item-hovered': hovered_option==i}">
-				{{item.label||item.value||item.name}} <ty-button color="danger" v-if="showDelete" @click="handleDelete(item, i)" size="small" icon="ty-icon-delete"/>
+				{{item.label||item.value||item.name}}
+				<span>
+				<ty-button height="24px" color="primary" v-if="showEdit" @click="makeEditable(item)" size="small" icon="ty-icon-edit"/>
+				<ty-button height="24px" color="danger" v-if="showDelete" @click="handleDelete(item, i)" size="small" icon="ty-icon-delete"/>
+				</span>
 			</div>
 		</div>
 		<div class="ty-destroy">
@@ -100,6 +113,14 @@
 			permitCreate: {
 				type: Boolean,
 				default: false
+			},
+			showEdit: {
+				type: Boolean,
+				default: false
+			},
+			select: {
+				type: Boolean,
+				default: true
 			}
 		},
 
@@ -114,13 +135,19 @@
 
 		// *----------------------- D a t a -----------------------------------------------------------
 		data() {
+			const {
+				select
+			} = this;
 			return {
 				options: [],
 				content: null,
+				selected_option: null,
+				edited: null,
+				editing: false,
 				search_content: '',
 				search_results: [],
 				visible: false,
-				hovered_option: 0,
+				hovered_option: select?0:null,
 				dropdown_position: {
 					top: 'auto',
 					left: 'auto',
@@ -148,20 +175,24 @@
 			},
 			handleOptionClick(item) {
 				this.content = item.value
+				this.selected_option = item;
 				this.search_content = item.label;
 				this.$emit('input', item.value);
 				this.setNativeInputValue();
 			},
-			async handleChange(value) {
-				this.hovered_option = 0;
+			handleChange(value) {
+				this.hovered_option = this.select?0:null;
 				this.search_results = [];
+				this.search()
+				this.setDropdownPostion()
+				this.visible = true;
+			},
+			async search () {
 				if (this.lazyload) {
 					this.search_results = await this.lazyload(this.search_content)
 				} else {
 					this.defaultSearchFunction()
 				}
-				this.setDropdownPostion()
-				this.visible = true;
 			},
 			defaultSearchFunction() {
 				this.search_results = this.options.filter(this.searchFilter)
@@ -237,6 +268,16 @@
 				this.handleOptionClick(option)
 				this.search_content = '';
 				// this.handleChange()
+			},
+			makeEditable (item) {
+				this.selected_option = item;
+				this.edited = item.value;
+				this.editing = true;
+				item.edit = true;
+			},
+			handleEdit () {
+				this.$emit('edit', {oldValue: this.selected_option.value, newValue: this.edited})
+				this.editing = false;
 			}
 		},
 

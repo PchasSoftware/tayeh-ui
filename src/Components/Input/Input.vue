@@ -197,7 +197,12 @@ export default {
     keypress (event) {
       this.$emit('keypress', event);
     },
-
+    focus (options=null) {
+      this.$refs.input.focus(options)
+    },
+    blur () {
+      this.$refs.input.blur()
+    },
     setNativeInputValue() {
       this.$refs.input.value = this.value || null;
     }

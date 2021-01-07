@@ -73,7 +73,7 @@
         </ty-select>
         {{variable}}
         <ty-select :disabled="true" :options="[{label: 'test', value: 'test'}, {label: 'cool', value: 'cool'}]"/>
-        <ty-select show-delete permit-create @create="handleCreate">
+        <ty-select :select="false" placeholder="گزینه ها" show-delete show-edit permit-create @create="handleCreate">
           <ty-option label="1" value="1"/>
         </ty-select>
       </div>
