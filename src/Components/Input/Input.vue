@@ -189,7 +189,7 @@ export default {
       this.$emit('keypress', event);
     },
     checkValue (value) {
-      if (typeof this.errorFunction === 'function') return this.errorFunction(value);
+      if (typeof this.errorFunction == 'function') this.error = this.errorFunction(value);
       else {
         this.error = this.required && typeof value === 'undefined'||(''+value).length==0
       }
