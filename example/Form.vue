@@ -10,7 +10,7 @@
         <ty-input type="text" label="لیبل نمونه" :placeholder="translate('placeholder')">
           <div slot="suffix">تومان</div>
           </ty-input>
-          <ty-input size="small" label="اجباری" :required="true" v-model="variable" type="text" :placeholder="translate('placeholder')" icon="ty-icon-search" :border-bottom="true"/>
+          <ty-input checkMounted size="small" label="اجباری" :required="true" v-model="variable" type="text" :placeholder="translate('placeholder')" icon="ty-icon-search" :border-bottom="true"/>
           <ty-input  size="large"  type="text" :placeholder="translate('placeholder')" icon="ty-icon-search" :clear="true"/>
           <ty-input :disabled="true" type="text" :placeholder="translate('placeholder')" icon="ty-icon-search" :clear="true"/>
           <ty-card>
@@ -87,7 +87,7 @@ export default {
   },
   data () {
     return {
-      variable: 'default value',
+      variable: '',
       numberVariable: 0,
       currencyModel: 1000,
       words: {

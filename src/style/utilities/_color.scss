@@ -30,7 +30,7 @@ $colors: (
 		color: $text-color;
 	}
 	.ty-border-color-#{$name} {
-		border-color: $color;
+		border-color: $color !important;
 	}
 }
 

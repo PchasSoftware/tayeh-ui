@@ -2,7 +2,7 @@
   <div :class="['ty-input', inputSize ? 'el-input--' + inputSize : '']" :style="{width}">
     <p v-if="label" :class="['ty-input-label', 'mb-1', size||'', error?'ty-color-danger': '']">{{label}} <span class="ty-color-danger">{{required?'*':''}}</span></p>
     <div class="ty-flex ty-flex-wrap">
-      <div ref="input-wrapper" :class="['ty-input-wrapper', size, clear?'--border-clear':'', !clear&&borderBottom?'--border-bottom':'', outline?'ty-input-focus':'', disabled?'disabled':'', error?'ty-color-danger': '']">
+      <div ref="input-wrapper" :class="['ty-input-wrapper', size, clear?'--border-clear':'', !clear&&borderBottom?'--border-bottom':'', outline?'ty-input-focus':'', disabled?'disabled':'', error?'ty-color-danger ty-border-color-danger': '']">
         <slot name="prefix">
         <div v-if="icon" :class="['prefix', type==='textarea'?'prefix__textarea':'']">
           <i :class="['ty-icon', icon]"/>
@@ -122,15 +122,17 @@ export default {
     required: {
       type: Boolean,
       default: false
-	},
-	rows: {
-		type: [Number, String],
-		default: 4
-	},
-	cols: {
-		type: [Number, String],
-		required: false
-	},
+    },
+    errorFunction:  [Function],
+    checkMounted: [Boolean],
+	  rows: {
+	  	type: [Number, String],
+	  	default: 4
+	  },
+	  cols: {
+	  	type: [Number, String],
+	  	required: false
+	  },
   },
 
   // *----------------------- D a t a -----------------------------------------------------------
@@ -155,6 +157,7 @@ export default {
   // *----------------------- L i f e   c i r c l e ---------------------------------------------
   mounted() {
     this.setNativeInputValue();
+    if (this.checkMounted) this.checkValue(this.value)
   },
 
   // *----------------------- M e t h o d s -----------------------------------------------------
@@ -163,9 +166,10 @@ export default {
       this.$emit('input', event.target.value);
       this.$nextTick(this.setNativeInputValue);
     },
-    handleChange() {
+    handleChange(event) {
+      console.log(event.target.value)
       this.$emit('change', event.target.value);
-      this.error = this.required && !event.target.value
+      this.checkValue(event.target.value)
     },
     handleFocus (event) {
       this.outline = true;
@@ -184,13 +188,16 @@ export default {
     keypress (event) {
       this.$emit('keypress', event);
     },
+    checkValue (value) {
+      if (typeof this.errorFunction === 'function') return this.errorFunction(value);
+      else {
+        this.error = this.required && typeof value === 'undefined'||(''+value).length==0
+      }
+    },
     setNativeInputValue() {
       this.$refs.input.value = this.value || null;
     }
     
   },
-
-  // *----------------------- W a t c h ---------------------------------------------------------
-  watch: {}
 }
 </script>
