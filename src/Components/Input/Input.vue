@@ -123,6 +123,7 @@ export default {
       type: Boolean,
       default: false
     },
+    isError: [Boolean],
     errorFunction:  [Function],
     checkMounted: [Boolean],
 	  rows: {
@@ -140,7 +141,7 @@ export default {
     return {
       content: null,
       outline: false,
-      error: false
+      launched: false,
     }
   },
 
@@ -151,13 +152,20 @@ export default {
     },
     hasButton () {
       return this.$slots.button;
+    },
+    error() {
+      if (typeof this.errorFunction == 'function') this.error = this.errorFunction(this.value)
+      return (
+        typeof this.isError !== 'undefined' && this.isError
+        )||(
+          this.required && (this.launched||this.checkMounted) && (this.value==null || (''+this.value).length===0)
+        )
     }
   },
 
   // *----------------------- L i f e   c i r c l e ---------------------------------------------
   mounted() {
     this.setNativeInputValue();
-    if (this.checkMounted) this.checkValue(this.value)
   },
 
   // *----------------------- M e t h o d s -----------------------------------------------------
@@ -165,14 +173,16 @@ export default {
     handleInput(event) {
       this.$emit('input', event.target.value);
       this.$nextTick(this.setNativeInputValue);
+      this.launched = true;
     },
     handleChange(event) {
       this.$emit('change', event.target.value);
-      this.checkValue(event.target.value)
+      this.launched = true;
     },
     handleFocus (event) {
       this.outline = true;
       this.$emit('focus', event);
+      this.launched = true;
     },
     handleBlur (event) {
       this.outline = false;
@@ -187,12 +197,7 @@ export default {
     keypress (event) {
       this.$emit('keypress', event);
     },
-    checkValue (value) {
-      if (typeof this.errorFunction == 'function') this.error = this.errorFunction(value);
-      else {
-        this.error = this.required && typeof value === 'undefined'||value==null||(''+value).length==0
-      }
-    },
+
     setNativeInputValue() {
       this.$refs.input.value = this.value || null;
     }

@@ -106,6 +106,9 @@
 		computed: {
 			show_new() {
 				return this.searchable&&this.permitCreate&&!this.disabled&&this.search_content!==null&&(''+this.search_content).length>0&&this.options.findIndex(x => x.value === this.search_content)===-1
+			},
+			error() {
+				return this.required&(this.content===null||(''+this.content).length===0)
 			}
 		},
 
@@ -118,7 +121,6 @@
 				search_results: [],
 				visible: false,
 				hovered_option: 0,
-				error: false,
 				dropdown_position: {
 					top: 'auto',
 					left: 'auto',
@@ -149,9 +151,8 @@
 				this.search_content = item.label;
 				this.$emit('input', item.value);
 				this.setNativeInputValue();
-				this.error = this.required && !this.content;
 			},
-			async handleChange() {
+			async handleChange(value) {
 				this.hovered_option = 0;
 				this.search_results = [];
 				if (this.lazyload) {
@@ -178,15 +179,13 @@
 			blur() {
 				setTimeout(() => {
 					this.visible = false;
-				}, 100);
-				this.error = this.required && !this.content;
-				if (this.content) this.resetSearch();
+					if (this.content) this.resetSearch();
+				}, 150);
 				// this.$refs.reference.blur();
 			},
 			handleClose() {
 				this.resetSearch();
 				this.visible = false;
-				this.error = this.required && !this.content;
 			},
 			selectByKeboard() {
 				if (this.search_results.length >= this.hovered_option) this.handleOptionClick(this.search_results[this
@@ -228,6 +227,8 @@
 			},
 			handleDelete (item, index) {
 				this.$emit('delete', {item, index})
+				this.options.splice(index, 1);
+				this.handleChange()
 			},
 			handleCreateNew() {
 				this.$emit('create', this.search_content);
@@ -235,7 +236,7 @@
 				this.options.push(option);
 				this.handleOptionClick(option)
 				this.search_content = '';
-				this.handleChange()
+				// this.handleChange()
 			}
 		},
 
