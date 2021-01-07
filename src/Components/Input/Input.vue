@@ -191,7 +191,7 @@ export default {
     checkValue (value) {
       if (typeof this.errorFunction == 'function') this.error = this.errorFunction(value);
       else {
-        this.error = this.required && typeof value === 'undefined'||(''+value).length==0
+        this.error = this.required && typeof value === 'undefined'||value==null||(''+value).length==0
       }
     },
     setNativeInputValue() {

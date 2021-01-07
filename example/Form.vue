@@ -89,7 +89,7 @@ export default {
   },
   data () {
     return {
-      variable: '',
+      variable: null,
       numberVariable: 0,
       currencyModel: 1000,
       words: {
