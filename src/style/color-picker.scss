@@ -180,10 +180,10 @@
 }
 
 .ty-color-picker-fixed {
-	position: fixed;
+	position: absolute;
 }
 .ty-color-circle {
 	.cricle {
-		@include ty-boxshadow;
+		box-shadow: 0 0 2px #aaa ;
 	}
 }

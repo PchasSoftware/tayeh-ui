@@ -71,7 +71,7 @@
   export default {
     name: 'ty-color-picker',
     props: {
-      color: {
+      value: {
         type: String,
         default: '#ff0000'
       }
@@ -81,7 +81,7 @@
     },
     data() {
       const {
-        color
+        value
       } = this
       const commonNumber = {
         type: 'number',
@@ -92,7 +92,7 @@
         maxlength: 4
       }
       return {
-        ...this.digestProp(color),
+        ...this.digestProp(value),
         currentMode: 'hex',
         colorModes,
         colorModel: {
@@ -107,7 +107,7 @@
       }
     },
     watch: {
-      color: {
+      value: {
         immediate: true,
         handler(newVal, oldVal) {
           if (newVal !== oldVal) {

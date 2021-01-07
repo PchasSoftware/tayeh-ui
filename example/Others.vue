@@ -102,6 +102,7 @@
           <ty-option label="تست" value="Test"/>
           <ty-option label="دومی" value="two"/>
         </ty-select>
+        <ty-color-circle v-model="color" editable/>
             df
             sadfge</span>
           <span slot="footer" class="dialog-footer">
