@@ -24,5 +24,8 @@
 	.ty-dropdown-item:hover {
 	  background-color: $light;
 	}
+	.ty-dropdown-item-new {
+		background-color: lighten($success, 45%);
+	}
   }
   

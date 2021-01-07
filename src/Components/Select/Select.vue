@@ -1,7 +1,16 @@
 <template>
 	<div :class="['ty-select', size]">
 		<div class="ty-select__search" ref="select">
-			<ty-input ref="input" :disabled="disabled" v-model="search_content" :label="label" :required="required"
+			<ty-input v-if="searchable" ref="input" :disabled="disabled" v-model="search_content" :label="label" :required="required"
+				:dir="dir" :size="size" :placeholder="placeholder" @focus="handleFocus" @blur="blur"
+				@keydown.down.stop="nextOption" @keydown.up.stop="prevOption" @keydown.enter="selectByKeboard"
+				@keydown.esc.stop.prevent="handleClose" @keydown.tab="visible = false" @input="handleChange">
+				<div slot="suffix" @click="handleButtonClick">
+					<i class="ty-icon ty-icon-small ty-color-dark"
+						:class="[visible?'ty-icon-arrow-drop-up':'ty-icon-arrow-drop-down']" />
+				</div>
+			</ty-input>
+			<ty-input class="nocaret" v-else ref="input" :value="search_content" :disabled="disabled" :label="label" :required="required"
 				:dir="dir" :size="size" :placeholder="placeholder" @focus="handleFocus" @blur="blur"
 				@keydown.down.stop="nextOption" @keydown.up.stop="prevOption" @keydown.enter="selectByKeboard"
 				@keydown.esc.stop.prevent="handleClose" @keydown.tab="visible = false" @input="handleChange">
@@ -28,9 +37,12 @@
     		</div> -->
 		</div>
 		<div v-show="visible" class="ty-select__dropdown" :style="dropdown_position" ref="dropdown">
-			<div @click="handleOptionClick(item)" v-for="(item, i) in search_results" :key="i" class="ty-dropdown-item"
+			<div  @click="handleCreateNew" v-if="show_new" class="ty-dropdown-item ty-flex ty-space-between ty-dropdown-item-new">
+				{{search_content}} <i class="ty-icon ty-icon-sort my-auto ty-color-gray"/>
+			</div>
+			<div @click="handleOptionClick(item)" v-for="(item, i) in search_results" :key="i" class="ty-dropdown-item ty-flex ty-space-between"
 				:class="{'ty-dropdown-item-hovered': hovered_option==i}">
-				{{item.label||item.name}}
+				{{item.label||item.value||item.name}} <ty-button color="danger" v-if="showDelete" @click="handleDelete(item, i)" size="small" icon="ty-icon-delete"/>
 			</div>
 		</div>
 		<div class="ty-destroy">
@@ -42,7 +54,6 @@
 <script>
 	export default {
 		name: 'TySelect',
-
 		// *----------------------- P r o p s ----------------------------------------------------------
 		props: {
 			value: {
@@ -77,6 +88,24 @@
 			required: {
 				type: Boolean,
 				default: false
+			},
+			searchable: {
+				type: Boolean,
+				default: true
+			},
+			showDelete: {
+				type: Boolean,
+				default: false
+			},
+			permitCreate: {
+				type: Boolean,
+				default: false
+			}
+		},
+
+		computed: {
+			show_new() {
+				return this.searchable&&this.permitCreate&&!this.disabled&&this.search_content!==null&&(''+this.search_content).length>0&&this.options.findIndex(x => x.value === this.search_content)===-1
 			}
 		},
 
@@ -122,7 +151,7 @@
 				this.setNativeInputValue();
 				this.error = this.required && !this.content;
 			},
-			async handleChange(event) {
+			async handleChange() {
 				this.hovered_option = 0;
 				this.search_results = [];
 				if (this.lazyload) {
@@ -196,6 +225,17 @@
 			},
 			handlePageScroll() {
 				this.setDropdownPostion()
+			},
+			handleDelete (item, index) {
+				this.$emit('delete', {item, index})
+			},
+			handleCreateNew() {
+				this.$emit('create', this.search_content);
+				let option = {value: this.search_content, label: this.search_content, isOption: true}
+				this.options.push(option);
+				this.handleOptionClick(option)
+				this.search_content = '';
+				this.handleChange()
 			}
 		},
 

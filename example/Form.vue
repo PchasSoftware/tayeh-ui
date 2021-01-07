@@ -8,7 +8,7 @@
         <h6>{{translate('baseInput')}}</h6>
         <code class="example">{{examples['basicInput']}}</code>
         <ty-editable-text style="min-width: 200px" v-if="false" v-model="variable"/>
-				<ty-input v-else v-model="variable" required check-mounted :error-function="error_function"/>
+				<ty-input v-else v-model="variable" required check-mounted/>
         <ty-input type="text" label="لیبل نمونه" :placeholder="translate('placeholder')">
           <div slot="suffix">تومان</div>
           </ty-input>
@@ -73,6 +73,9 @@
         </ty-select>
         {{variable}}
         <ty-select :disabled="true" :options="[{label: 'test', value: 'test'}, {label: 'cool', value: 'cool'}]"/>
+        <ty-select show-delete permit-create @create="handleCreate">
+          <ty-option label="1" value="1"/>
+        </ty-select>
       </div>
     </section>
 </div>
@@ -115,6 +118,9 @@ export default {
     translate(text) {
       return this.words[''+text][this.lang];
     },
+    handleCreate (e) {
+      console.log('create', e);
+    }
   }
 }
 </script>

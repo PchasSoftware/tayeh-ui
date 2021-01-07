@@ -167,7 +167,6 @@ export default {
       this.$nextTick(this.setNativeInputValue);
     },
     handleChange(event) {
-      console.log(event.target.value)
       this.$emit('change', event.target.value);
       this.checkValue(event.target.value)
     },

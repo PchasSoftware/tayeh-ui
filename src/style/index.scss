@@ -28,3 +28,11 @@
 body.--hide-overflow {
   overflow: hidden !important;
 }
+
+.nocursor {
+  cursor: none;
+}
+
+.nocaret {
+  caret-color: transparent;
+}
