@@ -1,12 +1,14 @@
 <template>
+<keep-alive>
     <section v-show="isActive"
              :aria-hidden="! isActive"
              class="tabs-component-panel"
              :id="id"
              role="tabpanel"
     >
-        <slot v-if="visible" />
+        <slot v-if="!disabled" />
     </section>
+</keep-alive>
 </template>
 
 <script>
@@ -34,14 +36,6 @@
                 }
                 return '#' + this.id;
             },
-            visible() {
-                return !this.disabled&&this.isLoaded
-            }
         },
-        watch: {
-            isActive() {
-                this.isLoaded = true;
-            }
-        }
     };
 </script>

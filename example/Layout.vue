@@ -53,7 +53,12 @@
             This is the content of the first ty-tab
         </ty-tab>
         <ty-tab id="2" name="Second ty-tab">
-            This is the content of the second ty-tab
+            This is the content of the second ty-tab {{variable}}
+            <ty-select v-model="variable">
+              <ty-option value="1"/>
+              <ty-option value="2"/>
+              <ty-option value="3"/>
+            </ty-select>
         </ty-tab>
         <ty-tab id="3" name="Disabled ty-tab" :disabled="true">
             This content will be unavailable while :disabled prop set to true
@@ -79,6 +84,7 @@ export default {
   data () {
     return {
       activeName: null,
+      variable: 1,
       words: {
         cssDirection: {fa: 'rtl', en: 'ltr'},
         cssAlign: {fa: 'right', en: 'left'},
