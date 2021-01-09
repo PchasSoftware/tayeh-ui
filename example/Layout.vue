@@ -55,8 +55,8 @@
         <ty-tab id="2" name="Second ty-tab">
             This is the content of the second ty-tab
         </ty-tab>
-        <ty-tab id="3" name="Disabled ty-tab" :is-disabled="true">
-            This content will be unavailable while :is-disabled prop set to true
+        <ty-tab id="3" name="Disabled ty-tab" :disabled="true">
+            This content will be unavailable while :disabled prop set to true
         </ty-tab>
         <ty-tab id="4" name="Custom fragment">
             The fragment that is appended to the url can be customized
