@@ -5,7 +5,7 @@
              :id="id"
              role="tabpanel"
     >
-        <slot />
+        <slot v-if="visible" />
     </section>
 </template>
 
@@ -17,7 +17,7 @@
             name: { required: true },
             prefix: { default: '' },
             suffix: { default: '' },
-            isDisabled:{ default: false },
+            disabled:{ default: false },
         },
         data: () => ({
             isActive: false,
@@ -28,11 +28,14 @@
                 return this.prefix + this.name + this.suffix;
             },
             hash() {
-                if (this.isDisabled) {
+                if (this.disabled) {
                     return '#';
                 }
                 return '#' + this.id;
             },
+            visible() {
+                return !this.disabled&&this.isActive
+            }
         },
     };
 </script>

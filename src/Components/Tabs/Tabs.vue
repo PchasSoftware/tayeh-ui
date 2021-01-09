@@ -4,7 +4,7 @@
             <li
                 v-for="(tab, i) in tabs"
                 :key="i"
-                :class="{ 'fw-bolder': tab.isActive, 'is-active': tab.isActive, 'is-disabled': tab.isDisabled }"
+                :class="{ 'fw-bolder': tab.isActive, 'is-active': tab.isActive, 'is-disabled': tab.disabled }"
                 class="ty-tab-item pb-2"
                 role="presentation"
                 v-show="tab.isVisible"
@@ -88,7 +88,7 @@
                 if (! selectedTab) {
                     return;
                 }
-                if (selectedTab.isDisabled) {
+                if (selectedTab.disabled) {
                     event.preventDefault();
                     return;
                 }
