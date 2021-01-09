@@ -81,8 +81,9 @@ export default {
   methods: {
 	  hideOverflow() {
 		  const el = document.body;
-		  el.classList.add('--hide-overflow')
-	  },
+      el.classList.add('--hide-overflow')
+      window.addEventListener('keyup', this.handleKeyup);
+    },
 	  showOverflow() {
 		  const el = document.body;
 		  el.classList.remove('--hide-overflow')
@@ -92,6 +93,7 @@ export default {
     },
     handleClose () {
       if (!this.canExit) return;
+      window.removeEventListener('keyup', this.handleKeyup);
       if (typeof this.beforeClose === 'function') {
         this.beforeClose(this.hide)
       } else {
@@ -100,7 +102,15 @@ export default {
     },
     hide() {
       this.$emit('update:visible', false)
+    },
+    handleKeyup(e) {
+       if(e.key === "Escape") {
+        this.handleClose()
+      }
     }
+  },
+  beforeDestroy() {
+    window.removeEventListener('keyup', this.handleKeyup);
   },
 
   // *----------------------- W a t c h ---------------------------------------------------------
