@@ -22,6 +22,7 @@
         data: () => ({
             isActive: false,
             isVisible: true,
+            isLoaded: false
         }),
         computed: {
             header() {
@@ -34,8 +35,13 @@
                 return '#' + this.id;
             },
             visible() {
-                return !this.disabled&&this.isActive
+                return !this.disabled&&this.isLoaded
             }
         },
+        watch: {
+            isActive() {
+                this.isLoaded = true;
+            }
+        }
     };
 </script>

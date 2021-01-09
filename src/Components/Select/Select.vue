@@ -178,6 +178,7 @@
 				this.selected_option = item;
 				this.search_content = item.label;
 				this.$emit('input', item.value);
+				this.$emit('change', item.value);
 				this.setNativeInputValue();
 			},
 			handleChange(value) {
