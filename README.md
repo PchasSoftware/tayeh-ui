@@ -53,7 +53,7 @@
 
 # installing package
 
-npm install --save @tayeh/vue-components
+npm install --save tayeh-ui
 
 ```
 
@@ -69,7 +69,7 @@ import  Vue  from  'vue';
 
 import  App  from  './App'
 
-import  TayehUi  from  '@tayeh/vue-components'
+import  TayehUi  from  'tayeh-ui'
 
   
 

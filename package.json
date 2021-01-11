@@ -1,5 +1,5 @@
 {
-  "name": "@tayeh/vue-components",
+  "name": "tayeh-ui",
   "version": "1.1.27-alpha",
   "author": "Aref Akbari",
   "license": "MIT",
@@ -28,6 +28,10 @@
   "publishConfig": {
     "registry": "http://registry.npmjs.org",
     "access": "public"
+  },
+  "homepage": "https://github.com/PchasSoftware/tayeh-ui",
+  "repository": {
+    "url": "https://github.com/PchasSoftware/tayeh-ui"
   },
   "devDependencies": {
     "@vue/babel-helper-vue-jsx-merge-props": "^1.2.1",
