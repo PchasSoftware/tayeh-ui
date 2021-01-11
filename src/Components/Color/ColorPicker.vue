@@ -56,8 +56,8 @@
 </template>
 
 <script>
-  import clamp from 'lodash/clamp'
-  import debounce from 'lodash/debounce'
+  import clamp from '../../utils/clamp'
+  import debounce from '../../utils/debounce'
   import objectAssign from 'object-assign'
   import parse2rgb from 'pure-color/parse'
   import rgb2hsv from 'pure-color/convert/rgb2hsv'

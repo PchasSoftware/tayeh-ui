@@ -1,5 +1,5 @@
 <template>
-    <div class="ty-table">
+    <div :class="['ty-table', 'fs-'+fontSize, 'fw-'+fontWeight]">
         <div v-if="showFilter && filterableColumnExists" class="ty-table__filter">
             <input
                     :class="fullFilterInputClass"
@@ -96,6 +96,8 @@
             filterInputClass: { default: () => settings.filterInputClass },
             filterPlaceholder: { default: () => settings.filterPlaceholder },
             filterNoResults: { default: () => settings.filterNoResults },
+            fontSize: {default: '14'},
+            fontWeight: {default: '400'}
         },
 
         data: () => ({
@@ -264,7 +266,7 @@
             },
 
             async fetchServerData() {
-                const page = this.pagination && this.pagination.currentPage || 1;
+                const page = this.pagination && this.pagination.currentPage || 0;
 
                 const response = await this.data({
                     filter: this.filter,

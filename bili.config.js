@@ -18,9 +18,10 @@ module.exports = {
 
   postcss: {
     extract: true,
+    minify: true,
     extensions: ['.css', '.scss']
   },
 
-  format: ['cjs', 'umd', 'es'],
+  format: ['cjs-min', 'umd-min', 'es-min'],
   filename: 'index[suffix].js'
 }

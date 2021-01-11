@@ -1,10 +1,10 @@
 {
   "name": "@tayeh/vue-components",
-  "version": "1.1.22-alpha",
+  "version": "1.1.24-alpha",
   "author": "Aref Akbari",
   "license": "MIT",
   "description": "Free and Open source Ui components, Ultimatly lightweight.",
-  "main": "dist/index.js",
+  "main": "dist/index.min.js",
   "private": false,
   "files": [
     "dist/**/*",
