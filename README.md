@@ -1,6 +1,6 @@
 # tayeh-ui
 [![Build Status](https://ops.pchas.ir/job/tayeh-vue-ui/badge/icon)](https://ops.pchas.ir/job/tayeh-vue-ui/)
-[![NPM version](https://img.shields.io/npm/v/@tayeh/vue-components.svg?style=flat)](https://www.npmjs.org/package/@tayeh/vue-components)
+[![NPM version](https://img.shields.io/npm/v/tayeh-ui.svg?style=flat)](https://www.npmjs.org/package/tayeh-ui)
 
 
 
