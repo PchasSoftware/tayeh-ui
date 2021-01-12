@@ -49,11 +49,6 @@
 .ty-hide {
 	opacity: 0;
 }
-@for $percentage from 1 to 101 {
-	.ty-opacity-#{$percentage} {
-		opacity: #{$percentage}#{'%'};
-	}
-}
 .ty-relative {
 	position: relative;
 }
