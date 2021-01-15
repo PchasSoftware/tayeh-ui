@@ -12,6 +12,7 @@ $colors: (
 	"gray" $gray $dark $light,
 	"dark-gray" $dark-gray $dark $light,
 	"white" $white $light $light,
+	"blue" $blue $light $light,
 );
 
 @each $name, $color, $oposite, $text-color in $colors {

@@ -48,8 +48,8 @@
 		<div class="component">
 		<h4>{{translate('tabs')}}</h4>
         	<code class="example"><pre>{{examples['tabs']}}</pre></code>
-		 <ty-tabs :options="{ useUrlFragment: false }">
-        <ty-tab id="1" name="First ty-tab">
+		 <ty-tabs :options="{ useUrlFragment: false }" opacity=".5">
+        <ty-tab border-color="success" id="1" name="First ty-tab">
             This is the content of the first ty-tab
         </ty-tab>
         <ty-tab id="2" name="Second ty-tab">

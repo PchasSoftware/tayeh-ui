@@ -20,6 +20,7 @@
             prefix: { default: '' },
             suffix: { default: '' },
             disabled:{ default: false },
+            borderColor: {type: String, default: 'primary'},
         },
         data: () => ({
             isActive: false,

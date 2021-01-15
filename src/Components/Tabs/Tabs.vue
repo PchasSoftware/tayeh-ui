@@ -4,7 +4,8 @@
             <li
                 v-for="(tab, i) in tabs"
                 :key="i"
-                :class="{ 'fw-bolder': tab.isActive, 'is-active': tab.isActive, 'is-disabled': tab.disabled }"
+                :class="{ 'fw-bolder': tab.isActive, 'is-active': tab.isActive, 'is-disabled': tab.disabled, [`ty-border-color-${tab.borderColor}`]: tab.isActive }"
+                :style="{opacity: tab.isActive?1:opacity}"
                 class="ty-tab-item pb-2"
                 role="presentation"
                 v-show="tab.isVisible"
@@ -32,6 +33,10 @@
         props: {
             cacheLifetime: {
                 default: 5,
+            },
+            opacity: {
+                type: String,
+                default: 1 
             },
             options: {
                 type: Object,
