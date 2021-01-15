@@ -78,6 +78,14 @@
         </ty-select>
       </div>
     </section>
+
+    <section id="switch">
+      <h4>{{translate('switch')}}</h4>
+      سوییتج
+      <div class="component">
+        <ty-switch v-model="variable" inactive-color="notify" active-color="success"/>
+      </div>
+    </section>
 </div>
 </template>
 
@@ -106,6 +114,7 @@ export default {
         editableNumber: {fa: 'عدد قابل ویرایش', en: 'Editable Number'},
         placeholder: {fa: 'متن جایگزین', en: 'Placeholder'},
         selects: {fa: 'انتخاب', en: 'Selects'},
+        switch: {fa: 'سویتچ', en: 'Switch'},
         basicSelect: {fa: 'انتخاب ساده', en: 'Basic Select'},
       },
       examples: {
