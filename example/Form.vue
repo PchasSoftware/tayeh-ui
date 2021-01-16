@@ -83,7 +83,8 @@
       <h4>{{translate('switch')}}</h4>
       سوییتج
       <div class="component">
-        <ty-switch v-model="variable" inactive-color="notify" active-color="success"/>
+        <ty-switch v-model="variable"/>
+        <ty-switch v-model="variable"  theme="slim"/>
       </div>
     </section>
 </div>

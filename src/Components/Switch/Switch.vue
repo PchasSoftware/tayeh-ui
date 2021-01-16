@@ -1,6 +1,6 @@
 <template>
-    <label :class="classObject" :style="{width}">
-        <span class="vue-switcher__label" v-if="shouldShowLabel">
+    <label :class="classObject">
+        <span class="ty-switch__label" v-if="shouldShowLabel">
             <span v-if="label" v-text="label"></span>
             <span v-if="!label && value" v-text="textEnabled"></span>
             <span v-if="!label && !value" v-text="textDisabled"></span>
@@ -8,7 +8,7 @@
 
         <input type="checkbox" :disabled="disabled" @change="trigger" :checked="value">
 
-        <div></div>
+        <div :style="{width}"></div>
     </label>
 </template>
 
@@ -56,7 +56,8 @@ export default {
             default: true
 		},
 		width: {
-			type: [String, Number]
+			type: [String, Number],
+			default: '40px'
 		}
     },
     mounted () {
@@ -73,14 +74,15 @@ export default {
         classObject () {
             const { activeColor, inactiveColor, color, value, theme, typeBold, disabled } = this;
             return {
-                'vue-switcher' : true,
-                ['vue-switcher--unchecked'] : !value,
-                ['vue-switcher--disabled'] : disabled,
-                ['vue-switcher--bold']: typeBold,
-                ['vue-switcher--bold--unchecked']: typeBold && !value,
-                [`vue-switcher-theme--${theme}`] : color,
-                [`vue-switcher-active-color--${activeColor}`] : activeColor,
-                [`vue-switcher-inactive-color--${inactiveColor}`] : inactiveColor,
+                'ty-switch' : true,
+                ['ty-switch--unchecked'] : !value,
+                ['ty-switch--disabled'] : disabled,
+                ['ty-switch--bold']: typeBold,
+                ['ty-switch--bold--unchecked']: typeBold && !value,
+                [`ty-switch-theme--${theme}`] : color,
+                [`ty-switch-active-color--${activeColor}`] : activeColor,
+                [`ty-switch-inactive-color--${inactiveColor}`] : inactiveColor,
+                [`ty-switch-inactive-type--${inactiveColor}`] : inactiveColor,
             };
         },
         shouldShowLabel () {
