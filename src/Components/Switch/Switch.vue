@@ -58,7 +58,8 @@ export default {
 		width: {
 			type: [String, Number],
 			default: '40px'
-		}
+        },
+        textDisabled: String
     },
     mounted () {
         if(this.emitOnMount) {
