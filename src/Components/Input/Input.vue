@@ -11,6 +11,7 @@
         <input
 		v-if="type!=='textarea'"
         ref="input"
+        :dir="dir"
           :disabled="disabled"
           @focus="handleFocus"
           @blur="handleBlur"
@@ -28,6 +29,7 @@
 		    ref="input"
 		    :rows="rows"
 		    :cols="cols"
+        :dir="dir"
         :minlength="minLength"
         :maxlength="maxLength"
         :disabled="disabled"
