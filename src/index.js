@@ -29,6 +29,7 @@ import ColorPicker from './Components/Color/ColorPicker.vue'
 import ColorCircle from './Components/Color/ColorCircle.vue'
 import TableHeader from './Components/Table/TableHeader.vue'
 import Switch from './Components/Switch/Switch.vue'
+import Checkbox from './Components/Checkbox/Checkbox.vue'
 import './style/index.scss'
 import currency from './Filters/CurrencyFilter'
 
@@ -62,7 +63,8 @@ const components = [
 	ColorPicker,
 	TableHeader,
 	ColorCircle,
-	Switch
+	Switch,
+	Checkbox
 ]
 
 const filters = [
@@ -118,6 +120,7 @@ export default {
 	ColorCircle,
 	TableHeader,
 	Switch,
+	Checkbox,
 	//filters
 	currency
 }
