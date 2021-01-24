@@ -4,7 +4,7 @@
 <script>
 export default {
 	name: 'TyIframe',
-	props: ['src', 'width', 'height', 'scrollable'],
+	props: ['src', 'width', 'height', 'scrollable', 'headers'],
 	data() {
 		return {
 			html: null,
@@ -13,7 +13,8 @@ export default {
 	},
 	async mounted() {
 		if (typeof this.scrollable== 'boolean') this.scrolling = this.scrollable;
-		const res = await (await fetch(this.src)).json();
+		let options = {...(typeof this.headers == 'object'?{headers: this.headers}:{})}
+		const res = await (await fetch(this.src, options)).json();
 		this.$refs.frame.contentDocument.write(res.data);
 		this.$refs.frame.style.height = this.$refs.frame.contentWindow.document.documentElement.scrollHeight + 'px';
 	}
