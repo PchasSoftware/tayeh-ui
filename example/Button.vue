@@ -16,6 +16,7 @@
         <ty-button type="outline">Outline type</ty-button>
         <ty-button type="outline" color="success">Outline type</ty-button>
         <ty-button width="64px" height="64px" type="outline" color="border"><i class="ty-icon ty-icon-arrow-right ty-color-dark"/></ty-button>
+        <ty-button type="clear" color="border"><i class="ty-icon ty-icon-arrow-right ty-color-dark"/></ty-button>
       </div>
     </section>
 </div>

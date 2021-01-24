@@ -87,6 +87,14 @@
         <ty-switch v-model="variable"  theme="slim"/>
       </div>
     </section>
+
+    <section id="checkbox">
+      CheckBox
+      <div class="component">
+        <ty-checkbox v-model="variable" label="متن لیبل"/>
+        <ty-checkbox :disabled="true" v-model="variable" />
+      </div>
+    </section>
 </div>
 </template>
 
