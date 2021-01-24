@@ -1,0 +1,102 @@
+.ty-upload-container {
+	display: inline-block;
+	cursor: pointer;
+	transition: all 0.3s;
+	position: relative;
+	font-size: 0;
+	align-self: flex-start;
+	background-color: #e6e6e6;
+  }
+  .ty-upload-container canvas {
+	transition: all 0.3s;
+  }
+  .ty-upload-container:hover {
+	opacity: 0.7;
+  }
+  .ty-upload-container.ty--dropzone {
+	box-shadow: inset 0 0 10px #333;
+  }
+  .ty-upload-container.ty--dropzone canvas {
+	opacity: 0.5;
+  }
+  .ty-upload-container.ty--disabled-cc {
+	cursor: default;
+  }
+  .ty-upload-container.ty--disabled-cc:hover {
+	opacity: 1;
+  }
+  .ty-upload-container.ty--has-target {
+	cursor: move;
+  }
+  .ty-upload-container.ty--has-target:hover {
+	opacity: 1;
+  }
+  .ty-upload-container.ty--has-target.ty--disabled-mz {
+	cursor: default;
+  }
+  .ty-upload-container.ty--disabled {
+	cursor: not-allowed;
+  }
+  .ty-upload-container.ty--disabled:hover {
+	opacity: 1;
+  }
+  .ty-upload-container.ty--passive {
+	cursor: default;
+  }
+  .ty-upload-container.ty--passive:hover {
+	opacity: 1;
+  }
+  .ty-upload-container svg.icon-remove {
+	position: absolute;
+	background: #fff;
+	border-radius: 50%;
+	filter: drop-shadow(-2px 2px 2px rgba(0,0,0,0.7));
+	z-index: 10;
+	cursor: pointer;
+	border: 2px solid #fff;
+  }
+  .sk-fading-circle {
+	$circleCount: 12;
+	$animationDuration: 1s;
+  
+	position: absolute;
+  
+	.sk-circle {
+	  width: 100%;
+	  height: 100%;
+	  position: absolute;
+	  left: 0;
+	  top: 0;
+	}
+  
+	.sk-circle .sk-circle-indicator {
+	  display: block;
+	  margin: 0 auto;
+	  width: 15%;
+	  height: 15%;
+	  border-radius: 100%;
+	  animation: sk-circleFadeDelay $animationDuration infinite ease-in-out both;
+	}
+  
+	@for $i from 2 through $circleCount {
+	  .sk-circle#{$i} {
+		transform: rotate(360deg / $circleCount * ($i - 1));
+	  }
+	}
+  
+	@for $i from 2 through $circleCount {
+	  .sk-circle#{$i} .sk-circle-indicator {
+		animation-delay: -$animationDuration + $animationDuration / $circleCount * ($i - 1);
+	  }
+	}
+  }
+  @keyframes sk-circleFadeDelay {
+	0%,
+	39%,
+	100% {
+	  opacity: 0;
+	}
+	40% {
+	  opacity: 1;
+	}
+  }

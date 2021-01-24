@@ -1,0 +1,33 @@
+.ty-tabs {
+	.ty-tabs-list {
+		display: flex;
+		list-style: none;
+		overflow-x: auto;
+		overflow-y: hidden;
+		flex-wrap: nowrap;
+		.ty-tab-item-link {
+			color: $dark;
+			text-decoration: none;
+			white-space: nowrap;
+		}
+		-ms-overflow-style: none;
+		scrollbar-width: none;
+	}
+	.ty-tabs-list::-webkit-scrollbar {
+		display: none;
+	}
+	li.is-disabled {
+		a {
+			opacity: 0.5;
+			cursor: default;
+		}
+	}
+	li.is-active {
+		opacity: 1;
+		border-bottom: 3px solid $primary;
+	}
+	li:not(.is-active) {
+		opacity: 1;
+		border-bottom: 2px solid $border;
+	}
+}

@@ -12,8 +12,9 @@ $colors: (
 	"table-header" $table-header $dark $light,
 	"gray" $gray $dark $light,
 	"dark-gray" $dark-gray $dark $light,
-	"white" $white $light $light,
+	"white" $white $light $dark,
 	"blue" $blue $light $light,
+	"faded-orange" $faded-orange,
 );
 
 @each $name, $color, $oposite, $text-color in $colors {

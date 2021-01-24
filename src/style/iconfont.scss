@@ -1,6 +1,11 @@
 @font-face {
-  font-family: 'tayehicon';
-  src: url('./fonts/tayehicons.woff?1633360') format('woff');
+  font-family: 'ty-icon';
+  src: url('https://static.ty-sb1.tayeh.ir/tayeh-panel/assets/fonts/ty-icon/ty-icon.eot?20210599');
+  src: url('https://static.ty-sb1.tayeh.ir/tayeh-panel/assets/fonts/ty-icon/ty-icon.eot?20210599#iefix') format('embedded-opentype'),
+       url('https://static.ty-sb1.tayeh.ir/tayeh-panel/assets/fonts/ty-icon/ty-icon.woff2?20210599') format('woff2'),
+       url('https://static.ty-sb1.tayeh.ir/tayeh-panel/assets/fonts/ty-icon/ty-icon.woff?20210599') format('woff'),
+       url('https://static.ty-sb1.tayeh.ir/tayeh-panel/assets/fonts/ty-icon/ty-icon.ttf?20210599') format('truetype'),
+       url('https://static.ty-sb1.tayeh.ir/tayeh-panel/assets/fonts/ty-icon/ty-icon.svg?20210599#fontello') format('svg');
   font-weight: normal;
   font-style: normal;
 
@@ -34,7 +39,7 @@
       -moz-osx-font-smoothing: grayscale;
 }
 .ty-icon {
-  font-family: 'tayehicon' !important;
+  font-family: 'ty-icon' !important;
   font-size: 16px;
   font-style: normal;
   -webkit-font-smoothing: antialiased;
@@ -65,3 +70,13 @@
 .ty-icon-setting:before { content: '\e80b'; } /* '' */
 .ty-icon-smile:before { content: '\e80c'; } /* '' */
 .ty-icon-sort:before { content: '\e80d'; } /* '' */
+.ty-icon-apps:before { content: '\e828'; } /* '' */
+.ty-icon-exit-app:before { content: '\e829'; } /* '' */
+.ty-icon-message:before { content: '\e82a'; } /* '' */
+.ty-icon-notification:before { content: '\e82b'; } /* '' */
+.ty-icon-premium:before { content: '\e82c'; } /* '' */
+.ty-icon-shop:before { content: '\e82d'; } /* '' */
+.ty-icon-stack:before { content: '\e82e'; } /* '' */
+.ty-icon-ticket-off:before { content: '\e82f'; } /* '' */
+.ty-icon-trend:before { content: '\e830'; } /* '' */
+.ty-icon-user:before { content: '\e831'; } /* '' */
