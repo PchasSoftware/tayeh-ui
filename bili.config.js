@@ -7,13 +7,13 @@ module.exports = {
   plugins: [
     'vue',
 
-    copy([
-      {
-        from: './src/style/fonts',
-        to: './dist/fonts',
-        emitFiles: true
-      }
-    ])
+    // copy([
+    //   {
+    //     from: './src/style/fonts',
+    //     to: './dist/fonts',
+    //     emitFiles: true
+    //   }
+    // ])
   ],
 
   postcss: {
