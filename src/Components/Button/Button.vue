@@ -1,10 +1,12 @@
 <template>
-  <button :disabled="disabled" class="ty-flex ty-button ty-hoverable" :class="[...typeCss, type, size, disabled?'disabled':'']" :style="{width, height}" @click="handleClick">
+<div>
+  <button :disabled="disabled" class="ty-flex ty-button ty-hoverable" :class="[...typeCss, type, size, disabled?'disabled':'']" :style="{width, height, borderRadius: radius, borderWidth: outlineWidth}" @click="handleClick">
     <div class="ty-flex ty-gap-5 ty-justify-center">
 	  <i v-if="icon" :class="['my-auto', 'ty-icon', icon]"/>
 	  <slot></slot>
     </div>
   </button>
+</div>
 </template>
 
 <script>
@@ -16,6 +18,18 @@ export default {
 	  color: {
 		  type: String,
 		  default: 'primary'
+    },
+    outlineWidth: {
+      type: [String, Number],
+      default: '2px'
+    },
+    outlineColor: {
+      type: String,
+      default: null
+    },
+    radius: {
+      type: [String, Number],
+      default: '3px'
     },
     type: {
       type: String,
@@ -50,7 +64,7 @@ export default {
     typeCss() {
       if (this.type=='simple') return [`ty-bg-${this.color}`];
       if (this.type=='clear') return ['clear', `ty-color-${this.color}`];
-      if (this.type=='outline') return ['outline', `ty-color-${this.color}`, `ty-outline-${this.color}`];
+      if (this.type=='outline') return ['outline', `ty-color-${this.color}`, `ty-border-color-${this.outlineColor||this.color}`];
     }
   },
 
