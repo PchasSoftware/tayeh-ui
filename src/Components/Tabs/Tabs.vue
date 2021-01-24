@@ -35,7 +35,7 @@
                 default: 5,
             },
             opacity: {
-                type: String,
+                type: [String, Number],
                 default: 1 
             },
             options: {
