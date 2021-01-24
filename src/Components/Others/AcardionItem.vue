@@ -3,7 +3,7 @@
 	  <div class="ty-acardion-item__header" @click="openItem">
 		  <div>{{label}}</div>
 		  <div class="ty-acardion-item__icon" :class="{active}">
-		  	<i :class="['ty-icon','ty-icon-arrow-right']"/>
+		  	<i :class="['ty-icon',active?'ty-icon-arrow-bottom':'ty-icon-arrow-right']"/>
 		  </div>
 	  </div>
 	   <!-- active?'ty-icon-arrow-down':'ty-icon-arrow-right' -->
@@ -24,7 +24,7 @@ export default {
 		  required: true
 	  },
 	  index: {
-		  type: String,
+		  type: [String, Number],
 		  required: true
 	  },
 	  maxHeight: {

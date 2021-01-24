@@ -23,7 +23,7 @@ export default {
 		  default: 'auto'
 	  },
 	  open: {
-		  type: String,
+		  type: [String, Number],
 		  default: null,
 	  }
   },
