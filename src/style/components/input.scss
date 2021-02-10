@@ -144,6 +144,12 @@
 	input[type=number] {
 	  -moz-appearance: textfield;
 	}
+
+	.ty-input-main {
+		position: relative;
+		display: inline-block;
+		line-height: 32px;
+	}
   }
 
   .ty-input.ty-input-number {
