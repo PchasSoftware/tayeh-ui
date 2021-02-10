@@ -10,7 +10,8 @@ module.exports = {
     // allow async-await
     'space-before-function-paren': 'off',
     'generator-star-spacing': 'off',
-    'no-undef': 'off'
+    'no-undef': 'off',
+    'indent': [1, 'tab']
   }
 
     // "parserOptions": {
