@@ -63,8 +63,9 @@ export default {
 		fontWeight: {
 			type: [String, Number],
 			default: '500'
-		},
-        textDisabled: String
+        },
+        textEnabled: String,
+        textDisabled: String,
     },
     mounted () {
         if(this.emitOnMount) {
