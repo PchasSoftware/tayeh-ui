@@ -5,3 +5,4 @@ node_modules
 demo/
 dist
 .npmrc
+Dockerfile-dev
