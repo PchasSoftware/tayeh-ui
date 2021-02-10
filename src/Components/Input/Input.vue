@@ -1,7 +1,7 @@
 <template>
   <div :class="['ty-input', inputSize ? 'el-input--' + inputSize : '']" :style="{width}">
     <p v-if="label" :class="['ty-input-label', 'mb-1', size||'', error?'ty-color-danger': '']">{{label}} <span class="ty-color-danger">{{required?'*':''}}</span></p>
-    <div class="ty-flex ty-flex-wrap">
+    <div class="inline-block">
       <div ref="input-wrapper" :class="['ty-input-wrapper', size, clear?'--border-clear':'', !clear&&borderBottom?'--border-bottom':'', outline?'ty-input-focus':'', disabled?'disabled':'', error?'ty-color-danger ty-border-color-danger': '']">
         <slot name="prefix">
         <div v-if="icon" :class="['prefix', type==='textarea'?'prefix__textarea':'']">
@@ -12,6 +12,7 @@
 		v-if="type!=='textarea'"
         ref="input"
         :dir="dir"
+        :value="value"
           :disabled="disabled"
           @focus="handleFocus"
           @blur="handleBlur"
@@ -27,6 +28,7 @@
 		 <textarea
 		    v-else
 		    ref="input"
+        :value="value"
 		    :rows="rows"
 		    :cols="cols"
         :dir="dir"
@@ -169,6 +171,8 @@ export default {
   mounted() {
     this.setNativeInputValue();
   },
+
+
 
   // *----------------------- M e t h o d s -----------------------------------------------------
   methods: {
