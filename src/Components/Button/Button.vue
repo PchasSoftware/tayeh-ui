@@ -1,5 +1,5 @@
 <template>
-<div>
+<div class="inline-block">
   <button :disabled="disabled" class="ty-flex ty-button ty-hoverable" :class="[...typeCss, type, size, disabled?'disabled':'']" :style="{width, height, borderRadius: radius, borderWidth: outlineWidth}" @click="handleClick">
     <div class="ty-flex ty-gap-5 ty-justify-center">
 	  <i v-if="icon" :class="['my-auto', 'ty-icon', icon]"/>
