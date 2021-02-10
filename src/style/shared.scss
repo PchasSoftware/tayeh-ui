@@ -40,8 +40,11 @@
 .ty-border-bottom {
 	border-bottom: 1px solid $border;
 }
-.ty-inline {
+.inline {
 	display: inline;
+}
+.inline-block {
+	display: inline-block;
 }
 .ty-destroy {
 	display: none;
