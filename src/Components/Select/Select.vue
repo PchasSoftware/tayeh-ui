@@ -1,27 +1,27 @@
 <template>
 	<div :class="['ty-select', size]">
 		<div class="ty-select__search" ref="select">
-			<ty-input v-if="searchable&&!editing" @focus="handleFocus" ref="input" :disabled="disabled" v-model="search_content" :label="label" :required="required"
+			<ty-input :style="{width}" v-if="searchable&&!editing" @focus="handleFocus" ref="input" :disabled="disabled" v-model="search_content" :label="label" :required="required"
 				:dir="dir" :size="size" :placeholder="placeholder" @blur="blur"
 				@keydown.down.stop="nextOption" @keydown.up.stop="prevOption" @keydown.enter="selectByKeboard"
-				@keydown.esc.stop.prevent="handleClose" @keydown.tab="visible = false" @input="handleChange">
+				@keydown.prevent.stop="handleClose" @keydown.tab="visible = false" @input="handleChange">
 				<div slot="suffix" @mousedown="handleButtonClick">
 					<i class="ty-icon ty-icon-small ty-color-dark"
 						:class="[visible?'ty-icon-arrow-drop-up':'ty-icon-arrow-drop-down']" />
 				</div>
 			</ty-input>
 			<div v-else-if="editing">
-				<ty-input placeholder="ویرایش" v-model="edited"
+				<ty-input placeholder="ویرایش" v-model="edited" ref="input" :style="{width}"
 				@keydown.enter="handleEdit"
 				@keydown.esc.stop.prevent="editing=false">
-					<ty-button @mousedown="editing=false" size="small" color="info" slot="suffix">لغو</ty-button>
-					<ty-button @mousedown="handleEdit" size="small" slot="suffix">ذخیره</ty-button>
+					<ty-button @click="editing=false" size="small" color="info" slot="suffix">لغو</ty-button>
+					<ty-button @click="handleEdit" size="small" slot="suffix">ذخیره</ty-button>
 				</ty-input>
 			</div>
-			<ty-input v-else class="nocaret" ref="input" :disabled="disabled" :value="search_content" :label="label" :required="required"
+			<ty-input v-else class="nocaret" :style="{width}" ref="input" :disabled="disabled" :value="search_content" :label="label" :required="required"
 				:dir="dir" :size="size" :placeholder="placeholder" @focus="handleFocus" @blur="blur"
 				@keydown.down.stop="nextOption" @keydown.up.stop="prevOption" @keydown.enter="selectByKeboard"
-				@keydown.esc.stop.prevent="handleClose" @keydown.tab="visible = false" @input="handleChange">
+				@keydown.prevent.stop="handleClose" @keydown.tab="visible = false" @input="handleChange">
 				<div slot="suffix" @mousedown="handleButtonClick">
 					<i class="ty-icon ty-icon-small ty-color-dark"
 						:class="[visible?'ty-icon-arrow-drop-up':'ty-icon-arrow-drop-down']" />
@@ -47,13 +47,14 @@
 		</div>
 		<div v-show="visible" class="ty-select__dropdown" :style="dropdown_position" ref="dropdown">
 			<div  @mousedown="handleCreateNew" v-if="show_new" class="ty-dropdown-item ty-flex ty-space-between ty-dropdown-item-new">
-				{{search_content}} <i class="ty-icon ty-icon-sort my-auto ty-color-gray"/>
+				{{search_content}} <i class="ty-icon ty-icon-plus my-auto ty-color-gray"/>
 			</div>
-			<div @mousedown="handleOptionClick(item)" v-for="(item, i) in search_results" :key="i" class="ty-dropdown-item ty-flex ty-space-between"
+			<div @mousedown="handleOptionClick(item)" @contextmenu="disableBlur" v-for="(item, i) in search_results" :key="i" class="ty-dropdown-item ty-flex ty-space-between"
 				:class="{'ty-dropdown-item-hovered': hovered_option==i}">
 				{{item.label||item.value||item.name}}
 				<span>
-				<ty-button height="24px" color="primary" v-if="showEdit" @mousedown="makeEditable(item)" size="small" icon="ty-icon-edit"/>
+					<div @mousedown="makeEditable(item)"><i class="ty-icon ty-icon-delete"/></div>
+				<ty-button style="z-index: 100;" height="24px" color="primary" v-if="showEdit" @mousedown="makeEditable(item)" size="small" icon="ty-icon-edit"/>
 				<ty-button height="24px" color="danger" v-if="showDelete" @mousedown="handleDelete(item, i)" size="small" icon="ty-icon-delete"/>
 				</span>
 			</div>
@@ -89,6 +90,10 @@
 			size: {
 				type: String,
 				default: 'normal'
+			},
+			width: {
+				type: [Number, String],
+				default: 'auto'
 			},
 			disabled: {
 				type: Boolean,
@@ -160,6 +165,9 @@
 
 		// *----------------------- M e t h o d s -----------------------------------------------------
 		methods: {
+			disableBlur () {
+				console.log('context');
+			},
 			resetSearch() {
 				const i = this.options.map(e => {
 					return e.value
@@ -209,10 +217,10 @@
 				this.$emit('focus', event);
 			},
 			blur() {
-				// setTimeout(() => {
+				setTimeout(() => {
 					this.visible = false;
 					if (this.content) this.resetSearch();
-				// }, 150);
+				}, 150);
 				// this.$refs.reference.blur();
 			},
 			handleClose() {
@@ -247,7 +255,7 @@
 				const bottom = bounding.getBoundingClientRect().bottom;
 				let right = bounding.getBoundingClientRect().right;
 				let left = bounding.getBoundingClientRect().left;
-				if (top>0.7*height) top = top-dropdown_height;
+				if (top>0.5*height) top = top-dropdown_height;
 				else top = bottom+4;
 				top<0?top=0:top>height?top=height-dropdown_height:top;
 				left<0?left=0:left='auto';
@@ -271,6 +279,7 @@
 				// this.handleChange()
 			},
 			makeEditable (item) {
+				this.visible = false;
 				this.selected_option = item;
 				this.edited = item.value;
 				this.editing = true;
