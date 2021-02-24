@@ -1,6 +1,6 @@
 <template>
   <div :class="['inline-block','ty-input', 'ty-input-number', size, inputSize ? 'ty-input--' + inputSize : '']">
-    <div class="ty-flex">
+    <div class="inline">
       <p v-if="label" :class="['ty-input-label', 'mb-1', size||'', error?'ty-color-danger': '']">{{label}} <span
           class="ty-color-danger">{{required?'*':''}}</span></p>
       <div class="inline-block input-test" :style="{lineHeight: height}">
@@ -16,11 +16,9 @@
           <i class="ty-icon ty-icon-minus fs-12" />
         </span>
       </div>
-      <div class="my-auto mr-2">
-        <slot name="suffix-outside">
-
-        </slot>
-      </div>
+      <span class="inline-block my-auto mr-2">
+        <slot name="suffix-outside"/>
+      </span>
       <div v-if="hasButton" class="my-auto">
         <slot name="button" />
       </div>
@@ -74,6 +72,11 @@
       label: {
         type: String,
         default: null,
+        required: false
+      },
+      size: {
+      type: [String, Number],
+        default: 'normal',
         required: false
       },
       dir: {

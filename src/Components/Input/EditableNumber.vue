@@ -33,6 +33,11 @@ export default {
       type: Boolean,
       default: false
     },
+    size: {
+      type: String,
+      default: 'normal',
+      required: false
+    },
     min: {
       type: Number,
       default: 0
