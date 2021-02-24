@@ -5,7 +5,7 @@
 			<ty-input v-model="content" width="60%" @input="handleInput" @change="handleChange" v-if="showSearch" class="ty-color-border"
 				icon="ty-icon-search" :clear="true" :placeholder="searchPlaceholder" />
 		</div>
-		<div class="ty-flex ty-flex-wrap">
+		<div>
 			<div class="my-auto">
 				<slot />
 			</div>
