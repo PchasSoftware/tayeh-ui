@@ -223,8 +223,10 @@
 				}, 150);
 				// this.$refs.reference.blur();
 			},
-			handleClose() {
+			handleClose(event) {
 				this.resetSearch();
+				console.log(event);
+				event.target.blur()
 				this.visible = false;
 			},
 			selectByKeboard() {

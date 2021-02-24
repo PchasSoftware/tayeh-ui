@@ -1,5 +1,5 @@
 <template>
-  <div :class="['ty-modal-mask',  transparent?'scrollable':'']"  v-if="visible" @click="handleMaskClick" @keydown="handleClose" tabindex="0">
+  <div :class="['ty-modal-mask',  transparent?'scrollable':'']"  v-if="visible" @click="handleMaskClick"  tabindex="0"> <!-- @keydown.esc.stop="handleClose"-->
     <!-- <div class="ty-modal-wrapper"> -->
       <div :class="['ty-modal-container','my-auto', fullscreen?'fullscreen':'', transparent?'transparent':'']" :style="{width, minWidth, maxWidth, height, minHeight, maxHeight}" @click.stop>
         <div class="ty-flex ty-space-between">
@@ -88,6 +88,7 @@ export default {
   // *----------------------- M e t h o d s -----------------------------------------------------
   methods: {
 	  hideOverflow() {
+      window.addEventListener('keydown', this.handleClose)
 		  const el = document.body;
       el.classList.add('--hide-overflow')
     },
@@ -109,6 +110,9 @@ export default {
     hide() {
       this.$emit('update:visible', false)
     },
+  },
+  beforeDestroy () {
+    window.removeEventListener('keydown', this.handleClose)
   },
 
   // *----------------------- W a t c h ---------------------------------------------------------
