@@ -75,6 +75,7 @@ export default {
     methods: {
         trigger (e) {
             this.$emit('input', e.target.checked?this.activeValue:this.inactiveValue)
+            this.$emit('change', e.target.checked?this.activeValue:this.inactiveValue);
         }
     },
     computed: {
