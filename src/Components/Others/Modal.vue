@@ -1,7 +1,7 @@
 <template>
-  <div class="ty-modal-mask" v-if="visible" @click="handleMaskClick">
+  <div :class="['ty-modal-mask',  transparent?'scrollable':'']"  v-if="visible" @click="handleMaskClick" @keydown="handleClose" tabindex="0">
     <!-- <div class="ty-modal-wrapper"> -->
-      <div :class="['ty-modal-container','my-auto', fullscreen?'fullscreen':'']" :style="{width, minWidth, maxWidth}" @click.stop>
+      <div :class="['ty-modal-container','my-auto', fullscreen?'fullscreen':'', transparent?'transparent':'']" :style="{width, minWidth, maxWidth, height, minHeight, maxHeight}" @click.stop>
         <div class="ty-flex ty-space-between">
   	    	  <slot name="header"/>
             <span class="fw-semi-bold fs-18" v-if="title">{{title}}</span>
@@ -36,6 +36,10 @@ export default {
       type: Boolean,
       default: true,
     },
+    transparent: {
+      type: Boolean,
+      default: false
+    },
 	  width: {
 		  type: String,
 		  default: '1000px'
@@ -46,7 +50,19 @@ export default {
 	  },
 	  maxWidth: {
 		  type: String,
-		  default: '100%'
+		  default: '90%'
+    },
+    height: {
+		  type: String,
+		  default: 'auto'
+	  },
+	  minHeight: {
+		  type: String,
+		  default: '300px'
+	  },
+	  maxHeight: {
+		  type: String,
+		  default: '90%'
     },
     title: {
       type: [String, Number],
@@ -62,14 +78,6 @@ export default {
     },
   },
 
-  // *----------------------- D a t a -----------------------------------------------------------
-  data() {
-    return {}
-  },
-
-  // *----------------------- C o m p u t e d ---------------------------------------------------
-  computed: {},
-
   // *----------------------- L i f e   c i r c l e ---------------------------------------------
   created() {
 	  if (this.visible) {
@@ -82,7 +90,6 @@ export default {
 	  hideOverflow() {
 		  const el = document.body;
       el.classList.add('--hide-overflow')
-      window.addEventListener('keyup', this.handleKeyup);
     },
 	  showOverflow() {
 		  const el = document.body;
@@ -93,7 +100,6 @@ export default {
     },
     handleClose () {
       if (!this.canExit) return;
-      window.removeEventListener('keyup', this.handleKeyup);
       if (typeof this.beforeClose === 'function') {
         this.beforeClose(this.hide)
       } else {
@@ -103,14 +109,6 @@ export default {
     hide() {
       this.$emit('update:visible', false)
     },
-    handleKeyup(e) {
-       if(e.key === "Escape") {
-        this.handleClose()
-      }
-    }
-  },
-  beforeDestroy() {
-    window.removeEventListener('keyup', this.handleKeyup);
   },
 
   // *----------------------- W a t c h ---------------------------------------------------------
