@@ -1,7 +1,7 @@
 <template>
-  <div :class="['ty-input', inputSize ? 'el-input--' + inputSize : '']" :style="{width}">
+  <div :class="['ty-input', inputSize ? 'el-input--' + inputSize : '']">
     <p v-if="label" :class="['ty-input-label', 'mb-1', size||'', error?'ty-color-danger': '']">{{label}} <span class="ty-color-danger">{{required?'*':''}}</span></p>
-    <div class="inline-block">
+    <!-- <div class="inline-block"> -->
       <div ref="input-wrapper" :class="['ty-input-wrapper', size, clear?'--border-clear':'', !clear&&borderBottom?'--border-bottom':'', outline?'ty-input-focus':'', disabled?'disabled':'', error?'ty-color-danger ty-border-color-danger': '']">
         <slot name="prefix">
         <div v-if="icon" :class="['prefix', type==='textarea'?'prefix__textarea':'']">
@@ -46,7 +46,7 @@
       <div v-if="hasButton"  class="m-1">
         <slot name="button"/>
       </div>
-    </div>
+    <!-- </div> -->
   </div>
 </template>
 
@@ -118,10 +118,6 @@ export default {
     step: {
       type: Number,
       required: false
-    },
-    width: {
-      type: String,
-      default: 'auto'
     },
     required: {
       type: Boolean,

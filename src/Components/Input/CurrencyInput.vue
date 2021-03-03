@@ -1,5 +1,5 @@
 <template>
-  <ty-input :disabled="disabled" :label="label" @input="handleInput" @change="handleChange" :max="max" :min="min" :size="size" v-model="number" :placeholder="placeholder" :dir="dir" :class="`${size}`">
+  <ty-input :disabled="disabled" :label="label" @input="handleInput" @change="handleChange" :max="max" :min="min" :size="size" v-model="number" :placeholder="placeholder" :dir="dir" :required="required" :class="`${size}`">
 	  <div slot="suffix">
 	  <slot name="suffix"/>
 	  </div>
@@ -39,6 +39,10 @@ export default {
       type: String,
       default: null,
       required: false
+	},
+	required: {
+      type: Boolean,
+      default: false
 	},
 	dir: {
 		type: String,

@@ -13,11 +13,11 @@ export default {
 	  offset: Number,
 	  pull: Number,
 	  push: Number,
-	  xs: [Number, Object],
-	  sm: [Number, Object],
-	  md: [Number, Object],
-	  lg: [Number, Object],
-	  xl: [Number, Object]
+	  xs: [Number, String, Object],
+	  sm: [Number, String, Object],
+	  md: [Number, String, Object],
+	  lg: [Number, String, Object],
+	  xl: [Number, String, Object]
 	},
   
 	computed: {
@@ -49,7 +49,7 @@ export default {
 	  });
   
 	  ['xs', 'sm', 'md', 'lg', 'xl'].forEach(size => {
-		if (typeof this[size] === 'number') {
+		if (typeof this[size] === 'number' || typeof this[size] === 'string') {
 		  classList.push(`ty-col-${size}-${this[size]}`);
 		} else if (typeof this[size] === 'object') {
 		  let props = this[size];

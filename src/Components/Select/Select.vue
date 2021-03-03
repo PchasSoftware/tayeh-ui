@@ -1,27 +1,27 @@
 <template>
 	<div :class="['ty-select', size]">
 		<div class="ty-select__search" ref="select">
-			<ty-input :style="{width}" v-if="searchable&&!editing" @focus="handleFocus" ref="input" :disabled="disabled" v-model="search_content" :label="label" :required="required"
+			<ty-input v-if="searchable&&!editing" @focus="handleFocus" ref="input" :disabled="disabled" v-model="search_content" :label="label" :required="required"
 				:dir="dir" :size="size" :placeholder="placeholder" @blur="blur"
 				@keydown.down.stop="nextOption" @keydown.up.stop="prevOption" @keydown.enter="selectByKeboard"
-				@keydown.prevent.stop="handleClose" @keydown.tab="visible = false" @input="handleChange">
+				@keydown.esc.stop="handleClose" @keydown.tab="visible = false" @input="handleChange">
 				<div slot="suffix" @mousedown="handleButtonClick">
 					<i class="ty-icon ty-icon-small ty-color-dark"
 						:class="[visible?'ty-icon-arrow-drop-up':'ty-icon-arrow-drop-down']" />
 				</div>
 			</ty-input>
 			<div v-else-if="editing">
-				<ty-input placeholder="ویرایش" v-model="edited" ref="input" :style="{width}"
+				<ty-input placeholder="ویرایش" v-model="edited" ref="input"
 				@keydown.enter="handleEdit"
 				@keydown.esc.stop.prevent="editing=false">
 					<ty-button @click="editing=false" size="small" color="info" slot="suffix">لغو</ty-button>
 					<ty-button @click="handleEdit" size="small" slot="suffix">ذخیره</ty-button>
 				</ty-input>
 			</div>
-			<ty-input v-else class="nocaret" :style="{width}" ref="input" :disabled="disabled" :value="search_content" :label="label" :required="required"
+			<ty-input v-else class="nocaret" ref="input" :disabled="disabled" :value="search_content" :label="label" :required="required"
 				:dir="dir" :size="size" :placeholder="placeholder" @focus="handleFocus" @blur="blur"
 				@keydown.down.stop="nextOption" @keydown.up.stop="prevOption" @keydown.enter="selectByKeboard"
-				@keydown.prevent.stop="handleClose" @keydown.tab="visible = false" @input="handleChange">
+				@keydown.esc.stop="handleClose" @keydown.tab="visible = false" @input="handleChange">
 				<div slot="suffix" @mousedown="handleButtonClick">
 					<i class="ty-icon ty-icon-small ty-color-dark"
 						:class="[visible?'ty-icon-arrow-drop-up':'ty-icon-arrow-drop-down']" />
@@ -53,7 +53,7 @@
 				:class="{'ty-dropdown-item-hovered': hovered_option==i}">
 				{{item.label||item.value||item.name}}
 				<span>
-					<div @mousedown="makeEditable(item)"><i class="ty-icon ty-icon-delete"/></div>
+					<!-- <div @mousedown="makeEditable(item)"><i class="ty-icon ty-icon-delete"/></div> -->
 				<ty-button style="z-index: 100;" height="24px" color="primary" v-if="showEdit" @mousedown="makeEditable(item)" size="small" icon="ty-icon-edit"/>
 				<ty-button height="24px" color="danger" v-if="showDelete" @mousedown="handleDelete(item, i)" size="small" icon="ty-icon-delete"/>
 				</span>

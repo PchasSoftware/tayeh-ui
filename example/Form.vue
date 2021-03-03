@@ -13,7 +13,7 @@
           </div>
         </ty-input-number>
         <ty-editable-text style="min-width: 200px" v-if="false" v-model="variable" />
-        <ty-input v-else v-model="variable" required check-mounted />
+        <ty-input-number style="width: 100%" label="width test" v-else v-model="variable" required check-mounted />
         <ty-input type="text" label="لیبل نمونه" v-model="variable" :placeholder="translate('placeholder')">
           <div slot="suffix">تومان</div>
         </ty-input>

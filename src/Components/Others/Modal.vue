@@ -99,8 +99,9 @@ export default {
     handleMaskClick () {
       if (this.canExit && this.closeOnBackdropClick) this.$emit('update:visible', false);
     },
-    handleClose () {
+    handleClose (event) {
       if (!this.canExit) return;
+      if (event.key !== 'Escape' ) return;
       if (typeof this.beforeClose === 'function') {
         this.beforeClose(this.hide)
       } else {

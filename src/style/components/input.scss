@@ -1,8 +1,8 @@
-.ty-input, .ty-select__search {
+.ty-input {
 	display: inline-block;
 	.ty-input-wrapper {
 	  position: relative;
-	  display: inline-block;
+	//   display: inline-block;
 	  border-radius: 4px;
 	  border: solid 1px #e0e0e0;
 	  flex: auto;
@@ -133,6 +133,7 @@
   }
 
   .ty-input.ty-input-number {
+	  position: relative;
 	/* Chrome, Safari, Edge, Opera */
 	input::-webkit-outer-spin-button,
 	input::-webkit-inner-spin-button {
@@ -190,4 +191,7 @@
 			max-height: 100%;
 		}	
 	}
+  }
+  .ty-select__search  .ty-input {
+	display: block;
   }

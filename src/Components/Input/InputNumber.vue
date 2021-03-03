@@ -1,28 +1,29 @@
 <template>
-  <div :class="['inline-block','ty-input', 'ty-input-number', size, inputSize ? 'ty-input--' + inputSize : '']">
-    <div class="inline">
+  <div :style="suffixPadding" :class="['inline-block','ty-input', 'ty-input-number', size, inputSize ? 'ty-input--' + inputSize : '']">
+    <!-- <div class="inline"> -->
       <p v-if="label" :class="['ty-input-label', 'mb-1', size||'', error?'ty-color-danger': '']">{{label}} <span
           class="ty-color-danger">{{required?'*':''}}</span></p>
-      <div class="inline-block input-test" :style="{lineHeight: height}">
+      <div class="input-number-wrapper" :style="{lineHeight: height}">
         <span :class="['increase', `ty-bg-${plusColor}`]">
           <i class="ty-icon ty-icon-plus fs-12" />
         </span>
         <span class="input-content">
           <input ref="input" :disabled="disabled" @focus="handleFocus" @blur="handleBlur" @input="handleInput"
             @change="handleChange" :minlength="minLength" :maxlength="maxLength" :min="min" :max="max" :step="step"
-            type="number" :placeholder="placeholder" :style="{lineHeight: height, width}" />
+            type="number" :placeholder="placeholder" :style="{lineHeight: height}" />
         </span>
-        <span :class="['decrease', `ty-bg-${plusColor}`]">
+        <span :class="['decrease', `ty-bg-${minusColor}`]">
           <i class="ty-icon ty-icon-minus fs-12" />
         </span>
       </div>
-      <span class="inline-block my-auto mr-2">
-        <slot name="suffix-outside"/>
-      </span>
-      <div v-if="hasButton" class="my-auto">
+      
+      <!-- <div v-if="hasButton" class="my-auto">
         <slot name="button" />
-      </div>
-    </div>
+      </div> -->
+    <!-- </div> -->
+    <span v-if="hasSuffix" class="input-number-suffix">
+        <slot name="suffix-outside"/>
+    </span>
     <!-- <div class="ty-input-main">
       <ty-button class="__input-number-button my-auto" @click="handlePlusClick" :icon="plusIcon" :type="buttonType"
         :color="plusColor" :size="size" />
@@ -79,6 +80,10 @@
         default: 'normal',
         required: false
       },
+      suffixWidth: {
+          type: Number,
+          default: 32
+      },
       dir: {
         type: String,
         default: 'rtl',
@@ -98,10 +103,6 @@
       disabled: {
         type: Boolean,
         default: false
-      },
-      width: {
-        type: String,
-        default: '220px'
       },
       minLength: {
         type: Number,
@@ -171,8 +172,11 @@
       inputSize() {
         return this.size;
       },
-      hasButton() {
-        return this.$slots.button;
+      hasSuffix() {
+        return this.$slots['suffix-outside'];
+      },
+      suffixPadding() {
+        return !this.hasSuffix?{}:{paddingLeft: `${this.suffixWidth+8}px`}
       }
     },
 
@@ -224,17 +228,24 @@
   }
 </script>
 <style scoped>
-  .input-test {
+  .input-number-wrapper {
     position: relative;
   }
 
-  .input-test input {
+  .input-number-wrapper input {
     display: inline-block;
     padding-left: 50px;
     padding-right: 50px;
     height: 100%;
   }
 
+  .input-number-suffix {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    
+  }
   .increase,
   .decrease {
     position: absolute;

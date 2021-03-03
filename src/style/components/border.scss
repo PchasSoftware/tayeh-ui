@@ -15,3 +15,9 @@
 		border-color: $dark;
 	}
 }
+
+@for $size from 1 to 20 {
+	.bw-#{$size} {
+		border-width: #{$size}px;
+	}
+}
