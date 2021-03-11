@@ -1,6 +1,6 @@
 <template>
   <div class="ty-color-circle" @keydown.enter="editing=false">
-	  <div @click="handleClick" ref="colorCircle" :style="{width: size, height: size, background: color}" class="brdr-radius-50-pc cricle"/>
+	  <div @click="handleClick" ref="colorCircle" :style="{width: size, height: size, background: color}" class="border-radius-50pc cricle"/>
 	  <div v-if="show_picker" class="ty-color-picker-fixed">
 		  <ty-color-picker ref="pickerBounding" v-model="color" @change="handleChange"/>
 	  </div>

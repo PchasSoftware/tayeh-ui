@@ -39,11 +39,11 @@ export default {
       required: false
     },
     min: {
-      type: Number,
+      type: [Number, String],
       default: 0
     },
     max: {
-      type: Number
+      type: [Number, String],
     }
   },
   data() {

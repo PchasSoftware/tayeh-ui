@@ -1,5 +1,5 @@
 <template>
-  <div class="ty-border" :style="{width}">
+  <div class="ty-border" :style="{width, borderRadius, borderColor}">
     <div class="ty-flex ty-flex-row py-2 px-4">
 	    <i v-if="icon" class="my-auto ty-icon ml-2" :class="[icon, 'ty-color-'+color, iconSize]"/>
 	    <div class="ty-flex ty-flex-col">
@@ -33,6 +33,14 @@ export default {
     color: {
       type: String,
       default: 'primary'
+    },
+    borderRadius: {
+      type: [String, Number],
+      default: '4px'
+    },
+    borderColor: {
+      type: String,
+      default: 'auto'
     },
     width: {
       type: String,

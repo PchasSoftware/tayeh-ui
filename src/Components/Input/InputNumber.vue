@@ -4,7 +4,7 @@
       <p v-if="label" :class="['ty-input-label', 'mb-1', size||'', error?'ty-color-danger': '']">{{label}} <span
           class="ty-color-danger">{{required?'*':''}}</span></p>
       <div class="input-number-wrapper" :style="{lineHeight: height}">
-        <span :class="['increase', `ty-bg-${plusColor}`]">
+        <span :class="['increase', `ty-bg-${plusColor}`]" @click="handlePlusClick">
           <i class="ty-icon ty-icon-plus fs-12" />
         </span>
         <span class="input-content">
@@ -12,7 +12,7 @@
             @change="handleChange" :minlength="minLength" :maxlength="maxLength" :min="min" :max="max" :step="step"
             type="number" :placeholder="placeholder" :style="{lineHeight: height}" />
         </span>
-        <span :class="['decrease', `ty-bg-${minusColor}`]">
+        <span :class="['decrease', `ty-bg-${minusColor}`]" @click="handleMinusClick">
           <i class="ty-icon ty-icon-minus fs-12" />
         </span>
       </div>
@@ -105,23 +105,23 @@
         default: false
       },
       minLength: {
-        type: Number,
+        type: [Number, String],
         required: false
       },
       maxLength: {
-        type: Number,
+        type: [Number, String],
         required: false
       },
       min: {
-        type: Number,
+        type: [Number, String],
         required: false
       },
       max: {
-        type: Number,
+        type: [Number, String],
         required: false
       },
       step: {
-        type: Number,
+        type: [Number, String],
         default: 1
       },
       required: {
