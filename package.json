@@ -1,10 +1,11 @@
 {
   "name": "tayeh-ui",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "author": "Aref Akbari",
   "license": "MIT",
   "description": "Free and Open source Ui components, Ultimatly lightweight.",
   "main": "dist/index.min.js",
+  "types": "index.d.ts",
   "private": false,
   "files": [
     "dist/**/*",

@@ -58,7 +58,7 @@
     // *----------------------- P r o p s ----------------------------------------------------------
     props: {
       value: {
-        type: Number,
+        type: [Number, String],
         default: 0
       },
       height: {
@@ -204,9 +204,10 @@
         this.$emit('blur', event);
       },
       setNativeInputValue() {
-        this.$refs.input.value = this.value || null;
+        this.$refs.input.value = Number(this.value) || null;
       },
       handlePlusClick() {
+        if (this.disabled) return
         let temp = this.value + this.step;
         if (typeof this.max === 'number' && temp > this.max) temp = Number(this.max);
         this.$refs.input.value = Number(temp);
@@ -214,6 +215,7 @@
         // this.handleInput()
       },
       handleMinusClick() {
+        if (this.disabled) return
         let temp = this.value - this.step;
         if (typeof this.min === 'number' && temp < this.min) temp = this.min;
         this.$refs.input.value = Number(temp);
@@ -224,7 +226,11 @@
     },
 
     // *----------------------- W a t c h ---------------------------------------------------------
-    watch: {}
+    watch: {
+      value() {
+        this.setNativeInputValue();
+      }
+    }
   }
 </script>
 <style scoped>

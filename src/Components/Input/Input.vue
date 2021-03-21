@@ -139,7 +139,6 @@ export default {
   // *----------------------- D a t a -----------------------------------------------------------
   data() {
     return {
-      content: null,
       outline: false,
       launched: false,
     }
@@ -208,7 +207,6 @@ export default {
     setNativeInputValue() {
       this.$refs.input.value = this.value || null;
     }
-    
-  },
+  }
 }
 </script>

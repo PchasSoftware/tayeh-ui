@@ -60,6 +60,7 @@
           <div slot="suffix">تومان</div>
         </ty-currency-input>
         {{currencyModel}}
+        <ty-currency-input v-model="currency_computed"/>
       </div>
 
       <div class="component">
@@ -178,6 +179,11 @@
           basicInput: '<ty-input label="لیبل نمونه" placeholder="متن جایگزین"></ty-input>',
           currencyInput: '<ty-currency-input label="لیبل نمونه" placeholder="متن جایگزین"></ty-currency-input'
         }
+      }
+    },
+    computed: {
+      currency_computed () {
+        return this.currencyModel+1000
       }
     },
     methods: {
