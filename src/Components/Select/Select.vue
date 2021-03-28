@@ -22,7 +22,7 @@
 				:dir="dir" :size="size" :placeholder="placeholder" @focus="handleFocus" @blur="blur"
 				@keydown.down.stop="nextOption" @keydown.up.stop="prevOption" @keydown.enter="selectByKeboard"
 				@keydown.esc.stop="handleClose" @keydown.tab="visible = false" @input="handleChange">
-				<div slot="suffix" @mousedown="handleButtonClick">
+				<div class="dropdown-button" slot="suffix" @mousedown="handleButtonClick">
 					<i class="ty-icon ty-icon-small ty-color-dark"
 						:class="[visible?'ty-icon-arrow-drop-up':'ty-icon-arrow-drop-down']" />
 				</div>
@@ -177,7 +177,8 @@
 					this.setNativeInputValue()
 				}
 			},
-			handleButtonClick() {
+			handleButtonClick(event) {
+				if (event) event.preventDefault()
 				this.setDropdownPostion();
 				this.visible ? this.$refs.input.blur() : this.$refs.input.focus();
 			},

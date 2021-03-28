@@ -6,7 +6,7 @@
     @mousedown="(e) => $emit('mousedown', e)"
     @mouseup="(e) => $emit('mouseup', e)"
     @contextmenu="(e) => $emit('contextmenu', e)"
-    :style="{width, height, borderRadius: radius, borderWidth: outlineWidth}">
+    :style="{width, height, borderRadius: radius, borderWidth: outlineWidth}" :title="title">
       <i v-if="icon" :class="['inline-block','ty-icon', icon]" />
       <div v-if="hasSlot" class="inline-block">
         <slot></slot>
@@ -55,6 +55,10 @@
       },
       height: {
         type: [Number, String],
+        required: false
+      },
+      title: {
+        type: String,
         required: false
       },
       disabled: Boolean,

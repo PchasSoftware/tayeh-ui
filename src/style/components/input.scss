@@ -192,6 +192,12 @@
 		}	
 	}
   }
+ 
   .ty-select__search  .ty-input {
+	cursor: pointer;
 	display: block;
+  }
+
+  .ty-select__search  .ty-input input  {
+	cursor: pointer;
   }
