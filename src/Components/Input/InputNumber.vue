@@ -10,7 +10,7 @@
         <span class="input-content">
           <input ref="input" :disabled="disabled" @focus="handleFocus" @blur="handleBlur" @input="handleInput"
             @change="handleChange" :minlength="minLength" :maxlength="maxLength" :min="min" :max="max" :step="step"
-            type="number" :placeholder="placeholder" :style="{lineHeight: height}" />
+            type="number" :placeholder="placeholder" :style="{lineHeight: height, height}" />
         </span>
         <span :class="['decrease', `ty-bg-${minusColor}`]" @click="handleMinusClick">
           <i class="ty-icon ty-icon-minus fs-12" />
@@ -146,11 +146,11 @@
       },
       plusColor: {
         type: String,
-        default: 'border'
+        default: 'white'
       },
       minusColor: {
         type: String,
-        default: 'border'
+        default: 'white'
       },
       buttonType: {
         type: String,
@@ -236,6 +236,8 @@
 <style scoped>
   .input-number-wrapper {
     position: relative;
+    border: 1px solid #e0e0e0;
+    border-radius: 3px;
   }
 
   .input-number-wrapper input {
@@ -279,5 +281,9 @@
     left: 1px;
     border-radius: 3px 0px 0px 3px;
     border-right: 1px solid #dcdfe6;
+  }
+  .input-content input {
+    border: none;
+    border-radius: 3px;
   }
 </style>
