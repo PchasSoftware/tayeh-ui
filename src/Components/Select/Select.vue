@@ -45,11 +45,11 @@
     		  </div>
     		</div> -->
 		</div>
-		<div v-show="visible" class="ty-select__dropdown" :style="dropdown_position" @mousedown="onMousedown" @mouseup="blur" ref="dropdown">
+		<div v-show="visible" class="ty-select__dropdown" :style="dropdown_position" @mousedown="onMousedown" @mouseup="onMouseup" ref="dropdown">
 			<div  @mousedown="handleCreateNew" v-if="show_new" class="ty-dropdown-item ty-flex ty-space-between ty-dropdown-item-new">
 				{{search_content}} <i class="ty-icon ty-icon-plus my-auto ty-color-gray"/>
 			</div>
-			<div @mousedown.prevent.stop="handleOptionClick(item)" @contextmenu="disableBlur" v-for="(item, i) in search_results" :key="i" :ref="'option'+i" class="ty-dropdown-item ty-flex ty-space-between"
+			<div @mousedown.prevent.stop="handleOptionClick(item)" @contextmenu.prevent.stop="disableBlur" v-for="(item, i) in search_results" :key="i" :ref="'option'+i" class="ty-dropdown-item ty-flex ty-space-between"
 				:class="{'ty-dropdown-item-hovered': hovered_option==i}">
 				{{item.label||item.value||item.name}}
 				<span>
@@ -170,8 +170,8 @@
 
 		// *----------------------- M e t h o d s -----------------------------------------------------
 		methods: {
-			disableBlur () {
-				console.log('context');
+			disableBlur (event) {
+				event.preventDefault()
 			},
 			resetSearch() {
 				const i = this.options.map(e => {
@@ -224,9 +224,8 @@
 				this.$emit('focus', event);
 			},
 			blur(event) {
-				console.log('blur', this.mousedown);
 				if (this.mousedown) {
-					this.mousedown = false
+					if (event) event.preventDefault()
 				} else {
 					if (this.clearSearchOnBlur) {
 						this.resetSearch();
@@ -242,7 +241,6 @@
 			},
 			handleClose(event) {
 				this.resetSearch();
-				console.log(event);
 				event.target.blur()
 				this.visible = false;
 			},
@@ -313,7 +311,10 @@
 			},
 			onMousedown() {
       		  this.mousedown = true
-      		}
+			},
+			onMouseup () {
+				this.mousedown = false;
+			}
 		},
 
 		async mounted() {
