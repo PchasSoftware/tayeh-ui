@@ -1,7 +1,9 @@
 .ty-acardion-item {
 	display: flex;
 	flex-direction: column;
-	overflow: hidden;
+	overflow-y: auto;
+	-ms-overflow-style: none;
+	scrollbar-width: none;
 	.ty-acardion-item__header {
 		position: relative;
 		text-align: center;
@@ -20,6 +22,10 @@
 		transition: max-height 0.5s;
 		&.inactive {
 			max-height: 0 !important;
+			overflow: hidden;
 		}
 	}
+}
+.ty-acardion-item::-webkit-scrollbar {
+	display: none;
 }
