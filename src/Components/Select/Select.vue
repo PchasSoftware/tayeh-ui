@@ -4,7 +4,7 @@
 			<ty-input v-if="searchable&&!editing" @focus="handleFocus" ref="input" :disabled="disabled" v-model="search_content" :label="label" :required="required"
 				:dir="dir" :size="size" :placeholder="placeholder" @blur="blur"
 				@keydown.down.stop="nextOption" @keydown.up.stop="prevOption" @keydown.enter="selectByKeboard"
-				@keydown.esc.stop="handleClose" @keydown.tab="visible = false" @input="handleChange">
+				@keydown.esc.stop="handleClose" @keydown.tab="nextOption" @input="handleChange">
 				<div slot="suffix" @mousedown="handleButtonClick">
 					<i class="ty-icon ty-icon-small ty-color-dark"
 						:class="[visible?'ty-icon-arrow-drop-up':'ty-icon-arrow-drop-down']" />
@@ -21,7 +21,7 @@
 			<ty-input v-else class="nocaret" ref="input" :disabled="disabled" :value="search_content" :label="label" :required="required"
 				:dir="dir" :size="size" :placeholder="placeholder" @focus="handleFocus" @blur="blur"
 				@keydown.down.stop="nextOption" @keydown.up.stop="prevOption" @keydown.enter="selectByKeboard"
-				@keydown.esc.stop="handleClose" @keydown.tab="visible = false" @input="handleChange">
+				@keydown.esc.stop="handleClose" @keydown.tab="nextOption" @input="handleChange">
 				<div class="dropdown-button" slot="suffix" @mousedown="handleButtonClick">
 					<i class="ty-icon ty-icon-small ty-color-dark"
 						:class="[visible?'ty-icon-arrow-drop-up':'ty-icon-arrow-drop-down']" />
@@ -45,11 +45,11 @@
     		  </div>
     		</div> -->
 		</div>
-		<div v-show="visible" class="ty-select__dropdown" :style="dropdown_position" ref="dropdown">
+		<div v-show="visible" class="ty-select__dropdown" :style="dropdown_position" @mousedown="onMousedown" ref="dropdown">
 			<div  @mousedown="handleCreateNew" v-if="show_new" class="ty-dropdown-item ty-flex ty-space-between ty-dropdown-item-new">
 				{{search_content}} <i class="ty-icon ty-icon-plus my-auto ty-color-gray"/>
 			</div>
-			<div @mousedown="handleOptionClick(item)" @contextmenu="disableBlur" v-for="(item, i) in search_results" :key="i" class="ty-dropdown-item ty-flex ty-space-between"
+			<div @mousedown.prevent.stop="handleOptionClick(item)" @contextmenu="disableBlur" v-for="(item, i) in search_results" :key="i" :ref="'option'+i" class="ty-dropdown-item ty-flex ty-space-between"
 				:class="{'ty-dropdown-item-hovered': hovered_option==i}">
 				{{item.label||item.value||item.name}}
 				<span>
@@ -126,6 +126,10 @@
 			select: {
 				type: Boolean,
 				default: true
+			},
+			clearSearchOnBlur: {
+				type: Boolean,
+				default: false
 			}
 		},
 
@@ -158,7 +162,8 @@
 					left: 'auto',
 					right: 'auto',
 					bottom: 'auto'
-				}
+				},
+				mousedown: false
 			}
 		},
 
@@ -189,6 +194,7 @@
 				this.$emit('input', item.value);
 				this.$emit('change', item.value);
 				this.setNativeInputValue();
+				this.visible ? this.$refs.input.blur() : this.$refs.input.focus();
 			},
 			handleChange(value) {
 				this.hovered_option = this.select?0:null;
@@ -212,16 +218,25 @@
 				const label_contains = (item.label+'').includes(this.search_content);
 				return (value_contains || label_contains)
 			},
-			handleFocus() {
+			handleFocus(event) {
 				this.setDropdownPostion()
 				this.visible = true;
 				this.$emit('focus', event);
 			},
-			blur() {
-				setTimeout(() => {
+			blur(event) {
+				if (this.mousedown) {
+					this.mousedown = false
+				} else {
+					if (this.clearSearchOnBlur) {
+						this.resetSearch();
+					}
 					this.visible = false;
-					if (this.content) this.resetSearch();
-				}, 150);
+					this.$emit('blur', event)
+				}
+				// setTimeout(() => {
+				// 	this.visible = false;
+				// 	if (this.content) this.resetSearch();
+				// }, 150);
 				// this.$refs.reference.blur();
 			},
 			handleClose(event) {
@@ -235,10 +250,13 @@
 					.hovered_option])
 				this.visible = false;
 			},
-			nextOption() {
+			nextOption(event) {
+				if (event) event.preventDefault()
 				this.hovered_option++;
 				if (this.hovered_option >= this.search_results.length) this.hovered_option = 0;
 				if (this.search_results.length > 0) this.visible = true;
+				// this.$refs['option'+this.hovered_option].$el.focus();
+				this.$refs.dropdown.scrollTop = this.hovered_option*43;
 			},
 			prevOption() {
 				this.hovered_option--;
@@ -291,7 +309,10 @@
 			handleEdit () {
 				this.$emit('edit', {oldValue: this.selected_option.value, newValue: this.edited})
 				this.editing = false;
-			}
+			},
+			onMousedown() {
+      		  this.mousedown = true
+      		}
 		},
 
 		async mounted() {
