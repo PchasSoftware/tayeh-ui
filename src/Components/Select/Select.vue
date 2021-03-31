@@ -1,8 +1,8 @@
 <template>
 	<div :class="['ty-select', size]">
-		<div class="ty-select__search" ref="select">
-			<ty-input v-if="searchable&&!editing" @focus="handleFocus" ref="input" :disabled="disabled" v-model="search_content" :label="label" :required="required"
-				:dir="dir" :size="size" :placeholder="placeholder" @blur="blur"
+		<div class="ty-select__search" ref="select" itemid="div" @focus="handleFocus" @blur.prevent.stop="blur">
+			<ty-input v-if="searchable&&!editing" ref="input" :disabled="disabled" v-model="search_content" :label="label" :required="required"
+				:dir="dir" :size="size" :placeholder="placeholder"
 				@keydown.down.stop="nextOption" @keydown.up.stop="prevOption" @keydown.enter="selectByKeboard"
 				@keydown.esc.stop="handleClose" @keydown.tab="nextOption" @input="handleChange">
 				<div slot="suffix" @mousedown="handleButtonClick">
@@ -19,7 +19,7 @@
 				</ty-input>
 			</div>
 			<ty-input v-else class="nocaret" ref="input" :disabled="disabled" :value="search_content" :label="label" :required="required"
-				:dir="dir" :size="size" :placeholder="placeholder" @focus="handleFocus" @blur="blur"
+				:dir="dir" :size="size" :placeholder="placeholder" 
 				@keydown.down.stop="nextOption" @keydown.up.stop="prevOption" @keydown.enter="selectByKeboard"
 				@keydown.esc.stop="handleClose" @keydown.tab="nextOption" @input="handleChange">
 				<div class="dropdown-button" slot="suffix" @mousedown="handleButtonClick">
@@ -225,7 +225,8 @@
 			},
 			blur(event) {
 				if (this.mousedown) {
-					if (event) event.preventDefault()
+					console.log('log',event.target);
+					event.preventDefault()
 				} else {
 					if (this.clearSearchOnBlur) {
 						this.resetSearch();
@@ -233,6 +234,7 @@
 					this.visible = false;
 					this.$emit('blur', event)
 				}
+				this.$refs.input.focus()
 				// setTimeout(() => {
 				// 	this.visible = false;
 				// 	if (this.content) this.resetSearch();
