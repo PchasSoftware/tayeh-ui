@@ -45,7 +45,7 @@
     		  </div>
     		</div> -->
 		</div>
-		<div v-show="visible" class="ty-select__dropdown" :style="dropdown_position" @mousedown="onMousedown" ref="dropdown">
+		<div v-show="visible" class="ty-select__dropdown" :style="dropdown_position" @mousedown="onMousedown" @mouseup="blur" ref="dropdown">
 			<div  @mousedown="handleCreateNew" v-if="show_new" class="ty-dropdown-item ty-flex ty-space-between ty-dropdown-item-new">
 				{{search_content}} <i class="ty-icon ty-icon-plus my-auto ty-color-gray"/>
 			</div>
@@ -224,6 +224,7 @@
 				this.$emit('focus', event);
 			},
 			blur(event) {
+				console.log('blur', this.mousedown);
 				if (this.mousedown) {
 					this.mousedown = false
 				} else {
