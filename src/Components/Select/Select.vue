@@ -1,30 +1,28 @@
 <template>
-	<div :class="['ty-select', size]">
-		<div class="ty-select__search" ref="select" itemid="div" @focus="handleFocus" @blur.prevent.stop="blur">
-			<ty-input v-if="searchable&&!editing" ref="input" :disabled="disabled" v-model="search_content" :label="label" :required="required"
-				:dir="dir" :size="size" :placeholder="placeholder"
+	<div :class="['ty-select', size, disabled?'disabled':'']" ref="selectContainer" id="container" itemid="div" :tabindex="disabled?'':'-1'" :role="disabled?'':'button'" :disabled="disabled" @focus="visible=true" @blur="visible=false">
+		<div class="ty-select__search" ref="select">
+			<ty-input v-if="searchable&&!editing" ref="input" id="input-1" :disabled="disabled" v-model="search_content" :label="label" :required="required"
+				:dir="dir" :size="size" :placeholder="placeholder" @focus="visible=true" @blur="visible=false"
 				@keydown.down.stop="nextOption" @keydown.up.stop="prevOption" @keydown.enter="selectByKeboard"
 				@keydown.esc.stop="handleClose" @keydown.tab="nextOption" @input="handleChange">
-				<div slot="suffix" @mousedown="handleButtonClick">
-					<i class="ty-icon ty-icon-small ty-color-dark"
-						:class="[visible?'ty-icon-arrow-drop-up':'ty-icon-arrow-drop-down']" />
+				<div slot="suffix" @mousedown="handleButtonClick"  itemid="div" tabindex="-1">
+					<i class="dropdown-icon ty-icon ty-icon-small ty-color-dark" />
 				</div>
 			</ty-input>
 			<div v-else-if="editing">
-				<ty-input placeholder="ویرایش" v-model="edited" ref="input"
+				<ty-input placeholder="ویرایش" v-model="edited" ref="input" id="input-2"
 				@keydown.enter="handleEdit"
 				@keydown.esc.stop.prevent="editing=false">
 					<ty-button @click="editing=false" size="small" color="info" slot="suffix">لغو</ty-button>
 					<ty-button @click="handleEdit" size="small" slot="suffix">ذخیره</ty-button>
 				</ty-input>
 			</div>
-			<ty-input v-else class="nocaret" ref="input" :disabled="disabled" :value="search_content" :label="label" :required="required"
-				:dir="dir" :size="size" :placeholder="placeholder" 
+			<ty-input v-else class="nocaret" ref="input" id="input-3" :disabled="disabled" :value="search_content" :label="label" :required="required"
+				:dir="dir" :size="size" :placeholder="placeholder" @focus="visible=true" @blur="visible=false"
 				@keydown.down.stop="nextOption" @keydown.up.stop="prevOption" @keydown.enter="selectByKeboard"
 				@keydown.esc.stop="handleClose" @keydown.tab="nextOption" @input="handleChange">
-				<div class="dropdown-button" slot="suffix" @mousedown="handleButtonClick">
-					<i class="ty-icon ty-icon-small ty-color-dark"
-						:class="[visible?'ty-icon-arrow-drop-up':'ty-icon-arrow-drop-down']" />
+				<div class="dropdown-button" slot="suffix" @mousedown="handleButtonClick"  itemid="div" tabindex="-1">
+					<i class="ty-icon ty-icon-small ty-color-dark dropdown-icon" />
 				</div>
 			</ty-input>
 
@@ -45,7 +43,7 @@
     		  </div>
     		</div> -->
 		</div>
-		<div v-show="visible" class="ty-select__dropdown" :style="dropdown_position" @mousedown="onMousedown" @mouseup="onMouseup" ref="dropdown">
+		<div class="ty-select__dropdown" :style="dropdown_position" ref="dropdown">
 			<div  @mousedown="handleCreateNew" v-if="show_new" class="ty-dropdown-item ty-flex ty-space-between ty-dropdown-item-new">
 				{{search_content}} <i class="ty-icon ty-icon-plus my-auto ty-color-gray"/>
 			</div>
@@ -129,7 +127,7 @@
 			},
 			clearSearchOnBlur: {
 				type: Boolean,
-				default: false
+				default: true
 			}
 		},
 
@@ -139,7 +137,7 @@
 			},
 			error() {
 				return this.required&(this.content===null||(''+this.content).length===0)
-			}
+			},
 		},
 
 		// *----------------------- D a t a -----------------------------------------------------------
@@ -185,7 +183,13 @@
 			handleButtonClick(event) {
 				if (event) event.preventDefault()
 				this.setDropdownPostion();
-				this.visible ? this.$refs.input.blur() : this.$refs.input.focus();
+				if (this.visible) {
+					this.$refs.input.blur()
+					this.$refs.selectContainer.blur()
+				} else {
+					this.$refs.input.focus()
+				}
+				// this.visible ? this.$refs.input.blur() : this.$refs.input.focus();
 			},
 			handleOptionClick(item) {
 				this.content = item.value
@@ -194,14 +198,17 @@
 				this.$emit('input', item.value);
 				this.$emit('change', item.value);
 				this.setNativeInputValue();
-				this.visible ? this.$refs.input.blur() : this.$refs.input.focus();
+				// this.visible = false;
+				this.$refs.input.blur()
+				this.$refs.selectContainer.blur()
+				// this.visible ? this.$refs.input.blur() : this.$refs.input.focus();
 			},
 			handleChange(value) {
 				this.hovered_option = this.select?0:null;
 				this.search_results = [];
 				this.search()
 				this.setDropdownPostion()
-				this.visible = true;
+				// this.visible = true;
 			},
 			async search () {
 				if (this.lazyload) {
@@ -218,51 +225,42 @@
 				const label_contains = (item.label+'').includes(this.search_content);
 				return (value_contains || label_contains)
 			},
-			handleFocus(event) {
-				this.setDropdownPostion()
-				this.visible = true;
-				this.$emit('focus', event);
-			},
-			blur(event) {
-				if (this.mousedown) {
-					console.log('log',event.target);
-					event.preventDefault()
-				} else {
-					if (this.clearSearchOnBlur) {
-						this.resetSearch();
-					}
-					this.visible = false;
-					this.$emit('blur', event)
-				}
-				this.$refs.input.focus()
-				// setTimeout(() => {
-				// 	this.visible = false;
-				// 	if (this.content) this.resetSearch();
-				// }, 150);
-				// this.$refs.reference.blur();
-			},
+			// handleInputFocus(event) {
+			// 	// console.log('input');
+			// 	this.setDropdownPostion()
+			// 	this.input_focused = true;
+			// 	this.$emit('focus', event);
+			// },
+			// handleInputBlur(event) {
+			// 	if (this.clearSearchOnBlur) {
+			// 		this.resetSearch();
+			// 	}
+			// 	this.input_focused = false;
+			// 	if (!this.input_focused&&!this.container_focused) this.$emit('blur', event)
+			// },
+
 			handleClose(event) {
 				this.resetSearch();
 				event.target.blur()
-				this.visible = false;
+				// this.visible = false;
 			},
 			selectByKeboard() {
 				if (this.search_results.length >= this.hovered_option) this.handleOptionClick(this.search_results[this
 					.hovered_option])
-				this.visible = false;
+				// this.visible = false;
 			},
 			nextOption(event) {
 				if (event) event.preventDefault()
 				this.hovered_option++;
 				if (this.hovered_option >= this.search_results.length) this.hovered_option = 0;
-				if (this.search_results.length > 0) this.visible = true;
+				if (this.search_results.length > 0) this.$refs.input.focus()
 				// this.$refs['option'+this.hovered_option].$el.focus();
 				this.$refs.dropdown.scrollTop = this.hovered_option*43;
 			},
 			prevOption() {
 				this.hovered_option--;
 				if (this.hovered_option < 0) this.hovered_option = 0;
-				if (this.search_results.length > 0) this.visible = true;
+				if (this.search_results.length > 0) this.$refs.input.focus()
 			},
 			setNativeInputValue() {
 				this.$refs.input.$refs.input.value = this.search_content || null;
@@ -301,7 +299,7 @@
 				// this.handleChange()
 			},
 			makeEditable (item) {
-				this.visible = false;
+				// this.visible = false;
 				this.selected_option = item;
 				this.edited = item.value;
 				this.editing = true;

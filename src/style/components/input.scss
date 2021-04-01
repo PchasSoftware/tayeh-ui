@@ -201,3 +201,9 @@
   .ty-select__search  .ty-input input  {
 	cursor: pointer;
   }
+
+  .ty-select.disabled  {
+	.ty-input, .ty-input input {
+		cursor: default;
+	}
+  }
