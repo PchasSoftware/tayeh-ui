@@ -30,8 +30,8 @@
             </ty-input>
           </form>
         </ty-card>
-        <ty-input type="textarea" placeholder="متن توضیحات" icon="ty-icon-sort" v-model="variable" width="100%">
-        </ty-input>
+        <ty-input type="textarea" placeholder="متن توضیحات" icon="ty-icon-sort" v-model="variable" width="100%"/>
+        <ty-input type="textarea" placeholder="متن توضیحات" icon="ty-icon-sort" v-model="variable" :resizable="false"/>
         <ty-input-number v-model="numberVariable" :step="0.5" :max="10" :min="-1" />
         <ty-input-number size="semi-small" v-model="numberVariable" :step="0.5" :max="10" :min="-1">
           <div slot="suffix-outside">

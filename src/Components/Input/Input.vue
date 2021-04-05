@@ -37,7 +37,7 @@
         :disabled="disabled"
         @focus="handleFocus"
         @blur="handleBlur"
-        @input="handleInput" @change="handleChange" :placeholder="placeholder" :class="[size, icon?'--input-with-prefix':'']"/>
+        @input="handleInput" @change="handleChange" :placeholder="placeholder" :class="[size, icon?'--input-with-prefix':'']" :style="{resize: resizable?'auto':'none'}"/>
         <div :class="['suffix', dir==='ltr'?'suffix--ltr':'']">
           <slot name="suffix"/>
           <i v-if="error" class="ty-icon ty-icon-warning"/>
@@ -123,6 +123,10 @@ export default {
       type: Boolean,
       default: false
     },
+    resizable: {
+      type: [Boolean],
+      default: true
+      },
     isError: [Boolean],
     errorFunction:  [Function],
     checkMounted: [Boolean],
