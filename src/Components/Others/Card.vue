@@ -3,7 +3,7 @@
     <div v-if="hasHeaderSlot" class="ty-card__header">
       <slot name="header" />
     </div>
-    <div class="ty-card__content">
+    <div class="ty-card__content p-3 p-sm-4">
       <slot />
     </div>
     <div v-if="hasFooterSlot" class="ty-card__footer">
