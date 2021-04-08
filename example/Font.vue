@@ -3,7 +3,7 @@
     <h2 id="form">{{translate('fonts')}}</h2>
     <section id="icons">
       <h4>{{translate('icons')}}</h4>
-      <div class="component" dir="ltr">
+      <ty-card dir="ltr">
         <code class="example">{{icon_example}}</code>
         <div class="grid">
           <div v-for="item in icons" :key="item">
@@ -14,7 +14,7 @@
         <div class="designer">
           {{translate('fontDesinger')}}
         </div>
-      </div>
+      </ty-card>
     </section>
 </div>
 </template>

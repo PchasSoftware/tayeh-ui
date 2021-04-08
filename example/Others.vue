@@ -3,19 +3,19 @@
     <h2 id="form">{{translate('others')}}</h2>
     <section id="icons">
       <h4>{{translate('card')}}</h4>
-      <div class="component" dir="ltr">
+      <ty-card dir="ltr">
         <code class="example">{{examples['card']}}</code>
         <ty-card>
           <div slot="header">Header</div>
           Main Content 
           <div slot="footer">Footer</div>
         </ty-card>
-      </div>
+      </ty-card>
     </section>
 
     <section id="border">
       <h4>{{translate('border')}}</h4>
-      <div class="component">
+      <ty-card>
         <code class="example">{{examples['border']}}</code>
         <ty-border icon="ty-icon-sort">
           <div slot="label">
@@ -55,12 +55,12 @@
           </div>
           0 نفر
         </ty-border>
-      </div>
+      </ty-card>
     </section>
 
     <section id="acardion">
       <h4>{{translate('acardion')}}</h4>
-      <div class="component">
+      <ty-card>
         <code class="example">{{examples['acardion']}}</code>
         <ty-acardion icon="ty-icon-sort" open="1">
           <ty-acardion-item index="1" label="انبار شماره ۱" class="fw-lighter">
@@ -70,12 +70,12 @@
             موجودی انبار ۲
           </ty-acardion-item>
         </ty-acardion>
-      </div>
+      </ty-card>
     </section>
 
     <section id="text">
       <h4>{{translate('text')}}</h4>
-      <div class="component">
+      <ty-card>
         <code class="example">{{examples['acardion']}}</code>
         <ty-acardion icon="ty-icon-sort" open="1">
           <p class="of-text-ellipsis break-word" style="max-width: 32px">
@@ -85,12 +85,12 @@
             موجودی انبار
           </p>
         </ty-acardion>
-      </div>
+      </ty-card>
     </section>
 
     <section id="modal">
       <h4>{{translate('modal')}}</h4>
-      <div class="component">
+      <ty-card>
         <code class="example">{{examples['acardion']}}</code>
         <ty-button @click="dialogVisible = true">click to open the Dialog</ty-button>
 
@@ -109,34 +109,34 @@
             <ty-button @click="dialogVisible = false">Cancel</ty-button>
           </span>
         </ty-modal>
-      </div>
+      </ty-card>
     </section>
     <section id="loading">
       <h4>{{translate('loading')}}</h4>
-      <div class="component">
+      <ty-card>
         <code class="example">{{examples['loading']}}</code>
         <ty-button v-loading="true" @click="dialogVisible = true">click to open the Dialog</ty-button>  
-      </div>
+      </ty-card>
     </section>
     <section id="currency-filter">
-      <div class="component">
+      <ty-card>
         {{123456|currency}}
         {{'asdfqwersd'|currency}}
-      </div>
+      </ty-card>
     </section>
 
     <section id="color-picker">
-      <div class="component">
+      <ty-card>
         <ty-color-picker v-model="color"/>
         {{color}}
-      </div>
+      </ty-card>
     </section>
 
     <section id="color-circle">
-      <div class="component">
+      <ty-card>
         <ty-color-circle v-model="color" :editable="true"/>
         {{color}}
-      </div>
+      </ty-card>
     </section>
 </div>
 </template>

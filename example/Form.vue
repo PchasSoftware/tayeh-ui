@@ -1,10 +1,10 @@
 <template>
   <div>
     <h2 id="form">{{translate('form')}}</h2>
-    <section id="inputs">
+    <section id="inputs" class="p-2">
       <h4>{{translate('inputs')}}</h4>
 
-      <div class="component">
+      <ty-card>
         <h6>{{translate('baseInput')}}</h6>
         <code class="example">{{examples['basicInput']}}</code>
         <ty-input-number size="semi-small" v-model="numberVariable" :step="0.5" :max="10" :min="-1">
@@ -50,9 +50,9 @@
             </div>
           </ty-col>
         </ty-row>
-      </div>
+      </ty-card>
 
-      <div class="component">
+      <ty-card>
         <h6>{{translate('currencyInput')}}</h6>
         <code class="example">{{examples['currencyInput']}}</code>
         <ty-currency-input v-model="currencyModel" type="text" label="لیبل نمونه"
@@ -61,23 +61,23 @@
         </ty-currency-input>
         {{currencyModel}}
         <ty-currency-input v-model="currency_computed"/>
-      </div>
+      </ty-card>
 
-      <div class="component">
+      <ty-card>
         <h6>{{translate('editableText')}}</h6>
         <ty-editable-text :placeholder="translate('placeholder')" />
-      </div>
+      </ty-card>
 
-      <div class="component">
+      <ty-card>
         <h6>{{translate('editableNumber')}}</h6>
         <ty-editable-number :placeholder="translate('placeholder')" />
-      </div>
+      </ty-card>
     </section>
 
     <section id="selects">
       <h4>{{translate('selects')}}</h4>
 
-      <div class="component">
+      <ty-card>
         <h6>{{translate('basicSelect')}}</h6>
         <ty-select v-model="variable" label="لیبل" :required="true"
           :options="[{label: 'test', value: 'test'}, {label: 'cool', value: 'cool'}]">
@@ -99,24 +99,24 @@
         <ty-select :select="false" placeholder="گزینه ها" show-delete show-edit permit-create @create="handleCreate">
           <ty-option label="1" value="1" />
         </ty-select>
-      </div>
+      </ty-card>
     </section>
 
     <section id="switch">
       <h4>{{translate('switch')}}</h4>
       سوییتج
-      <div class="component">
+      <ty-card>
         <ty-switch v-model="variable" />
         <ty-switch v-model="variable" theme="slim" />
-      </div>
+      </ty-card>
     </section>
 
     <section id="checkbox">
       CheckBox
-      <div class="component">
+      <ty-card>
         <ty-checkbox v-model="variable" label="متن لیبل" />
         <ty-checkbox :disabled="true" v-model="variable" />
-      </div>
+      </ty-card>
     </section>
   </div>
 </template>
@@ -215,13 +215,5 @@
   #inputs {
     max-width: 100%;
     width: 800px;
-  }
-
-  .component {
-    margin-top: 8px;
-    padding: 16px;
-    width: 100%;
-    background: #ffffff;
-    box-shadow: 0.5px 3px 10px 0 rgba(119, 119, 119, 0.1);
   }
 </style>

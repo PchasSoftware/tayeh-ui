@@ -3,7 +3,7 @@
     <h2 id="image-uploader">{{translate('imageUploader')}}</h2>
     <section id="baseTable">
       <h4>{{translate('baseTable')}}</h4>
-      <div class="component">
+      <ty-card>
         <code class="example">{{examples['baseTable']}}</code>
         <ty-image-uploader/>
         <ty-table :data="[]">
@@ -19,7 +19,7 @@
           </ty-table-column>
         </ty-table>
 
-      </div>
+      </ty-card>
     </section>
 </div>
 </template>

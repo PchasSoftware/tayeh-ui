@@ -3,7 +3,7 @@
     <h2 id="table">{{translate('buttons')}}</h2>
     <section id="baseTable">
       <h4>{{translate('baseTable')}}</h4>
-      <div class="component">
+      <ty-card>
         <code class="example">{{examples['baseTable']}}</code>
         <ty-table-header v-model="variable" :on-change="handleChange">
           <ty-button type="outline" color="shadow" icon="ty-icon-filter" size="small"><span class="ty-color-dark">فیلتر کردن لیست</span></ty-button>
@@ -33,7 +33,7 @@
           </ty-table-column>
         </ty-table>
 
-      </div>
+      </ty-card>
     </section>
 </div>
 </template>

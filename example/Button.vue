@@ -3,7 +3,7 @@
     <h2 id="form">{{translate('buttons')}}</h2>
     <section id="buttons">
       <h4>{{translate('simpleButton')}}</h4>
-      <div class="component">
+      <ty-card>
         <code class="example">{{examples['simpleButton']}}</code>
         <div>
         <ty-button>رنگ اصلی</ty-button>
@@ -19,7 +19,7 @@
         <ty-button type="outline" color="border"><i class="ty-icon ty-icon-arrow-right ty-color-dark"/></ty-button>
         <ty-button type="clear" color="border"><i class="ty-icon ty-icon-arrow-right ty-color-dark"/></ty-button>
         </div>
-      </div>
+      </ty-card>
     </section>
 </div>
 </template>

@@ -2,7 +2,7 @@
 <div>
 	<h2 id="form">{{translate('layouts')}}</h2>
     <section id="layout">
-		<div class="component">
+		<ty-card>
 		<h4>{{translate('container')}}</h4>
         	<code class="example"><pre>{{examples['layout']}}</pre></code>
 		<ty-container>
@@ -42,10 +42,10 @@
 		  <ty-col :span="4"><div class="grid-content bg-blue"></div></ty-col>
 		  <ty-col :span="4"><div class="grid-content bg-blue-light"></div></ty-col>
 		</ty-row>
-		</div>
+		</ty-card>
     </section>
     <section id="tabs">
-		<div class="component">
+		<ty-card>
 		<h4>{{translate('tabs')}}</h4>
         	<code class="example"><pre>{{examples['tabs']}}</pre></code>
 		 <ty-tabs :options="{ useUrlFragment: false }" opacity=".5">
@@ -68,7 +68,7 @@
         </ty-tab>
     </ty-tabs>
 
-		</div>
+		</ty-card>
     </section>
 </div>
 </template>
