@@ -13,9 +13,6 @@
 	  font-size: 14px;
 	  font-weight: bold;
 	}
-	.ty-card__content {
-	  padding: 20px;
-	}
 	.ty-card__footer {
 	  display: block;
 	  padding: 18px 20px;
@@ -25,9 +22,6 @@
 	@media (max-width: 800px) {
 	  .ty-card__header {
 		padding: 9px 10px;
-	  }
-	  .ty-card__content {
-		padding: 10px;
 	  }
 	  .ty-card__footer {
 		display: block;
