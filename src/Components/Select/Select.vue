@@ -1,8 +1,8 @@
 <template>
-	<div :class="['ty-select', size, disabled?'disabled':'']" ref="selectContainer" id="container" itemid="div" :tabindex="disabled?'':'-1'" :role="disabled?'':'button'" :disabled="disabled" @focus="visible=true" @blur="visible=false">
+	<div :class="['ty-select', size, disabled?'disabled':'']" ref="selectContainer" id="container" itemid="div" :tabindex="disabled?'':'-1'" :role="disabled?'':'button'" :disabled="disabled" @focus="visible=true;setDropdownPostion" @blur="visible=false">
 		<div class="ty-select__search" ref="select">
 			<ty-input v-if="searchable&&!editing" ref="input" id="input-1" :disabled="disabled" v-model="search_content" :label="label" :required="required"
-				:dir="dir" :size="size" :placeholder="placeholder" @focus="visible=true" @blur="visible=false"
+				:dir="dir" :size="size" :placeholder="placeholder" @focus="visible=true;setDropdownPostion" @blur="visible=false"
 				@keydown.down.stop="nextOption" @keydown.up.stop="prevOption" @keydown.enter="selectByKeboard"
 				@keydown.esc.stop="handleClose" @keydown.tab="nextOption" @input="handleChange">
 				<div slot="suffix" @mousedown="handleButtonClick"  itemid="div" tabindex="-1">
@@ -18,7 +18,7 @@
 				</ty-input>
 			</div>
 			<ty-input v-else class="nocaret" ref="input" id="input-3" :disabled="disabled" :value="search_content" :label="label" :required="required"
-				:dir="dir" :size="size" :placeholder="placeholder" @focus="visible=true" @blur="visible=false"
+				:dir="dir" :size="size" :placeholder="placeholder" @focus="visible=true;setDropdownPostion" @blur="visible=false"
 				@keydown.down.stop="nextOption" @keydown.up.stop="prevOption" @keydown.enter="selectByKeboard"
 				@keydown.esc.stop="handleClose" @keydown.tab="nextOption" @input="handleChange">
 				<div class="dropdown-button" slot="suffix" @mousedown="handleButtonClick"  itemid="div" tabindex="-1">
@@ -267,20 +267,24 @@
 			},
 			setDropdownPostion () {
 				const bounding = this.$refs.select;
-				const dropdown_bounding = this.$refs.dropdown;
-				if (typeof bounding == 'undefined' || typeof dropdown_bounding == 'undefined') return;
-				const dropdown_height = dropdown_bounding.clientHeight;
+				// const dropdown_bounding = this.$refs.dropdown;
+				// if (typeof bounding == 'undefined' || typeof dropdown_bounding == 'undefined') return;
+				// const dropdown_height = dropdown_bounding.clientHeight;
 				const height = window.innerHeight || document.documentElement.clientHeight;
-				let top = bounding.getBoundingClientRect().top;
-				const bottom = bounding.getBoundingClientRect().bottom;
-				let right = bounding.getBoundingClientRect().right;
-				let left = bounding.getBoundingClientRect().left;
-				if (top>0.5*height) top = top-dropdown_height;
-				else top = bottom+4;
-				top<0?top=0:top>height?top=height-dropdown_height:top;
-				left<0?left=0:left='auto';
-				right<0?right=0:right='auto';
-				this.dropdown_position  = {top: top+'px', right: right+'px', left: left+'px'}
+				let BoundingTop = bounding.getBoundingClientRect().top;
+				const BoundingBottom = bounding.getBoundingClientRect().bottom;
+				// let right = bounding.getBoundingClientRect().right;
+				// let left = bounding.getBoundingClientRect().left;
+				// if (top>0.5*height) top = top-dropdown_height;
+				// else top = bottom-2;
+				// top<0?top=0:top>height?top=height-dropdown_height:top;
+				// left<0?left=0:left='auto';
+				// right<0?right=0:right='auto';
+				// this.dropdown_position  = {top: top+'px', right: right+'px', left: left+'px'}
+				let top = 'auto';
+				let bottom = 'auto';
+				if (BoundingTop>0.5*height) bottom = -(BoundingTop-BoundingBottom+24)+'px'
+				this.dropdown_position  = {top: top, bottom: bottom, right: 'audo', left: 'auto'}
 			},
 			handlePageScroll() {
 				this.setDropdownPostion()
