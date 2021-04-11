@@ -6,6 +6,7 @@
 				@keydown.down.stop="nextOption" @keydown.up.stop="prevOption" @keydown.enter="selectByKeboard"
 				@keydown.esc.stop="handleClose" @keydown.tab="nextOption" @input="handleChange">
 				<div slot="suffix" @mousedown="handleButtonClick"  itemid="div" tabindex="-1">
+					<ty-button icon="ty-icon-cancel">پاک کن</ty-button>
 					<i class="dropdown-icon ty-icon ty-icon-small ty-color-dark" />
 				</div>
 			</ty-input>
@@ -23,6 +24,7 @@
 				@keydown.esc.stop="handleClose" @keydown.tab="nextOption" @input="handleChange">
 				<div class="dropdown-button" slot="suffix" @mousedown="handleButtonClick"  itemid="div" tabindex="-1">
 					<i class="ty-icon ty-icon-small ty-color-dark dropdown-icon" />
+					<i v-if="content&&showCancel" class="ml-1 ty-icon ty-icon-small ty-color-dark ty-icon-close" @mousedown.stop="clear"/>
 				</div>
 			</ty-input>
 
@@ -43,7 +45,7 @@
     		  </div>
     		</div> -->
 		</div>
-		<div class="ty-select__dropdown" :style="dropdown_position" ref="dropdown">
+		<div class="ty-select__dropdown" v-if="search_results&&search_results.length>0" :style="dropdown_position" ref="dropdown">
 			<div  @mousedown="handleCreateNew" v-if="show_new" class="ty-dropdown-item ty-flex ty-space-between ty-dropdown-item-new">
 				{{search_content}} <i class="ty-icon ty-icon-plus my-auto ty-color-gray"/>
 			</div>
@@ -57,6 +59,13 @@
 				</span>
 			</div>
 		</div>
+		<div v-else class="ty-select__dropdown" :style="dropdown_position" ref="dropdown">
+			<slot name="empty-placeholder">
+			<div class="fs-12 p-4">
+				{{emptyPlaceholderText}}
+			</div>
+			</slot>
+		</div>
 		<div class="ty-destroy">
 			<slot />
 		</div>
@@ -64,72 +73,11 @@
 </template>
 
 <script>
+import Props from './props'
 	export default {
 		name: 'TySelect',
 		// *----------------------- P r o p s ----------------------------------------------------------
-		props: {
-			value: {
-				default: null
-			},
-			placeholder: {
-				type: String,
-				default: 'لطفا انتخاب کنید',
-				required: false
-			},
-			lazyload: {
-				type: Function,
-				default: null,
-				required: false
-			},
-			dir: {
-				type: String,
-				default: 'rtl'
-			},
-			size: {
-				type: String,
-				default: 'normal'
-			},
-			width: {
-				type: [Number, String],
-				default: 'auto'
-			},
-			disabled: {
-				type: Boolean,
-				default: false
-			},
-			label: {
-				type: String,
-				required: false
-			},
-			required: {
-				type: Boolean,
-				default: false
-			},
-			searchable: {
-				type: Boolean,
-				default: true
-			},
-			showDelete: {
-				type: Boolean,
-				default: false
-			},
-			permitCreate: {
-				type: Boolean,
-				default: false
-			},
-			showEdit: {
-				type: Boolean,
-				default: false
-			},
-			select: {
-				type: Boolean,
-				default: true
-			},
-			clearSearchOnBlur: {
-				type: Boolean,
-				default: true
-			}
-		},
+		props: Props,
 
 		computed: {
 			show_new() {
@@ -203,11 +151,23 @@
 				this.$refs.selectContainer.blur()
 				// this.visible ? this.$refs.input.blur() : this.$refs.input.focus();
 			},
+			clear () {
+				this.content = null;
+				this.selected_option = null;
+				this.search_content = null;
+				this.$emit('input', null);
+				this.$emit('change', null);
+				this.setNativeInputValue();
+				// this.visible = false;
+				this.$refs.input.blur()
+				this.$refs.selectContainer.blur()
+			},
 			handleChange(value) {
 				this.hovered_option = this.select?0:null;
+				this.setDropdownPostion()
+				if (!this.searchable) return;
 				this.search_results = [];
 				this.search()
-				this.setDropdownPostion()
 				// this.visible = true;
 			},
 			async search () {
