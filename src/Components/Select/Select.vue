@@ -6,8 +6,8 @@
 				@keydown.down.stop="nextOption" @keydown.up.stop="prevOption" @keydown.enter="selectByKeboard"
 				@keydown.esc.stop="handleClose" @keydown.tab="nextOption" @input="handleChange">
 				<div slot="suffix" @mousedown="handleButtonClick"  itemid="div" tabindex="-1">
-					<ty-button icon="ty-icon-cancel">پاک کن</ty-button>
 					<i class="dropdown-icon ty-icon ty-icon-small ty-color-dark" />
+					<i v-if="content&&showCancel" class="ml-1 ty-icon ty-icon-small ty-color-dark ty-icon-close" @mousedown.stop="clear"/>
 				</div>
 			</ty-input>
 			<div v-else-if="editing">

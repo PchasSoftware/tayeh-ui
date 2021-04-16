@@ -79,7 +79,7 @@
 
       <ty-card>
         <h6>{{translate('basicSelect')}}</h6>
-        <ty-select v-model="variable" label="لیبل" :required="true"
+        <ty-select :show-cancel="true" v-model="variable" label="لیبل" :required="true"
           :options="[{label: 'test', value: 'test'}, {label: 'cool', value: 'cool'}]">
           <ty-option label="تست" value="Test" />
           <ty-option label="دومی" value="two" />
