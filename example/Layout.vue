@@ -69,6 +69,10 @@
     </ty-tabs>
 
 		</ty-card>
+    <ty-card>
+      <h4>{{translate('skeleton')}}</h4>
+      <ty-skeleton width="100px" height="100px"/>
+    </ty-card>
     </section>
 </div>
 </template>
@@ -96,6 +100,7 @@ export default {
         currencyInput: {fa: 'ورودی پول', en: 'Currency Input'},
         editableText: {fa: 'متن قابل ویرایش', en: 'Editable Text'},
         tabs: {fa: 'Tabs', en: 'Tabs'},
+        skeleton: {fa: 'اسکلتون', en: 'Skeleton'},
       },
       icons: [
         'ty-icon-arrow-drop-down',

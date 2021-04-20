@@ -132,7 +132,7 @@
     },
     data() {
       return {
-        variable: null,
+        variable: 'Test',
         numberVariable: 0,
         currencyModel: 1000,
         words: {

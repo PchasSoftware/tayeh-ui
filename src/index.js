@@ -30,6 +30,7 @@ import ColorCircle from './Components/Color/ColorCircle.vue'
 import TableHeader from './Components/Table/TableHeader.vue'
 import Switch from './Components/Switch/Switch.vue'
 import Checkbox from './Components/Checkbox/Checkbox.vue'
+import Skeleton from './Components/Layouts/Skeleton.vue'
 import './style/index.scss'
 import currency from './Filters/CurrencyFilter'
 
@@ -64,7 +65,8 @@ const components = [
 	TableHeader,
 	ColorCircle,
 	Switch,
-	Checkbox
+	Checkbox,
+	Skeleton
 ]
 
 const filters = [
