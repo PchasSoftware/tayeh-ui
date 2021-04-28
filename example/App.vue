@@ -14,6 +14,7 @@
     <table-components :lang="lang" class="components"/>
     <layout-components :lang="lang" class="components"/>
     <upload-components :lang="lang" class="components"/>
+    <slide-components :lang="lang" class="components"/>
 
   </section>
 </template>
@@ -26,6 +27,7 @@ import Button from './Button.vue'
 import Table from './Table.vue'
 import Layout from './Layout.vue'
 import Upload from './Upload.vue'
+import Slide from './Slide.vue'
 export default {
   name: 'Example',
   components: {
@@ -36,6 +38,7 @@ export default {
     'table-components': Table,
     'layout-components': Layout,
     'upload-components': Upload,
+    'slide-components': Slide,
   },
   data () {
     return {

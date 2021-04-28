@@ -96,9 +96,7 @@
         </ty-select>
         {{variable}}
         <ty-select :disabled="true" :options="[{label: 'test', value: 'test'}, {label: 'cool', value: 'cool'}]" />
-        <ty-select :select="false" placeholder="گزینه ها" show-delete show-edit permit-create @create="handleCreate">
-          <ty-option label="1" value="1" />
-        </ty-select>
+        <ty-select :lazyload="getSelectOptions" v-model="variable" :select="false" placeholder="گزینه ها" show-delete show-edit permit-create @create="handleCreate"/>
       </ty-card>
     </section>
 
@@ -132,7 +130,7 @@
     },
     data() {
       return {
-        variable: 'Test',
+        variable: 1,
         numberVariable: 0,
         currencyModel: 1000,
         words: {
@@ -202,6 +200,11 @@
       },
       handleCreate(e) {
         console.log('create', e);
+      },
+      getSelectOptions () {
+        return [
+          {value: 1, label: '1'}
+        ]
       }
     }
   }
