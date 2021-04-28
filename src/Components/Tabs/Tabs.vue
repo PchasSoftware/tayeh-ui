@@ -103,6 +103,7 @@
                 }
                 this.tabs.forEach(tab => {
                     tab.isActive = (tab.hash === selectedTab.hash);
+                    tab.initialized = (tab.hash === selectedTab.hash)||tab.initialized;
                 });
                 this.$emit('changed', { tab: selectedTab });
                 this.activeTabHash = selectedTab.hash;

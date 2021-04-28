@@ -1,11 +1,11 @@
 <template>
 <keep-alive>
     <section v-show="isActive"
-             :aria-hidden="! isActive"
+             v-if="initialized"
+             :aria-hidden="!isActive"
              class="tabs-component-panel"
              :id="id"
-             role="tabpanel"
-    >
+             role="tabpanel">
         <slot v-if="!disabled" />
     </section>
 </keep-alive>
@@ -25,7 +25,7 @@
         data: () => ({
             isActive: false,
             isVisible: true,
-            isLoaded: false
+            initialized: false,
         }),
         computed: {
             header() {
