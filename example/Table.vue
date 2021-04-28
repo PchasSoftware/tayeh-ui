@@ -8,7 +8,7 @@
         <ty-table-header v-model="variable" :on-change="handleChange">
           <ty-button type="outline" color="shadow" icon="ty-icon-filter" size="small"><span class="ty-color-dark">فیلتر کردن لیست</span></ty-button>
         </ty-table-header>
-        <ty-table font-size="14" :data="sampleDatas">
+        <ty-table font-size="14" :data="sampleDatas" :no-padding="true" :show-border="true">
           <ty-table-column min-width="120px"  label="نام" prop="name"/>
           <ty-table-column min-width="2000px"  label="سن" prop="age">
           </ty-table-column>

@@ -1,5 +1,5 @@
 <template>
-    <div :class="['ty-table', 'fs-'+fontSize, 'fw-'+fontWeight]">
+    <div :class="['ty-table', noPadding?'no-padding':'', showBorder?'table-borders':'', 'fs-'+fontSize, 'fw-'+fontWeight]">
         <div v-if="showFilter && filterableColumnExists" class="ty-table__filter">
             <input
                     :class="fullFilterInputClass"
@@ -97,7 +97,9 @@
             filterPlaceholder: { default: () => settings.filterPlaceholder },
             filterNoResults: { default: () => settings.filterNoResults },
             fontSize: {default: '14'},
-            fontWeight: {default: '400'}
+            fontWeight: {default: '400'},
+            noPadding: {default: false},
+            showBorder: {default: false}
         },
 
         data: () => ({

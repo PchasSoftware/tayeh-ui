@@ -75,9 +75,6 @@ export default {
   methods: {
     translate(text) {
       return this.words[''+text][this.lang];
-    },
-    handleClick(e) {
-      console.log('click', e);
     }
   }
 }
