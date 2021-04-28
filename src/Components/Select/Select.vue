@@ -144,7 +144,7 @@ import Props from './props'
 				this.selected_option = item;
 				this.search_content = item.label;
 				this.$emit('input', item.value);
-				this.$emit('change', item.value);
+				this.$emit('change', item.value, item);
 				this.setNativeInputValue();
 				// this.visible = false;
 				this.$refs.input.blur()
@@ -156,7 +156,7 @@ import Props from './props'
 				this.selected_option = null;
 				this.search_content = null;
 				this.$emit('input', null);
-				this.$emit('change', null);
+				this.$emit('change', null, null);
 				this.setNativeInputValue();
 				// this.visible = false;
 				this.$refs.input.blur()
