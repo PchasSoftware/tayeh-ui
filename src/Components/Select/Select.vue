@@ -285,7 +285,9 @@ import Props from './props'
 			this.options = this.$children.filter(option => option.isOption);
 			this.content = this.value;
 			if (this.lazyload) {
-				this.search_results = await this.lazyload(this.search_content)
+				const options = await this.lazyload(this.search_content);
+				this.options = options;
+				this.search_results = options;
 			} else {
 				this.defaultSearchFunction()
 			}
