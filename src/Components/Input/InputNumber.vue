@@ -4,15 +4,15 @@
       <p v-if="label" :class="['ty-input-label', 'mb-1', size||'', error?'ty-color-danger': '']">{{label}} <span
           class="ty-color-danger">{{required?'*':''}}</span></p>
       <div class="input-number-wrapper" :style="{lineHeight: height}">
-        <span :class="['increase', `ty-bg-${plusColor}`]" @click="handlePlusClick">
+        <span :class="['increase', `ty-bg-${plusColor}`, plusDisabled?'disabled':'']" @click="handlePlusClick">
           <i class="ty-icon ty-icon-plus fs-12" />
         </span>
         <span class="input-content">
-          <input ref="input" :disabled="disabled" @focus="handleFocus" @blur="handleBlur" @input="handleInput"
+          <input ref="input" :disabled="disabled||inputDisabled" @focus="handleFocus" @blur="handleBlur" @input="handleInput"
             @change="handleChange" :minlength="minLength" :maxlength="maxLength" :min="min" :max="max" :step="step"
             type="number" :placeholder="placeholder" :style="{lineHeight: height, height}" />
         </span>
-        <span :class="['decrease', `ty-bg-${minusColor}`]" @click="handleMinusClick">
+        <span :class="['decrease', `ty-bg-${minusColor}`, minusDisabled?'disabled':'']" @click="handleMinusClick">
           <i class="ty-icon ty-icon-minus fs-12" />
         </span>
       </div>
@@ -104,6 +104,10 @@
         type: Boolean,
         default: false
       },
+      inputDisabled: {
+        type: Boolean,
+        default: false
+      },
       minLength: {
         type: [Number, String],
         required: false
@@ -177,6 +181,12 @@
       },
       suffixPadding() {
         return !this.hasSuffix?{}:{paddingLeft: `${this.suffixWidth+8}px`}
+      },
+      plusDisabled () {
+        return this.max!==null&&this.max<=this.value;
+      },
+      minusDisabled () {
+        return this.min!==null&&this.min>=this.value;
       }
     },
 
@@ -188,12 +198,18 @@
     // *----------------------- M e t h o d s -----------------------------------------------------
     methods: {
       handleInput(event) {
-        this.$emit('input', Number(event.target.value));
+        let temp = Number(event.target.value);
+        if (typeof this.max === 'number' && temp > this.max) temp = Number(this.max);
+        if (typeof this.min === 'number' && temp < this.min) temp = this.min;
+        this.$emit('input', temp);
         this.$nextTick(this.setNativeInputValue);
       },
       handleChange(event) {
-        this.$emit('change', Number(event.target.value));
-        this.error = this.required && !event.target.value
+        let temp = Number(event.target.value);
+        if (typeof this.max === 'number' && temp > this.max) temp = Number(this.max);
+        if (typeof this.min === 'number' && temp < this.min) temp = this.min;
+        this.$emit('change', temp);
+        this.error = this.required && temp
       },
       handleFocus(event) {
         this.outline = true;
@@ -212,6 +228,7 @@
         if (typeof this.max === 'number' && temp > this.max) temp = Number(this.max);
         this.$refs.input.value = Number(temp);
         this.$emit('input', Number(this.$refs.input.value));
+        this.$emit('change', Number(this.$refs.input.value));
         // this.handleInput()
       },
       handleMinusClick() {
@@ -220,6 +237,7 @@
         if (typeof this.min === 'number' && temp < this.min) temp = this.min;
         this.$refs.input.value = Number(temp);
         this.$emit('input', Number(this.$refs.input.value));
+        this.$emit('change', Number(this.$refs.input.value));
         // this.handleInput()
       },
 
@@ -263,6 +281,11 @@
     width: 38px;
     bottom: 1px;
     font-size: 4px;
+  }
+  .increase.disabled, .decrease.disabled {
+    pointer-events: none;
+    opacity: 0.3;
+    cursor: default;
   }
 
   .increase {

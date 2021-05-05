@@ -7,7 +7,7 @@
       <ty-card>
         <h6>{{translate('baseInput')}}</h6>
         <code class="example">{{examples['basicInput']}}</code>
-        <ty-input-number size="semi-small" v-model="numberVariable" :step="0.5" :max="10" :min="-1">
+        <ty-input-number size="semi-small" v-model="numberVariable" :step="0.5" :max="10" :min="-1" :input-disabled="true">
           <div slot="suffix-outside">
             درصد
           </div>
