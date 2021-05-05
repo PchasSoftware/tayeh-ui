@@ -102,7 +102,8 @@ export default {
     handleClose (event) {
       if (!this.canExit) return;
       if (typeof event.key !== 'undefined' && event.key !== 'Escape' ) return;
-      event.preventDefault()
+      event.preventDefault();
+      event.stopPropagation();
       if (typeof this.beforeClose === 'function') {
         this.beforeClose(this.hide)
       } else {
