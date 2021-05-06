@@ -96,18 +96,19 @@
 
         <ty-modal
           title="Tips"
-          :visible.sync="dialogVisible">
+          :visible="dialogVisible">
           <span> This is a messaasdfa sdfasdf
            <ty-select v-model="variable" label="لیبل" :required="true" :options="[{label: 'test', value: 'test'}, {label: 'cool', value: 'cool'}]">
           <ty-option label="تست" value="Test"/>
           <ty-option label="دومی" value="two"/>
         </ty-select>
-        <ty-color-circle v-model="color" editable/>
-            df
-            sadfge</span>
+        <ty-color-circle v-model="color" editable/>temp text</span>
           <span slot="footer" class="dialog-footer">
             <ty-button @click="dialogVisible = false">Cancel</ty-button>
           </span>
+          <ty-button @click="sub_modal_visible = true">show</ty-button>
+        <ty-modal :visible.sync="sub_modal_visible">
+        </ty-modal>
         </ty-modal>
       </ty-card>
     </section>
@@ -154,6 +155,7 @@ export default {
     return {
       dialogVisible: false,
       variable: null,
+      sub_modal_visible: false,
       color: '#129',
       words: {
         cssDirection: {fa: 'rtl', en: 'ltr'},
