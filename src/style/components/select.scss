@@ -42,4 +42,15 @@
 	}
 	
   }
-  
+  .ty-select.clear {
+	.ty-input-wrapper {
+		background: none;
+		border: none;
+	}
+	input {
+		background: none;
+	}
+	input::placeholder {
+		opacity: 1;
+	}
+  }

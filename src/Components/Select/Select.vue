@@ -1,5 +1,5 @@
 <template>
-	<div :class="['ty-select', size, disabled?'disabled':'']" ref="selectContainer" id="container" itemid="div" :tabindex="disabled?'':'-1'" :role="disabled?'':'button'" :disabled="disabled" @focus="visible=true;setDropdownPostion" @blur="visible=false">
+	<div :class="['ty-select', size, disabled?'disabled':'', !disabled&&clear?'clear':'']" ref="selectContainer" id="container" itemid="div" :tabindex="disabled?'':'-1'" :role="disabled?'':'button'" :disabled="disabled" @focus="visible=true;setDropdownPostion" @blur="visible=false">
 		<div class="ty-select__search" ref="select">
 			<ty-input v-if="searchable&&!editing" ref="input" id="input-1" :disabled="disabled" v-model="search_content" :label="label" :required="required"
 				:dir="dir" :size="size" :placeholder="placeholder" @focus="visible=true;setDropdownPostion" @blur="visible=false"
@@ -7,7 +7,7 @@
 				@keydown.esc.stop="handleClose" @keydown.tab="nextOption" @input="handleChange">
 				<div slot="suffix" @mousedown="handleButtonClick"  itemid="div" tabindex="-1">
 					<i class="dropdown-icon ty-icon ty-icon-small ty-color-dark" />
-					<i v-if="content&&showCancel" class="ml-1 ty-icon ty-icon-small ty-color-dark ty-icon-close" @mousedown.stop="clear"/>
+					<i v-if="content&&showCancel" class="ml-1 ty-icon ty-icon-small ty-color-dark ty-icon-close" @mousedown.stop="clearSelect"/>
 				</div>
 			</ty-input>
 			<div v-else-if="editing">
@@ -24,7 +24,7 @@
 				@keydown.esc.stop="handleClose" @keydown.tab="nextOption" @input="handleChange">
 				<div class="dropdown-button" slot="suffix" @mousedown="handleButtonClick"  itemid="div" tabindex="-1">
 					<i class="ty-icon ty-icon-small ty-color-dark dropdown-icon" />
-					<i v-if="content&&showCancel" class="ml-1 ty-icon ty-icon-small ty-color-dark ty-icon-close" @mousedown.stop="clear"/>
+					<i v-if="content&&showCancel" class="ml-1 ty-icon ty-icon-small ty-color-dark ty-icon-close" @mousedown.stop="clearSelect"/>
 				</div>
 			</ty-input>
 
@@ -151,7 +151,7 @@ import Props from './props'
 				this.$refs.selectContainer.blur()
 				// this.visible ? this.$refs.input.blur() : this.$refs.input.focus();
 			},
-			clear () {
+			clearSelect () {
 				this.content = null;
 				this.selected_option = null;
 				this.search_content = null;

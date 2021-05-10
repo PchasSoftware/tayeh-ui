@@ -67,5 +67,9 @@ export default {
     showCancel: {
         type: Boolean,
         default: false
+    },
+    clear: {
+        type: Boolean,
+        default: false
     }
 }

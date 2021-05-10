@@ -77,9 +77,9 @@
     <section id="selects">
       <h4>{{translate('selects')}}</h4>
 
-      <ty-card>
+      <!-- <ty-card> -->
         <h6>{{translate('basicSelect')}}</h6>
-        <ty-select :show-cancel="true" v-model="variable" label="لیبل" :required="true"
+        <ty-select  :show-cancel="true" v-model="variable" label="لیبل" :required="true"
           :options="[{label: 'test', value: 'test'}, {label: 'cool', value: 'cool'}]">
           <ty-option label="تست" value="Test" />
           <ty-option label="دومی" value="two" />
@@ -96,8 +96,8 @@
         </ty-select>
         {{variable}}
         <ty-select :disabled="true" :options="[{label: 'test', value: 'test'}, {label: 'cool', value: 'cool'}]" />
-        <ty-select :lazyload="getSelectOptions" v-model="variable" :select="false" placeholder="گزینه ها" show-delete show-edit permit-create @create="handleCreate"/>
-      </ty-card>
+        <ty-select clear :lazyload="getSelectOptions" v-model="variable" :select="false" placeholder="گزینه ها" show-delete show-edit permit-create @create="handleCreate"/>
+      <!-- </ty-card> -->
     </section>
 
     <section id="switch">
