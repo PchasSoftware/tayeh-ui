@@ -1,6 +1,6 @@
 <template>
   <div :class="['ty-input', inputSize ? 'el-input--' + inputSize : '']">
-    <p v-if="label" :class="['ty-input-label', 'mb-1', size||'', error?'ty-color-danger': '']">{{label}} <span class="ty-color-danger">{{required?'*':''}}</span></p>
+    <p v-if="label" :class="['fs-12 fs-sm-14 ty-input-label', 'mb-1', size||'', error?'ty-color-danger': '']">{{label}} <span class="ty-color-danger">{{required?'*':''}}</span></p>
     <!-- <div class="inline-block"> -->
       <div ref="input-wrapper" :class="['ty-input-wrapper', size, clear?'--border-clear':'', !clear&&borderBottom?'--border-bottom':'', outline?'ty-input-focus':'', disabled?'disabled':'', error?'ty-color-danger ty-border-color-danger': '']">
         <slot name="prefix">

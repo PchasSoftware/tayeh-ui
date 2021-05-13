@@ -1,7 +1,7 @@
 <template>
   <div :style="suffixPadding" :class="['inline-block','ty-input', 'ty-input-number', size, inputSize ? 'ty-input--' + inputSize : '']">
     <!-- <div class="inline"> -->
-      <p v-if="label" :class="['ty-input-label', 'mb-1', size||'', error?'ty-color-danger': '']">{{label}} <span
+      <p v-if="label" :class="['fs-12 fs-sm-14 ty-input-label', 'mb-1', size||'', error?'ty-color-danger': '']">{{label}} <span
           class="ty-color-danger">{{required?'*':''}}</span></p>
       <div class="input-number-wrapper" :style="{lineHeight: height}">
         <span :class="['increase', `ty-bg-${plusColor}`, plusDisabled?'disabled':'']" @click="handlePlusClick">
@@ -209,7 +209,7 @@
         if (typeof this.max === 'number' && temp > this.max) temp = Number(this.max);
         if (typeof this.min === 'number' && temp < this.min) temp = this.min;
         this.$emit('change', temp);
-        this.error = this.required && temp
+        this.error = this.required && typeof temp !== 'number'
       },
       handleFocus(event) {
         this.outline = true;
