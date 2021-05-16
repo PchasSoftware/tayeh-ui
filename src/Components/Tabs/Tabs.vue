@@ -1,6 +1,6 @@
 <template>
     <div class="ty-tabs">
-        <ul role="tablist" class="ty-tabs-list mb-2">
+        <ul role="tablist" class="ty-tabs-list mb-2 px-0">
             <li
                 v-for="(tab, i) in tabs"
                 :key="i"
