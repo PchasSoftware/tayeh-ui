@@ -24,7 +24,7 @@
           :min="min"
           :max="max"
           :step="step"
-         @input="handleInput" @change="handleChange" :type="type" :placeholder="placeholder" :class="[icon?'--input-with-prefix':'']"/>
+         @input="handleInput" @change="handleChange" :type="show_pass?'text':type" :name="name" :placeholder="placeholder" :class="[icon?'--input-with-prefix':'']"/>
 		 <textarea
 		    v-else
 		    ref="input"
@@ -37,9 +37,13 @@
         :disabled="disabled"
         @focus="handleFocus"
         @blur="handleBlur"
-        @input="handleInput" @change="handleChange" :placeholder="placeholder" :class="[size, icon?'--input-with-prefix':'']" :style="{resize: resizable?'auto':'none'}"/>
+        @input="handleInput" @change="handleChange" :placeholder="placeholder" :name="name" :class="[size, icon?'--input-with-prefix':'']" :style="{resize: resizable?'auto':'none'}"/>
         <div :class="['suffix', dir==='ltr'?'suffix--ltr':'']">
-          <slot name="suffix"/>
+          <slot name="suffix">
+            <div v-if="type==='password'">
+              <ty-button class="px-1" size="small" type="clear" :color="show_pass?'primary':'border'" icon="ty-icon-eye-open" @click="show_pass=!show_pass"/>
+            </div>
+          </slot>
           <i v-if="error" class="ty-icon ty-icon-warning"/>
         </div>
       </div>
@@ -60,6 +64,11 @@ export default {
   props: {
     value: [String, Number],
 	  type: {
+		  type: String,
+		  default: 'text',
+		  required: false
+    },
+    name: {
 		  type: String,
 		  default: 'text',
 		  required: false
@@ -145,6 +154,7 @@ export default {
     return {
       outline: false,
       launched: false,
+      show_pass: false,
     }
   },
 
