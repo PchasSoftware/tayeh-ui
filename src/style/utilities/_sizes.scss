@@ -1,6 +1,6 @@
 @import "../var.scss";
 
-@for $size from 2 to 150 {
+@for $size from 2 to 80 {
 	.fs-#{$size} {
 		font-size: #{$size}px;
 	}
@@ -8,7 +8,7 @@
 
 @each $name, $width in $grid-breakpoints {
 	@media (min-width: $width)	{
-		@for $size from 2 to 72 {
+		@for $size from 2 to 48 {
 			.fs-#{$name}-#{$size} {
 				font-size: #{$size}px;
 			}

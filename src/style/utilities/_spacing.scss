@@ -94,7 +94,7 @@
 	}
 }
 
-@for $var from 1 to 50 {
+@for $var from 1 to 25 {
 	.ty-gap-#{$var} {
 		gap: #{$var}px;
 	}

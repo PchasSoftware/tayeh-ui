@@ -1,7 +1,7 @@
 <template>
 	<div :class="['ty-select', size, disabled?'disabled':'', !disabled&&clear?'clear':'']" ref="selectContainer" id="container" itemid="div" :tabindex="disabled?'':'-1'" :role="disabled?'':'button'" :disabled="disabled" @focus="visible=true;setDropdownPostion" @blur="visible=false">
 		<div class="ty-select__search" ref="select">
-			<ty-input v-if="searchable&&!editing" ref="input" id="input-1" :disabled="disabled" v-model="search_content" :label="label" :required="required"
+			<ty-input v-if="searchable&&!editing" ref="input" id="input-1" autocomplete="off" :disabled="disabled" v-model="search_content" :label="label" :required="required"
 				:dir="dir" :size="size" :placeholder="placeholder" @focus="visible=true;setDropdownPostion" @blur="visible=false"
 				@keydown.down.stop="nextOption" @keydown.up.stop="prevOption" @keydown.enter="selectByKeboard"
 				@keydown.esc.stop="handleClose" @keydown.tab="nextOption" @input="handleChange">

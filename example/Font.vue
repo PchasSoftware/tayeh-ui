@@ -48,6 +48,8 @@ export default {
         'ty-icon-arrow-drop-down',
         'ty-icon-arrow-right',
         'ty-icon-cart',
+        'ty-icon-cart-outline',
+        'ty-icon-share',
         'ty-icon-chart',
         'ty-icon-delete',
         'ty-icon-edit',

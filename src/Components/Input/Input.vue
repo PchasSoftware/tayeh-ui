@@ -9,6 +9,7 @@
         </div>
         </slot>
         <input
+        :autocomplete="autocomplete"
 		v-if="type!=='textarea'"
         ref="input"
         :dir="dir"
@@ -41,7 +42,9 @@
         <div :class="['suffix', dir==='ltr'?'suffix--ltr':'']">
           <slot name="suffix">
             <div v-if="type==='password'">
-              <ty-button class="px-1" size="small" type="clear" :color="show_pass?'primary':'border'" icon="ty-icon-eye-open" @click="show_pass=!show_pass"/>
+              <div class="px-1" type="clear" :class="[show_pass?'ty-color-primary':'ty-color-border']" icon="ty-icon-eye-open" @click.stop.prevent="show_pass=!show_pass">
+                <i class="fs-12 fs-sm-14 ty-icon ty-icon-eye-open"/>
+              </div>
             </div>
           </slot>
           <i v-if="error" class="ty-icon ty-icon-warning"/>
@@ -143,6 +146,10 @@ export default {
 	  	type: [Number, String],
 	  	default: 4
 	  },
+    autocomplete: {
+      type: String,
+      default: 'off'
+    },
 	  cols: {
 	  	type: [Number, String],
 	  	required: false

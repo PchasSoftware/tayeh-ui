@@ -1,8 +1,5 @@
 $percent: '%';
-@for $radius from 1 to 51 {
-	.border-radius-#{$radius}pc {
-		border-radius: #{$radius}#{$percent};
-	}
+@for $radius from 1 to 20 {
 	.border-radius-#{$radius}px {
 		border-radius: #{$radius}px;
 	}
