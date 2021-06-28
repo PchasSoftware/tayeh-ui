@@ -41,9 +41,10 @@
         </ty-input-number>
 
         <ty-row :gutter="10">
-          <ty-col :xs="24" :sm="12" :md="12" :lg="12" :xl="12">
+          <ty-col :xs="24" :sm="12" :md="6" :lg="4" :xl="3">
+            1
           </ty-col>
-          <ty-col :xs="24" :sm="12" :md="12" :lg="12" :xl="12">
+          <ty-col :xs="24" :sm="12" :md="6" :lg="4" :xl="3">
             <div>
               <ty-input-number label="سود پیشفرض" v-model="numberVariable">
                 <div slot="suffix-outside" class="ty-color-primary mr-3">درصد</div>
