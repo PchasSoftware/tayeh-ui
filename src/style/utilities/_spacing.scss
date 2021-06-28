@@ -93,12 +93,23 @@
 		}
 	}
 }
-
 @for $var from 1 to 25 {
-	.ty-gap-#{$var} {
-		gap: #{$var}px;
+	.ty-gap-#{$var} > div:not(:last-child) {
+		margin-left: #{$var}px;
 	}
 }
+@supports (gap: 10px) and (display: flex) {
+	@for $var from 1 to 25 {
+		.ty-gap-#{$var} {
+			gap: #{$var}px;
+			&>div {
+				margin-left: 0 !important;
+			}
+		}
+	}
+}
+  
+
 
 .text-center {
 	text-align: center !important;
