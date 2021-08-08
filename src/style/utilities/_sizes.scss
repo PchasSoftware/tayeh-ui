@@ -24,9 +24,11 @@
 }
 .fw-lighter {
 	font-weight: lighter;
+	font-variation-settings: "wght" 100;
 }
 .fw-bolder {
 	font-weight: bolder;
+	font-variation-settings: "wght" 900;
 }
 
 .of-hidden {
