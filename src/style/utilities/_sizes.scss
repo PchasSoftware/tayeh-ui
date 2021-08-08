@@ -19,6 +19,7 @@
 @for $weight from 1 to 10 {
 	.fw-#{$weight*100} {
 		font-weight: #{$weight*100};
+		font-variation-settings: "wght" #{$weight*100};
 	}
 }
 .fw-lighter {
