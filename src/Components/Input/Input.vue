@@ -41,10 +41,8 @@
         @input="handleInput" @change="handleChange" :placeholder="placeholder" :name="name" :class="[size, icon?'--input-with-prefix':'']" :style="{resize: resizable?'auto':'none'}"/>
         <div :class="['suffix', dir==='ltr'?'suffix--ltr':'']">
           <slot name="suffix">
-            <div v-if="type==='password'">
-              <div class="px-1" type="clear" :class="[show_pass?'ty-color-primary':'ty-color-border']" icon="ty-icon-eye-open" @click.stop.prevent="show_pass=!show_pass">
-                <i class="fs-12 fs-sm-14 ty-icon ty-icon-eye-open"/>
-              </div>
+            <div class="ty-flex align-items-center" v-if="type==='password'" @click.stop.prevent="show_pass=!show_pass">
+                <i :class="['ty-icon px-1',show_pass?'ty-icon-visibility ty-color-primary':'ty-icon-eye-close ty-color-border']"/>
             </div>
           </slot>
           <i v-if="error" class="ty-icon ty-icon-warning"/>
