@@ -43,7 +43,7 @@
       },
       size: {
         type: String,
-        default: 'medium',
+        default: '',
       },
       icon: {
         type: String,
