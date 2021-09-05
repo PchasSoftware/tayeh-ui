@@ -63,7 +63,7 @@
       <ty-card>
         <code class="example">{{examples['acardion']}}</code>
         <ty-acardion icon="ty-icon-sort" open="1">
-          <ty-acardion-item index="1" label="انبار شماره ۱" class="fw-lighter">
+          <ty-acardion-item :show-borders="true" index="1" label="انبار شماره ۱" class="fw-lighter">
             موجودی انبار
           </ty-acardion-item>
           <ty-acardion-item index="2" label="انبار شماره ۲">

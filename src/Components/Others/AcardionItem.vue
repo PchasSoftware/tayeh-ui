@@ -1,13 +1,13 @@
 <template>
-  <div class="ty-acardion-item">
-	  <div class="ty-acardion-item__header" @click="openItem">
-		  <div>{{label}}</div>
-		  <div class="ty-acardion-item__icon" :class="{active}">
-		  	<i :class="['ty-icon',active?'ty-icon-arrow-bottom':'ty-icon-arrow-right']"/>
-		  </div>
+  <div :class="['ty-acardion-item', showBorders?'show-border':'', active?'active ':'']">
+	  <div class="ty-acardion-item__header ty-flex ty-gap-10 align-items-center" @click="openItem">
+		  <!-- <div :class="['ty-acardion-item__icon', ]"> -->
+		  	<!-- <i :class="['ty-icon ty-icon-arrow-down']"/> -->
+		  <!-- </div> -->
+		  <strong class="pl-4 fw-600">{{label}}</strong>
 	  </div>
 	   <!-- active?'ty-icon-arrow-down':'ty-icon-arrow-right' -->
-	  <div class="ty-acardion-item__content" :class="{inactive: !active}" :style="{maxHeight}">
+	  <div ref="acardionContent" :class="['ty-acardion-item__content']" :style="{maxHeight: active?maxHeight:0}">
 	  	<slot/>
 	  </div>
   </div>
@@ -28,13 +28,19 @@ export default {
 		  required: true
 	  },
 	  maxHeight: {
-		  type: String,
+		  type: [String, Number],
 		  default: '500px'
+	  },
+	  showBorders: {
+		  type: Boolean,
+		  default: false
 	  }
   },
   data() {
 	  return {
-		  indexValue: null
+		  indexValue: null,
+		  display: 'none',
+		  maxHeight: 'unset',
 	  }
   },
 
@@ -53,11 +59,30 @@ export default {
 	  openItem () {
 		//   this.indexValue = this.index;
 		//   this.$emit('TyAcardionItemOpen', this.index);
+		const is_open = this.open()==this.index;
+		// const height = this.$refs.acardionContent.clientHeight;
+		if (is_open) {
+			//is closing
+			this.maxHeight = 0;
+			setTimeout(() => {
+				this.display = 'none';
+				this.maxHeight = 'unset';
+			}, 300);
+		} else {
+			//is opeining
+			this.maxHeight = '500px';
+			setTimeout(() => {
+				this.maxHeight = 'unset';
+				this.display = 'block'
+			}, 300);
+		}
+		
+		// console.log(height);
 		this.$parent.$emit('TyAcardionItemOpen', this.open()==this.index?'close':this.index)
 	  }
   },
-
-  // *----------------------- W a t c h ---------------------------------------------------------
-  watch: {}
+  mounted () {
+	  this.display = this.active?'block':'none';
+  }
 }
 </script>
