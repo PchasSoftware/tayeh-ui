@@ -36,13 +36,6 @@ export default {
 		  default: false
 	  }
   },
-  data() {
-	  return {
-		  indexValue: null,
-		  display: 'none',
-		  maxHeight: 'unset',
-	  }
-  },
 
   // *----------------------- D a t a -----------------------------------------------------------
 
@@ -57,32 +50,8 @@ export default {
   // *----------------------- M e t h o d s -----------------------------------------------------
   methods: {
 	  openItem () {
-		//   this.indexValue = this.index;
-		//   this.$emit('TyAcardionItemOpen', this.index);
-		const is_open = this.open()==this.index;
-		// const height = this.$refs.acardionContent.clientHeight;
-		if (is_open) {
-			//is closing
-			this.maxHeight = 0;
-			setTimeout(() => {
-				this.display = 'none';
-				this.maxHeight = 'unset';
-			}, 300);
-		} else {
-			//is opeining
-			this.maxHeight = '500px';
-			setTimeout(() => {
-				this.maxHeight = 'unset';
-				this.display = 'block'
-			}, 300);
-		}
-		
-		// console.log(height);
 		this.$parent.$emit('TyAcardionItemOpen', this.open()==this.index?'close':this.index)
 	  }
-  },
-  mounted () {
-	  this.display = this.active?'block':'none';
   }
 }
 </script>
