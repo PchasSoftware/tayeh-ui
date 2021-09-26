@@ -201,14 +201,14 @@
         let temp = Number(event.target.value);
         if (typeof this.max === 'number' && temp > this.max) temp = Number(this.max);
         if (typeof this.min === 'number' && temp < this.min) temp = this.min;
-        this.$emit('input', temp);
+        this.$emit('input', Number.parseFloat(temp));
         this.$nextTick(this.setNativeInputValue);
       },
       handleChange(event) {
         let temp = Number(event.target.value);
         if (typeof this.max === 'number' && temp > this.max) temp = Number(this.max);
         if (typeof this.min === 'number' && temp < this.min) temp = this.min;
-        this.$emit('change', temp);
+        this.$emit('change', Number.parseFloat(temp));
         this.error = this.required && typeof temp !== 'number'
       },
       handleFocus(event) {
@@ -227,8 +227,8 @@
         let temp = this.value + this.step;
         if (typeof this.max === 'number' && temp > this.max) temp = Number(this.max);
         this.$refs.input.value = Number(temp);
-        this.$emit('input', Number(this.$refs.input.value));
-        this.$emit('change', Number(this.$refs.input.value));
+        this.$emit('input', Number.parseFloat(this.$refs.input.value));
+        this.$emit('change', Number.parseFloat(this.$refs.input.value));
         // this.handleInput()
       },
       handleMinusClick() {
@@ -236,8 +236,8 @@
         let temp = this.value - this.step;
         if (typeof this.min === 'number' && temp < this.min) temp = this.min;
         this.$refs.input.value = Number(temp);
-        this.$emit('input', Number(this.$refs.input.value));
-        this.$emit('change', Number(this.$refs.input.value));
+        this.$emit('input', Number.parseFloat(this.$refs.input.value));
+        this.$emit('change', Number.parseFloat(this.$refs.input.value));
         // this.handleInput()
       },
 

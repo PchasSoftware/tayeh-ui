@@ -64,7 +64,7 @@ export default {
   methods: {
     onInput() {
       this.content = this.content.replace(/[^0-9.]/g, "");
-      this.$emit('input', parseInt(this.content));
+      this.$emit('input', Number.parseFloat(this.content));
     },
     focus() {      
       this.editing = true;
