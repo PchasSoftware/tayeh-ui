@@ -73,7 +73,7 @@
 </template>
 
 <script>
-import Props from './props'
+import Props from './props';
 	export default {
 		name: 'TySelect',
 		// *----------------------- P r o p s ----------------------------------------------------------
@@ -167,10 +167,16 @@ import Props from './props'
 				this.setDropdownPostion()
 				if (!this.searchable) return;
 				this.search_results = [];
-				this.search()
-				// this.visible = true;
+				if(typeof window.LIT !== 'undefined') {
+    			    clearTimeout(window.LIT);
+    			}
+
+    			window.LIT = setTimeout(() => {
+    			    this.search()
+    			}, 1100);
 			},
 			async search () {
+				console.log('search');
 				if (this.lazyload) {
 					this.search_results = await this.lazyload(this.search_content)
 				} else {
