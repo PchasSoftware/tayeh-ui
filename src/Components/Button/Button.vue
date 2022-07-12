@@ -1,7 +1,7 @@
 <template>
   <!-- <div :class="['inline-block', 'ty-button', ...typeCss, type, size]" @click="handleClick"
     :style="{width, height, borderRadius: radius, borderWidth: outlineWidth}"> -->
-  <button :disabled="disabled" :class="['inline-block', 'ty-button', ...typeCss, type, size, disabled?'disabled':'']"
+  <button :disabled="disabled" :type="buttonType" :class="['inline-block', 'ty-button', ...typeCss, type, size, disabled?'disabled':'']"
     @click="handleClick" 
     @mousedown="(e) => $emit('mousedown', e)"
     @mouseup="(e) => $emit('mouseup', e)"
@@ -39,6 +39,10 @@
       },
       type: {
         type: String,
+        default: 'simple'
+      },
+	  buttonType: {
+        type: undefined|'submit'|'button'|'menu'|'reset',
         default: 'simple'
       },
       size: {
